@@ -1,0 +1,30 @@
+.container {
+  background-color: #fff;
+  padding: 38px 220px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  & > hr {
+    width: 32px;
+    border: 1px solid #f20530;
+    background-color: #f20530;
+  }
+  & > p {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+
+    text-transform: capitalize;
+
+    color: #f20530;
+  }
+
+  & > h1 {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 50px;
+
+    color: #333333;
+  }
+}
