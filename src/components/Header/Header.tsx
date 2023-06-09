@@ -4,8 +4,12 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <img src="/src/assets/images/logo.png" alt="Sufle" />
-        
+        <button className={styles.menuBtn}>
+          <img src="/src/assets/images/icons/menu.svg" alt="Menu" />
+        </button>
+
+        <img className={styles.logo} src="/src/assets/images/logo.png" alt="Sufle" />
+
         <nav className={styles.nav}>
           <ul>
             <li className={styles.active}>
@@ -31,7 +35,7 @@ function Header() {
             </li>
           </ul>
         </nav>
-        
+
         <div className={styles.search}>
           <img src="/src/assets/images/icons/search.svg" alt="Search" />
           <input type="text" placeholder="Axtarış..." />

@@ -1,6 +1,10 @@
 .header {
   background-color: #f5f6f6;
   padding: 30px 0;
+
+  @media screen and (max-width: 1240px) {
+    padding: 26px;
+  }
 }
 
 .container {
@@ -8,9 +12,34 @@
   justify-content: space-between;
   align-items: center;
 
-  max-width: 1500px;
+  gap: 10px;
+
   margin: 0 auto;
   padding: 0 10px;
+
+  @media screen and (min-width: 1024px) {
+    max-width: 1500px;
+  }
+}
+
+.menuBtn {
+  display: none;
+
+  @media screen and (max-width: 1024px) {
+    display: block;
+    outline: none;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+.logo {
+  max-width: 100%;
+
+  @media screen and (max-width: 768px) {
+    max-width: 40px;
+  }
 }
 
 .nav {
@@ -31,10 +60,17 @@
         color: #f20530;
       }
       & > a {
+        display: flex;
+        text-align: center;
+
         color: inherit;
         text-decoration: none;
       }
     }
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
   }
 }
 
@@ -63,6 +99,18 @@
       line-height: 20px;
 
       color: #a9a9a9;
+    }
+  }
+
+  @media screen and (max-width: 1240px) {
+    & > img {
+      position: relative;
+      left: 0;
+      top: 0;
+      cursor: pointer;
+    }
+    & > input {
+      display: none;
     }
   }
 }
