@@ -56,7 +56,7 @@ function Footer() {
               </ul>
             </div>
           </div>
-          <div className={styles.widget}>
+          <div className={cs(styles.widget, styles.contact)}>
             <h2 className={styles.title}>Əlaqə</h2>
             <div className={styles.content}>
               <ul>
@@ -92,7 +92,7 @@ function Footer() {
         <div className={cs(styles.widget, styles.footnote)}>
           <div className={styles.copyright}>
             <img src="/src/assets/images/icons/copyright.svg" alt="Copyright" />
-            <h2 className={styles.title}>Bütün hüquqlar qorunur</h2>
+            <h2>Bütün hüquqlar qorunur</h2>
           </div>
           <div className={styles.social}>
             <a href="#">
