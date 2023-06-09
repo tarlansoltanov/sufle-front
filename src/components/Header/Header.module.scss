@@ -22,7 +22,7 @@
   }
 }
 
-.menuBtn {
+.openBtn {
   display: none;
 
   @media screen and (max-width: 1024px) {
@@ -43,6 +43,14 @@
 }
 
 .nav {
+  &Header {
+    display: none;
+  }
+
+  &Footer {
+    display: none;
+  }
+
   & > ul {
     display: flex;
     gap: 40px;
@@ -65,12 +73,83 @@
 
         color: inherit;
         text-decoration: none;
+        @media screen and (min-width: 1024px) {
+          & img {
+            display: none;
+          }
+        }
       }
     }
   }
 
   @media screen and (max-width: 1024px) {
     display: none;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(2, 2, 2, 0.75);
+    z-index: 2;
+
+    &Open {
+      display: block;
+    }
+
+    &Header {
+      display: flex;
+
+      & > .navLogo {
+        max-width: 40px;
+      }
+    }
+
+    &Footer {
+      & > a {
+        & > img {
+          filter: invert(17%) sepia(64%) saturate(6667%) hue-rotate(342deg) brightness(91%) contrast(109%);
+        }
+      }
+    }
+
+    & > ul {
+      width: 310px;
+      height: 100vh;
+
+      flex-direction: column;
+      gap: 26px;
+
+      background: #fff;
+      padding: 11px 26px;
+      & > li {
+        width: 100%;
+
+        display: flex;
+        justify-content: space-between;
+
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+
+        & > a {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        & .closeBtn {
+          display: block;
+
+          outline: none;
+          border: none;
+          background: transparent;
+
+          cursor: pointer;
+        }
+      }
+    }
   }
 }
 
@@ -108,6 +187,7 @@
       left: 0;
       top: 0;
       cursor: pointer;
+      z-index: 1;
     }
     & > input {
       display: none;
