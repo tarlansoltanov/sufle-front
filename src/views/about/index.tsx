@@ -15,7 +15,7 @@ function About() {
           </div>
 
           <div className={styles.content}>
-            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor. Viverra et leo hendrerit sed mattis quis tincidunt. Ullamcorper libero vivamus tincidunt suscipit diam vel commodo quis. Metus turpis enim sed eget. Vulputate enim scelerisque vulputate hac enim volutpat. Risus risus aliquam morbi nunc aliquet. Donec maecenas quis venenatis molestie est. Ut ultricies volutpat sit phasellus. Odio tellus ante malesuada amet. Tortor adipiscing malesuada in vel aliquam turpis nisl quis nunc. Eget mauris augue congue id malesuada magna consequat. Scelerisque risus ultricies viverra curabitur. Elementum id mi tempus risus egestas sed proin. In sagittis eu consectetur massa. Nulla laoreet faucibus ipsum integer enim. Etiam a convallis sagittis scelerisque eget hac semper amet.</p>
+            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.</p>
           </div>
 
           <div className={styles.media}>
@@ -56,7 +56,7 @@ function About() {
           </div>
 
           <div className={styles.content}>
-            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor. Viverra et leo hendrerit sed mattis quis tincidunt. Ullamcorper libero vivamus tincidunt suscipit diam vel commodo quis. Metus turpis enim sed eget. Vulputate enim scelerisque vulputate hac enim volutpat. Risus risus aliquam morbi nunc aliquet. Donec maecenas quis venenatis molestie est. Ut ultricies volutpat sit phasellus. Odio tellus ante malesuada amet. Tortor adipiscing malesuada</p>
+            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.</p>
           </div>
 
           <div className={styles.media}>

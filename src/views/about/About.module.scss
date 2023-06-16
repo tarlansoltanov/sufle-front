@@ -5,18 +5,18 @@
 .infoBox {
   display: grid;
 
-  grid-template-columns: auto 675px;
+  grid-template-columns: auto 60px 675px;
   grid-template-rows: 45px 40px auto;
   grid-template-areas:
-    'title media'
-    '. media'
-    'content media';
+    'title . media'
+    '. . media'
+    'content . media';
 
   @media screen and (max-width: 1280px) {
     grid-template-rows: 38px 30px auto;
   }
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     grid-template-columns: auto;
     grid-template-rows: 38px 30px auto 30px auto;
     grid-template-areas:
@@ -79,6 +79,7 @@
     grid-area: content;
 
     & > p {
+      font-weight: 300;
       font-size: 20px;
       line-height: 28px;
 
@@ -190,22 +191,22 @@
   }
 
   &.reversed {
-    @media screen and (min-width: 1024px) {
-      grid-template-columns: 675px auto;
+    @media screen and (min-width: 1280px) {
+      grid-template-columns: 675px 60px auto;
       grid-template-areas:
-        'media title'
-        'media .'
-        'media content';
+        'media . title'
+        'media . .'
+        'media . content';
     }
 
     & > .title {
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: 1280px) {
         flex-direction: row-reverse;
       }
     }
 
     & > .content {
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: 1280px) {
         text-align: right;
       }
     }
@@ -220,7 +221,7 @@
 
   padding: 120px 0;
 
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1280px) {
     column-gap: 20px;
 
     padding: 40px 0;
@@ -244,7 +245,13 @@
     justify-content: center;
     align-items: center;
 
-    @media screen and (max-width: 1024px) {
+    @media screen and (max-width: 1280px) {
+      $width: calc((100vw - 80px - (100vw * 0.24)) * 0.25);
+      width: $width;
+      height: $width;
+    }
+
+    @media screen and (max-width: 768px) {
       $width: calc((100vw - 80px) * 0.25);
       width: $width;
       height: $width;
@@ -257,7 +264,12 @@
 
       color: #f20530;
 
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 1280px) {
+        font-size: calc((100vw - (100vw * 0.24)) * 0.04);
+        line-height: calc((100vw - (100vw * 0.24)) * 0.04 + 2px);
+      }
+
+      @media screen and (max-width: 768px) {
         font-size: calc(100vw * 0.04);
         line-height: calc(100vw * 0.04 + 2px);
       }
@@ -270,7 +282,7 @@
 
       color: #585858;
 
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 1280px) {
         font-size: calc(100vw * 0.03);
         line-height: calc(100vw * 0.03 + 2px);
       }

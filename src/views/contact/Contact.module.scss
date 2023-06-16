@@ -18,11 +18,13 @@
     grid-template-rows: 38px 23px auto;
     grid-template-areas: 'icon . title' 'icon . .' 'icon . text';
 
-    @media screen and (max-width: 1024px) and (min-width: 768px) {
+    @media screen and (max-width: 1280px) and (min-width: 768px) {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 39px;
+
+      width: 33.3%;
     }
 
     @media screen and (max-width: 768px) {
@@ -81,7 +83,7 @@
 
       grid-area: text;
 
-      @media screen and (max-width: 1024px) {
+      @media screen and (max-width: 1280px) {
         max-width: 100%;
         text-align: center;
       }
