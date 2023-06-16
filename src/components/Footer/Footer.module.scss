@@ -36,7 +36,9 @@
 
     color: #333333;
 
-    text-align: center;
+    @media screen and (max-width: 768px) {
+      text-align: center;
+    }
   }
 
   & > .content {
