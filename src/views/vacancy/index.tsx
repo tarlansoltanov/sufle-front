@@ -1,3 +1,4 @@
+import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
 
 import styles from './Vacancy.module.scss';
@@ -5,6 +6,8 @@ import styles from './Vacancy.module.scss';
 const Vacancy = () => {
   return (
     <main className={styles.main}>
+      <Title title="Vakansiya" subtitle="Vakansiya" />
+      
       <Container>
         <div className={styles.wrapper}>
           <div className={styles.box}>
@@ -127,6 +130,6 @@ const Vacancy = () => {
       </Container>
     </main>
   );
-}
+};
 
 export default Vacancy;

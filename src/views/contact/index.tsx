@@ -1,9 +1,13 @@
 import Container from '../../components/Container/Container';
+import Title from '../../components/Title/Title';
+
 import styles from './Contact.module.scss';
 
 const Contact = () => {
   return (
     <main className={styles.main}>
+      <Title title="Əlaqə" subtitle="Əlaqə" />
+
       <Container>
         <div className={styles.contacts}>
           <div className={styles.box}>

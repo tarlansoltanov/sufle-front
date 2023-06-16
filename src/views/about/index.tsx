@@ -1,12 +1,15 @@
 import cs from 'classnames';
 
 import Container from '../../components/Container/Container';
+import Title from '../../components/Title/Title';
 
 import styles from './About.module.scss';
 
 const About = () => {
   return (
     <main className={styles.main}>
+      <Title title="Haqqımızda" subtitle="Haqqımızda" />
+
       <Container>
         <div className={styles.infoBox}>
           <div className={styles.title}>

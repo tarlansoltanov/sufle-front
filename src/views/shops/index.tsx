@@ -1,5 +1,6 @@
 import cs from 'classnames';
 
+import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
 
 import styles from './Shops.module.scss';
@@ -7,6 +8,8 @@ import styles from './Shops.module.scss';
 const Shops = () => {
   return (
     <main className={styles.main}>
+      <Title title="Mağazalarımız" subtitle="Mağazalarımız" />
+      
       <Container>
         <div className={styles.wrapper}>
           <div className={styles.box}>
