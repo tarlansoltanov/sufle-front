@@ -1,7 +1,7 @@
 import Container from '../../components/Container/Container';
 import styles from './Contact.module.scss';
 
-function Contact() {
+const Contact = () => {
   return (
     <main className={styles.main}>
       <Container>
@@ -56,6 +56,6 @@ function Contact() {
       </Container>
     </main>
   );
-}
+};
 
 export default Contact;

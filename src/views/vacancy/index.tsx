@@ -2,7 +2,7 @@ import Container from '../../components/Container/Container';
 
 import styles from './Vacancy.module.scss';
 
-function Vacancy() {
+const Vacancy = () => {
   return (
     <main className={styles.main}>
       <Container>

@@ -1,9 +1,9 @@
-import styles from './Header.module.scss';
 import { useState } from 'react';
-
 import cs from 'classnames';
 
-function Header() {
+import styles from './Header.module.scss';
+
+const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -17,6 +17,7 @@ function Header() {
 
         <nav className={cs(styles.nav, { [styles.navOpen]: menuOpen })}>
           <div className={styles.navHeader}></div>
+
           <ul>
             <li className={styles.navHeader}>
               <img className={styles.navLogo} src="/src/assets/images/logo.png" alt="Sufle" />
@@ -25,56 +26,67 @@ function Header() {
                 <img src="/src/assets/images/icons/close.svg" alt="Close" />
               </button>
             </li>
+
             <li className={styles.active}>
               <a href="#">
                 Ana Səhifə
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Məhsullar
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Qalereya
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Mağazalarımız
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Haqqımızda
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Əlaqə
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li>
               <a href="#">
                 Vakansiya
                 <img src="/src/assets/images/icons/arrow.svg" alt="Arrow" />
               </a>
             </li>
+
             <li></li>
+
             <li className={styles.navFooter}>
               <a href="#">
                 <img src="/src/assets/images/icons/facebook.svg" alt="Facebook" />
               </a>
+
               <a href="#">
                 <img src="/src/assets/images/icons/twitter.svg" alt="Twitter" />
               </a>
+
               <a href="#">
                 <img src="/src/assets/images/icons/instagram.svg" alt="Instagram" />
               </a>
@@ -89,6 +101,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

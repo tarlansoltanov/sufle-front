@@ -1,10 +1,10 @@
+import cs from 'classnames';
+
 import Container from '../../components/Container/Container';
 
 import styles from './About.module.scss';
 
-import cs from 'classnames';
-
-function About() {
+const About = () => {
   return (
     <main className={styles.main}>
       <Container>
@@ -23,6 +23,7 @@ function About() {
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
             </div>
+
             <div className={cs(styles.photo, styles.photoSmall)} style={{ backgroundImage: "url('/src/assets/images/about/about2.png')" }}>
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
@@ -35,14 +36,17 @@ function About() {
             <div className={styles.title}>100%</div>
             <div className={styles.subtitle}>təbii</div>
           </div>
+
           <div className={styles.statBox}>
             <div className={styles.title}>38+</div>
             <div className={styles.subtitle}>məhsul</div>
           </div>
+
           <div className={styles.statBox}>
             <div className={styles.title}>10+</div>
             <div className={styles.subtitle}>filial</div>
           </div>
+
           <div className={styles.statBox}>
             <div className={styles.title}>12 il</div>
             <div className={styles.subtitle}>təcrübə</div>
@@ -69,6 +73,6 @@ function About() {
       </Container>
     </main>
   );
-}
+};
 
 export default About;
