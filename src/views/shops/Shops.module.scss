@@ -1,0 +1,202 @@
+.main {
+  background-color: #f5f6f6;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+
+  @media screen and (max-width: 1280px) {
+    gap: 40px;
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: 20px;
+  }
+}
+
+.box {
+  display: grid;
+  grid-template-columns: auto 80px 50%;
+  grid-template-rows: 45px 40px auto;
+  grid-template-areas:
+    'title . media'
+    '. . media'
+    'content . media';
+
+  @media screen and (max-width: 1280px) {
+    grid-template-columns: auto;
+    grid-template-rows: 38px 30px auto 30px auto;
+    grid-template-areas:
+      'title'
+      '.'
+      'content'
+      '.'
+      'media';
+  }
+
+  @media screen and (max-width: 768px) {
+    grid-template-rows: 24px 20px auto 20px auto;
+  }
+
+  & > .title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 12px;
+
+    grid-area: title;
+
+    & > h1 {
+      text-transform: capitalize;
+      color: #f20530;
+
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 45px;
+
+      @media screen and (max-width: 1280px) {
+        font-size: 30px;
+        line-height: 38px;
+      }
+
+      @media screen and (max-width: 768px) {
+        font-size: 20px;
+        line-height: 24px;
+      }
+    }
+  }
+
+  & > .content {
+    grid-area: content;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    column-gap: 80px;
+    row-gap: 40px;
+
+    & .widget {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      & > h2 {
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 25px;
+
+        color: #000000;
+
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+          line-height: 20px;
+
+          color: #000000;
+        }
+      }
+
+      & > p {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 25px;
+
+        color: #585858;
+
+        @media screen and (max-width: 1280px) {
+          font-size: 18px;
+          line-height: 20px;
+        }
+
+        @media screen and (max-width: 480px) {
+          font-size: 14px;
+          line-height: 16px;
+        }
+
+        & > b {
+          font-weight: 400;
+        }
+      }
+
+      & > a {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+
+        text-decoration-line: underline;
+
+        color: #000000;
+      }
+
+      &.mapsUrl {
+        width: 100%;
+      }
+    }
+  }
+
+  & > .media {
+    grid-area: media;
+
+    & > .photo {
+      position: relative;
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      border-radius: 25px;
+
+      & > .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.57) 0%, rgba(217, 217, 217, 0) 100%);
+      }
+
+      & > img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      & > h2 {
+        position: absolute;
+        left: 45px;
+        bottom: 30px;
+
+        font-weight: 400;
+        font-size: calc(100vw * 0.02);
+        line-height: calc(100vw * 0.02 + 2px);
+
+        color: #ffffff;
+
+        @media screen and (max-width: 1280px) {
+          font-size: calc(100vw * 0.035);
+          line-height: calc(100vw * 0.035);
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: calc(100vw * 0.05);
+          line-height: calc(100vw * 0.05);
+          left: 30px;
+
+          bottom: 25px;
+        }
+      }
+    }
+  }
+
+  &:nth-child(2n - 1) {
+    @media screen and (min-width: 1280px) {
+      grid-template-columns: 50% 80px auto;
+      grid-template-areas:
+        'media . title'
+        'media . .'
+        'media . content';
+    }
+  }
+}
