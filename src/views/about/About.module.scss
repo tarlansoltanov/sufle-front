@@ -13,10 +13,6 @@
     'content . media';
 
   @media screen and (max-width: 1280px) {
-    grid-template-rows: 38px 30px auto;
-  }
-
-  @media screen and (max-width: 1280px) {
     grid-template-columns: auto;
     grid-template-rows: 38px 30px auto 30px auto;
     grid-template-areas:
