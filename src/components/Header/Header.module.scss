@@ -81,7 +81,8 @@
     & > a {
       & > img {
         @media screen and (max-width: 1280px) {
-          filter: invert(17%) sepia(64%) saturate(6667%) hue-rotate(342deg) brightness(91%) contrast(109%);
+          filter: invert(17%) sepia(64%) saturate(6667%) hue-rotate(342deg)
+            brightness(91%) contrast(109%);
         }
       }
     }
@@ -122,12 +123,6 @@
         line-height: 22px;
       }
 
-      &.active {
-        font-weight: 400;
-
-        color: #f20530;
-      }
-
       & > a {
         display: flex;
         text-align: center;
@@ -144,6 +139,12 @@
           @media screen and (min-width: 1280px) {
             display: none;
           }
+        }
+
+        &.active {
+          font-weight: 400;
+
+          color: #f20530;
         }
       }
 
