@@ -1,4 +1,5 @@
 import cs from 'classnames';
+import { NavLink } from 'react-router-dom';
 
 import Container from '../Container/Container';
 
@@ -17,23 +18,23 @@ const Footer = () => {
             <div className={styles.content}>
               <ul>
                 <li>
-                  <a href="#">Məhsullar</a>
+                  <NavLink to="/products">Məhsullar</NavLink>
                 </li>
 
                 <li>
-                  <a href="#">Mağazalarımız</a>
+                  <NavLink to="/shops">Mağazalarımız</NavLink>
                 </li>
 
                 <li>
-                  <a href="#">Qalereya</a>
+                  <NavLink to="/gallery">Qalereya</NavLink>
                 </li>
 
                 <li>
-                  <a href="#">Haqqımızda</a>
+                  <NavLink to="/about">Haqqımızda</NavLink>
                 </li>
 
                 <li>
-                  <a href="#">Əlaqə</a>
+                  <NavLink to="/contact">Əlaqə</NavLink>
                 </li>
               </ul>
             </div>
@@ -98,11 +99,17 @@ const Footer = () => {
               <ul>
                 <li>
                   <a href="#">
-                    <img src="/src/assets/images/icons/app_store.svg" alt="App Store" />
+                    <img
+                      src="/src/assets/images/icons/app_store.svg"
+                      alt="App Store"
+                    />
                   </a>
 
                   <a href="#">
-                    <img src="/src/assets/images/icons/play_store.svg" alt="Play Store" />
+                    <img
+                      src="/src/assets/images/icons/play_store.svg"
+                      alt="Play Store"
+                    />
                   </a>
                 </li>
               </ul>
@@ -128,7 +135,10 @@ const Footer = () => {
             </a>
 
             <a href="#">
-              <img src="/src/assets/images/icons/instagram.svg" alt="Instagram" />
+              <img
+                src="/src/assets/images/icons/instagram.svg"
+                alt="Instagram"
+              />
             </a>
           </div>
         </div>
