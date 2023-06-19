@@ -20,7 +20,7 @@ const Vacancy = () => {
   }, []);
 
   return (
-    <main className={styles.main}>
+    <main>
       <Title title="Vakansiya" subtitle="Vakansiya" />
 
       <Container>

@@ -7,7 +7,7 @@ import styles from './Shops.module.scss';
 
 const Shops = () => {
   return (
-    <main className={styles.main}>
+    <main>
       <Title title="Mağazalarımız" subtitle="Mağazalarımız" />
       
       <Container>

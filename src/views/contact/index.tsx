@@ -5,7 +5,7 @@ import styles from './Contact.module.scss';
 
 const Contact = () => {
   return (
-    <main className={styles.main}>
+    <main>
       <Title title="Əlaqə" subtitle="Əlaqə" />
 
       <Container>

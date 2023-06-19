@@ -7,7 +7,7 @@ import styles from './About.module.scss';
 
 const About = () => {
   return (
-    <main className={styles.main}>
+    <main>
       <Title title="Haqqımızda" subtitle="Haqqımızda" />
 
       <Container>
@@ -18,16 +18,35 @@ const About = () => {
           </div>
 
           <div className={styles.content}>
-            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa
+              convallis amet neque quam. Pretium vestibulum eget enim pharetra
+              ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit
+              ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec
+              tincidunt risus platea volutpat posuere. Mi cursus quis sit
+              feugiat donec scelerisque tempor in. Facilisis commodo tristique
+              lectus vel parturient nisi quis. Id ultrices amet ac non enim
+              bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.
+            </p>
           </div>
 
           <div className={styles.media}>
-            <div className={cs(styles.photo, styles.photoBig)} style={{ backgroundImage: "url('/src/assets/images/about/about1.png')" }}>
+            <div
+              className={cs(styles.photo, styles.photoBig)}
+              style={{
+                backgroundImage: "url('/src/assets/images/about/about1.png')",
+              }}
+            >
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
             </div>
 
-            <div className={cs(styles.photo, styles.photoSmall)} style={{ backgroundImage: "url('/src/assets/images/about/about2.png')" }}>
+            <div
+              className={cs(styles.photo, styles.photoSmall)}
+              style={{
+                backgroundImage: "url('/src/assets/images/about/about2.png')",
+              }}
+            >
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
             </div>
@@ -63,11 +82,25 @@ const About = () => {
           </div>
 
           <div className={styles.content}>
-            <p>Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.</p>
+            <p>
+              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa
+              convallis amet neque quam. Pretium vestibulum eget enim pharetra
+              ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit
+              ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec
+              tincidunt risus platea volutpat posuere. Mi cursus quis sit
+              feugiat donec scelerisque tempor in. Facilisis commodo tristique
+              lectus vel parturient nisi quis. Id ultrices amet ac non enim
+              bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.
+            </p>
           </div>
 
           <div className={styles.media}>
-            <div className={styles.photo} style={{ backgroundImage: "url('/src/assets/images/about/about3.png')" }}>
+            <div
+              className={styles.photo}
+              style={{
+                backgroundImage: "url('/src/assets/images/about/about3.png')",
+              }}
+            >
               <div className={styles.square}></div>
               <h2>Məhsullarımız</h2>
             </div>

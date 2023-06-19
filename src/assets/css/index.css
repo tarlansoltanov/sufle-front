@@ -3,3 +3,7 @@ body {
   font-family: 'Lexend';
   font-style: normal;
 }
+
+main {
+  background-color: #f5f6f6;
+}
