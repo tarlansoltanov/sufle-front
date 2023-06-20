@@ -1,5 +1,6 @@
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
+import Input from '../../components/Input/Input';
 
 import styles from './Contact.module.scss';
 
@@ -49,11 +50,12 @@ const Contact = () => {
         </div>
 
         <form className={styles.form}>
-          <input name="first_name" type="text" placeholder="Ad" />
-          <input name="last_name" type="text" placeholder="Soyad" />
-          <input name="phone" type="text" placeholder="Telefon" />
-          <input name="email" type="text" placeholder="Email" />
-          <textarea name="message" id="message" cols={30} rows={10} placeholder="Mesaj"></textarea>
+          <Input name="first_name" placeholder="Ad" />
+          <Input name="last_name" placeholder="Soyad" />
+          <Input name="phone" placeholder="Telefon" />
+          <Input name="email" placeholder="Email" />
+
+          <Input name="message" placeholder="Mesaj" className={styles.textarea} isTextArea></Input>
 
           <button type="submit">Təsdiqlə</button>
         </form>
