@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import cs from 'classnames';
 
 import Input from '../Input/Input';
@@ -8,6 +8,11 @@ import styles from './Header.module.scss';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className={styles.header}>
