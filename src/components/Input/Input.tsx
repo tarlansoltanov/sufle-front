@@ -26,14 +26,12 @@ const Input = ({
   className,
   style,
   onChange,
-  isSearch,
   isTextArea,
 }: Props) => {
   return (
     <div
-      className={cs(styles.input, className, {
+      className={cs(className, styles.input, {
         [styles.withIcon]: icon,
-        [styles.search]: isSearch,
       })}
       style={style}
     >

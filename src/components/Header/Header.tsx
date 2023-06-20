@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cs from 'classnames';
 
+import Input from '../Input/Input';
+
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -95,10 +97,12 @@ const Header = () => {
           </ul>
         </nav>
 
-        <div className={styles.search}>
-          <img src="/src/assets/images/icons/search.svg" alt="Search" />
-          <input type="text" placeholder="Axtarış..." />
-        </div>
+        <Input
+          name="search"
+          placeholder="Axtarış..."
+          className={styles.search}
+          icon="/src/assets/images/icons/search.svg"
+        />
       </div>
     </header>
   );

@@ -1,9 +1,5 @@
 .input {
-  width: calc(50% - 20px);
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
-  }
+  width: auto;
 
   input,
   textarea {
@@ -28,5 +24,29 @@
       font-size: 14px;
       line-height: 18px;
     }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.withIcon {
+  position: relative;
+
+  & > img {
+    position: absolute;
+
+    width: 21px;
+    height: 21px;
+
+    left: 20px;
+    top: 13px;
+  }
+
+  & > input {
+    width: 100%;
+
+    padding: 13px 20px 13px 58px;
   }
 }

@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
@@ -5,6 +7,25 @@ import Input from '../../components/Input/Input';
 import styles from './Contact.module.scss';
 
 const Contact = () => {
+  const [form, setForm] = useState({
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    message: '',
+  });
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
+  };
+
   return (
     <main>
       <Title title="Əlaqə" subtitle="Əlaqə" />
@@ -46,16 +67,54 @@ const Contact = () => {
         </div>
 
         <div className={styles.map}>
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79043.10255345958!2d19.588687491104825!3d51.74955063559649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471bcb56c4119b59%3A0xfca7f17fec34f65b!2sManufaktura!5e0!3m2!1sen!2spl!4v1686474654372!5m2!1sen!2spl" width="100%" height="100%"></iframe>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79043.10255345958!2d19.588687491104825!3d51.74955063559649!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471bcb56c4119b59%3A0xfca7f17fec34f65b!2sManufaktura!5e0!3m2!1sen!2spl!4v1686474654372!5m2!1sen!2spl"
+            width="100%"
+            height="100%"
+          ></iframe>
         </div>
 
-        <form className={styles.form}>
-          <Input name="first_name" placeholder="Ad" />
-          <Input name="last_name" placeholder="Soyad" />
-          <Input name="phone" placeholder="Telefon" />
-          <Input name="email" placeholder="Email" />
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <Input
+            name="first_name"
+            placeholder="Ad"
+            value={form.first_name}
+            onChange={handleInputChange}
+            className={styles.input}
+          />
 
-          <Input name="message" placeholder="Mesaj" className={styles.textarea} isTextArea></Input>
+          <Input
+            name="last_name"
+            placeholder="Soyad"
+            value={form.last_name}
+            onChange={handleInputChange}
+            className={styles.input}
+          />
+
+          <Input
+            name="phone"
+            placeholder="Telefon"
+            value={form.phone}
+            onChange={handleInputChange}
+            className={styles.input}
+          />
+
+          <Input
+            name="email"
+            placeholder="Email"
+            value={form.email}
+            onChange={handleInputChange}
+            className={styles.input}
+          />
+
+          <Input
+            name="message"
+            placeholder="Mesaj"
+            value={form.message}
+            onChange={handleInputChange}
+            className={styles.textarea}
+            isTextArea
+          ></Input>
 
           <button type="submit">Təsdiqlə</button>
         </form>
