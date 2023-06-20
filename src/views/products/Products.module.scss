@@ -292,6 +292,25 @@
       }
     }
   }
+
+  & > .submitBtn {
+    width: 100%;
+
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    text-align: center;
+
+    color: #ffffff;
+    background-color: #f20530;
+    padding: 13px;
+
+    border: none;
+    outline: none;
+    border-radius: 12px;
+
+    cursor: pointer;
+  }
 }
 
 .products {

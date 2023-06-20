@@ -36,8 +36,15 @@
 }
 
 @media screen and (max-width: 1280px) {
-  .rangeSlider .bar {
+
+  .rangeSlider .bar,
+  .rangeSlider .bar-inner,
+  .rangeSlider .bar-inner-left,
+  .rangeSlider .bar-inner-right,
+  .rangeSlider .bar-left,
+  .rangeSlider .bar-right {
     height: 3px;
+    padding: 0;
   }
 
   .rangeSlider .thumb::before {
@@ -54,6 +61,5 @@
     box-shadow: none;
     border: none;
     background-color: transparent;
-
   }
 }

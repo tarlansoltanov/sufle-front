@@ -171,12 +171,13 @@ const Products = () => {
                 </div>
               </div>
             </div>
+
+            <button className={styles.submitBtn}>Tətbiq et</button>
           </section>
 
           <section className={styles.products}>
             <div className={styles.ordering}>
-              <div className={styles.categories}>
-              </div>
+              <div className={styles.categories}></div>
               <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
                 <button onClick={() => setSortOpen(!sortOpen)}>
                   <span>
