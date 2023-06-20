@@ -2,9 +2,11 @@ import { useState } from 'react';
 import cs from 'classnames';
 
 import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
+import Selector from '../../components/Selector/Selector';
 
 import styles from './Products.module.scss';
 import './range-slider.css';
@@ -177,7 +179,62 @@ const Products = () => {
 
           <section className={styles.products}>
             <div className={styles.ordering}>
-              <div className={styles.categories}></div>
+              <ScrollContainer className={styles.categories}>
+                <Selector
+                  title="Tortlar"
+                  icon="/src/assets/images/category/cake_white.svg"
+                  isSelected={true}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Donut"
+                  icon="/src/assets/images/category/donut_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Desertlər"
+                  icon="/src/assets/images/category/dessert_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Paxlavalar"
+                  icon="/src/assets/images/category/paklava_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="For Kids"
+                  icon="/src/assets/images/category/kids_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Donut"
+                  icon="/src/assets/images/category/donut_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Desertlər"
+                  icon="/src/assets/images/category/dessert_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="Paxlavalar"
+                  icon="/src/assets/images/category/paklava_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+                <Selector
+                  title="For Kids"
+                  icon="/src/assets/images/category/kids_grey.svg"
+                  isSelected={false}
+                  onClick={() => {}}
+                />
+              </ScrollContainer>
               <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
                 <button onClick={() => setSortOpen(!sortOpen)}>
                   <span>
@@ -194,6 +251,7 @@ const Products = () => {
                       <img src="/src/assets/images/icons/close.svg" alt="Close" />
                     </button>
                   </li>
+
                   <li>
                     <a href="">Standart</a>
                   </li>

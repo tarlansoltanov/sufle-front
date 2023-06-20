@@ -1,6 +1,11 @@
 .wrapper {
   display: flex;
-  gap: 123px;
+  gap: 120px;
+
+  @media screen and (max-width: 1280px) {
+    flex-direction: column;
+    gap: 26px;
+  }
 }
 
 .openBtns {
@@ -314,12 +319,49 @@
 }
 
 .products {
-  width: 100%;
+  width: calc(100% - 250px - 120px);
+
+  @media screen and (max-width: 1280px) {
+    width: 100%;
+  }
 
   & > .ordering {
     display: flex;
     justify-content: space-between;
     width: 100%;
+
+    gap: 50px;
+
+    @media screen and (max-width: 1280px) {
+      gap: 0;
+    }
+
+    & > .categories {
+      display: flex;
+      column-gap: 25px;
+
+      max-width: calc(100% - 215px);
+
+      @media screen and (max-width: 1280px) {
+        max-width: 100%;
+      }
+
+      @media screen and (max-width: 768px) {
+        column-gap: 10px;
+      }
+      overflow: hidden;
+      overflow-x: scroll;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      scroll-behavior: smooth;
+      cursor: grab;
+    }
 
     & > .sort {
       position: relative;
