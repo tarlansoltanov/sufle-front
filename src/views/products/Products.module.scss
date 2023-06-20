@@ -32,13 +32,37 @@
 
       color: #f20530;
     }
+  }
 
-    &.active {
-      background: #f20530;
+  & > .sortBtn {
+    padding: 6px 28px;
+    border-radius: 12px;
 
-      & > p {
-        color: #ffffff;
-      }
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    outline: none;
+    border: none;
+
+    cursor: pointer;
+
+    background: transparent;
+
+    & > p {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 20px;
+
+      color: #f20530;
+    }
+  }
+
+  & > .active {
+    background: #f20530;
+
+    & > p {
+      color: #ffffff;
     }
   }
 }
@@ -263,6 +287,139 @@
             color: #727272;
 
             outline: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.products {
+  width: 100%;
+
+  & > .ordering {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    & > .sort {
+      position: relative;
+
+      @media screen and (max-width: 1280px) {
+        position: unset;
+      }
+
+      & > button {
+        border: 1px solid #f20530;
+        border-radius: 45px;
+        padding: 13px 20px;
+
+        width: 214px;
+
+        background: transparent;
+
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 20px;
+
+        color: #f20530;
+
+        cursor: pointer;
+
+        @media screen and (max-width: 1280px) {
+          display: none;
+        }
+
+        & > span {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+
+      & > ul {
+        display: none;
+      }
+
+      &.sortOpen {
+        & > ul {
+          position: absolute;
+
+          width: 214px;
+
+          top: 52px;
+
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+
+          background: #f5f6f6;
+
+          border: 0.5px solid #888b97;
+          border-radius: 25px;
+
+          padding: 20px 16px;
+
+          @media screen and (max-width: 1280px) {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 310px;
+
+            height: 100%;
+
+            border-radius: 0;
+            border: none;
+
+            background-color: #ffffff;
+
+            padding: 28px 25px;
+          }
+
+          & > .sortHeader {
+            display: none;
+
+            padding-bottom: 33px;
+
+            @media screen and (max-width: 1280px) {
+              width: 100%;
+
+              display: flex;
+              justify-content: space-between;
+            }
+
+            & > h1 {
+              font-size: 20px;
+              line-height: 25px;
+
+              color: #727272;
+            }
+
+            & > .closeBtn {
+              display: none;
+
+              @media screen and (max-width: 1280px) {
+                display: block;
+
+                outline: none;
+                border: none;
+                background: transparent;
+
+                cursor: pointer;
+              }
+            }
+          }
+
+          & > li {
+            & > a {
+              font-weight: 300;
+              font-size: 16px;
+              line-height: 20px;
+
+              text-decoration: none;
+
+              color: #727272;
+            }
           }
         }
       }

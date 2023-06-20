@@ -11,6 +11,7 @@ import './range-slider.css';
 
 const Products = () => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
+  const [sortOpen, setSortOpen] = useState<boolean>(false);
 
   // Price Range Filter
 
@@ -51,7 +52,14 @@ const Products = () => {
               onClick={() => setFilterOpen(!filterOpen)}
             >
               <p>Filtr</p>
+
               <img src="/src/assets/images/icons/filter.svg" alt="Filter" />
+            </button>
+
+            <button className={cs(styles.sortBtn)} onClick={() => setSortOpen(!sortOpen)}>
+              <p>Sıralama</p>
+
+              <img src="/src/assets/images/icons/sort.svg" alt="Sort" />
             </button>
           </div>
 
@@ -161,6 +169,46 @@ const Products = () => {
                   <input type="text" name="min" value={minValue} onInput={handlePriceInput} />
                   <input type="text" name="max" value={maxValue} onInput={handlePriceInput} />
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <section className={styles.products}>
+            <div className={styles.ordering}>
+              <div className={styles.categories}>
+              </div>
+              <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
+                <button onClick={() => setSortOpen(!sortOpen)}>
+                  <span>
+                    <p>Sıralama</p>
+                    <img src="/src/assets/images/icons/sort.svg" alt="Sort" />
+                  </span>
+                </button>
+
+                <ul>
+                  <li className={styles.sortHeader}>
+                    <h1>Sıralama</h1>
+
+                    <button className={styles.closeBtn} onClick={() => setSortOpen(!sortOpen)}>
+                      <img src="/src/assets/images/icons/close.svg" alt="Close" />
+                    </button>
+                  </li>
+                  <li>
+                    <a href="">Standart</a>
+                  </li>
+                  <li>
+                    <a href="">Ən Yenilər</a>
+                  </li>
+                  <li>
+                    <a href="">Ən Ucuz Qiymət</a>
+                  </li>
+                  <li>
+                    <a href="">Ən Bahalı Qiymət</a>
+                  </li>
+                  <li>
+                    <a href="">Endirimdə olanlar</a>
+                  </li>
+                </ul>
               </div>
             </div>
           </section>
