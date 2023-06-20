@@ -1,0 +1,59 @@
+.selector {
+  display: flex;
+  align-items: center;
+
+  position: relative;
+
+  height: 100%;
+
+  border: 0.5px solid #888b97;
+  border-radius: 45px;
+
+  padding: 13px 24px;
+
+  cursor: pointer;
+
+  user-select: none;
+
+  @media screen and (max-width: 786px) {
+    padding: 7px 15px;
+  }
+
+  & > .icon {
+    position: absolute;
+
+    & > img {
+      width: 18px;
+      height: auto;
+
+      @media screen and (max-width: 786px) {
+        width: 11px;
+      }
+    }
+  }
+
+  & > p {
+    margin-left: 26px;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #888b97;
+    white-space: nowrap;
+
+    @media screen and (max-width: 786px) {
+      margin-left: 15px;
+      font-size: 10px;
+      line-height: 12px;
+    }
+  }
+
+  &.selected {
+    background: #f20530;
+    border-radius: 45px;
+    border-color: #f20530;
+
+    & > p {
+      color: #ffffff;
+    }
+  }
+}
