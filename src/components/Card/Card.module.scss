@@ -26,14 +26,35 @@
 
   .tag {
     position: absolute;
-    padding: 7px 20px;
-    background: #fff4ed;
-    border-radius: 25px;
-    bottom: 16px;
     left: 21px;
+    bottom: 16px;
 
     display: flex;
     gap: 10px;
+
+    background: #fff7f7;
+
+    padding: 7px 20px;
+
+    border-radius: 25px;
+
+    @media screen and (max-width: 768px) {
+      left: 5px;
+      bottom: 5px;
+
+      gap: 3px;
+
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    & > img {
+      width: 11px;
+
+      @media screen and (max-width: 768px) {
+        width: 5px;
+      }
+    }
 
     & > span {
       text-transform: capitalize;
@@ -42,6 +63,11 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 18px;
+
+      @media screen and (max-width: 768px) {
+        font-size: 5px;
+        line-height: 6px;
+      }
     }
   }
 
@@ -67,8 +93,8 @@
     color: #f20530;
 
     @media screen and (max-width: 768px) {
-        font-size: 11px;
-        line-height: 12px;
+      font-size: 11px;
+      line-height: 12px;
     }
   }
 }
