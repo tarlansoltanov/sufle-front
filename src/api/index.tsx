@@ -10,3 +10,4 @@ const instance = axios.create({
 export default instance;
 
 export { default as getAllVacancies } from './vacancies';
+export { default as getAllShops } from './shops';
