@@ -310,6 +310,26 @@ const Products = () => {
                 photoClass={styles.photo}
               />
             </div>
+            <div className={styles.pagination}>
+              <a className={styles.pageBtn} href="#">
+                {'<<'}
+              </a>
+              <a className={styles.pageBtn} href="#">
+                {'<'}
+              </a>
+              <a className={cs(styles.current, styles.pageBtn)} href="#">
+                {'1'}
+              </a>
+              <a className={styles.pageBtn} href="#">
+                {'2'}
+              </a>
+              <a className={styles.pageBtn} href="#">
+                {'>'}
+              </a>
+              <a className={styles.pageBtn} href="#">
+                {'>>'}
+              </a>
+            </div>
           </section>
         </div>
       </Container>
