@@ -12,4 +12,4 @@ const getAllVacancies = async (): Promise<IVacancy[] | null> => {
   return null;
 };
 
-export default getAllVacancies;
+export { getAllVacancies };
