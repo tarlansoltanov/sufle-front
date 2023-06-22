@@ -1,6 +1,9 @@
 .wrapper {
   display: flex;
-  gap: 120px;
+
+  gap: 90px;
+
+  justify-content: space-between;
 
   @media screen and (max-width: 1280px) {
     flex-direction: column;
@@ -318,8 +321,9 @@
   }
 }
 
-.products {
-  width: calc(100% - 250px - 120px);
+.main {
+  max-width: 1100px;
+  width: calc(100% - 250px - 90px);
 
   @media screen and (max-width: 1280px) {
     width: 100%;
@@ -332,8 +336,11 @@
 
     gap: 50px;
 
+    padding-bottom: 65px;
+
     @media screen and (max-width: 1280px) {
       gap: 0;
+      padding-bottom: 25px;
     }
 
     & > .categories {
@@ -400,6 +407,8 @@
 
       & > ul {
         display: none;
+
+        z-index: 2;
       }
 
       &.sortOpen {
@@ -483,6 +492,47 @@
             }
           }
         }
+      }
+    }
+  }
+
+  & > .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & .photo {
+      $width: calc(100vw - 12vw - 12vw - 250px - 90px);
+
+      width: calc($width * 0.333 - 26px);
+      height: calc(($width * 0.333 - 26px) * 0.75);
+
+      @media screen and (max-width: 1280px) {
+        $width: calc(100vw - 12vw - 12vw);
+
+        width: calc($width * 0.333 - 26px);
+        height: calc(($width * 0.333 - 26px) * 0.75);
+      }
+
+      @media screen and (max-width: 1024px) {
+        $width: calc(100vw - 12vw - 12vw);
+
+        width: calc($width * 0.5 - 20px);
+        height: calc(($width * 0.5 - 20px) * 0.75);
+      }
+
+      @media screen and (max-width: 768px) {
+        $width: calc(100vw - 25px - 25px);
+
+        width: calc($width * 0.333 - 10px);
+        height: calc(($width * 0.333 - 10px) * 0.75);
+      }
+
+      @media screen and (max-width: 480px) {
+        $width: calc(100vw - 25px - 25px);
+
+        width: calc($width * 0.5 - 10px);
+        height: calc(($width * 0.5 - 10px) * 0.75);
       }
     }
   }

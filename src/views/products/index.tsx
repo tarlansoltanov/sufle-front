@@ -7,6 +7,7 @@ import ScrollContainer from 'react-indiana-drag-scroll';
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
 import Selector from '../../components/Selector/Selector';
+import Card from '../../components/Card/Card';
 
 import styles from './Products.module.scss';
 import './range-slider.css';
@@ -177,7 +178,7 @@ const Products = () => {
             <button className={styles.submitBtn}>Tətbiq et</button>
           </section>
 
-          <section className={styles.products}>
+          <section className={styles.main}>
             <div className={styles.ordering}>
               <ScrollContainer className={styles.categories}>
                 <Selector
@@ -269,6 +270,45 @@ const Products = () => {
                   </li>
                 </ul>
               </div>
+            </div>
+
+            <div className={styles.products}>
+              <Card
+                photo="/src/assets/images/product/product2.jpg"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
+              <Card
+                photo="/src/assets/images/product/product2.jpg"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
+              <Card
+                photo="/src/assets/images/product/product2.jpg"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
+              <Card
+                photo="/src/assets/images/product/product1.png"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
+              <Card
+                photo="/src/assets/images/product/product1.png"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
+              <Card
+                photo="/src/assets/images/product/product1.png"
+                name="Karamelli Tort"
+                price={30.0}
+                photoClass={styles.photo}
+              />
             </div>
           </section>
         </div>
