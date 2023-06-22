@@ -1,4 +1,4 @@
-export interface IVacancy {
+export default interface IVacancy {
   id: number;
   photo: string;
   name: string;
