@@ -1,0 +1,215 @@
+.products {
+  & > .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    column-gap: 20px;
+
+    padding-bottom: 40px;
+
+    @media screen and (max-width: 786px) {
+      padding-bottom: 20px;
+      column-gap: 10px;
+    }
+
+    & > .title {
+      display: flex;
+      flex-direction: column;
+      column-gap: 10px;
+
+      & > .subtitle {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        column-gap: 8px;
+
+        @media screen and (max-width: 786px) {
+          column-gap: 5px;
+        }
+
+        & > hr {
+          width: 32px;
+          border: 1px solid #f20530;
+          margin: 0;
+
+          @media screen and (max-width: 786px) {
+            width: 12px;
+            border-width: 0.4px;
+          }
+        }
+
+        & > h2 {
+          font-size: 14px;
+          line-height: 18px;
+
+          font-weight: 500;
+
+          color: #f20530;
+
+          @media screen and (max-width: 786px) {
+            font-size: 7px;
+            line-height: 9px;
+          }
+        }
+      }
+
+      & > h1 {
+        font-size: 40px;
+        line-height: 60px;
+
+        font-weight: 500;
+
+        color: #000;
+
+        @media screen and (max-width: 786px) {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+
+    & > .categories {
+      display: flex;
+      column-gap: 25px;
+
+      max-width: 56%;
+
+      @media screen and (max-width: 1280px) {
+        max-width: 50%;
+      }
+
+      @media screen and (max-width: 1024px) {
+        max-width: 42%;
+      }
+
+      @media screen and (max-width: 768px) {
+        max-width: 60%;
+        column-gap: 10px;
+      }
+
+      @media screen and (max-width: 480px) {
+        max-width: 50%;
+      }
+
+      @media screen and (max-width: 360px) {
+        max-width: 40%;
+      }
+
+      overflow: hidden;
+      overflow-x: scroll;
+
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      scroll-behavior: smooth;
+      cursor: grab;
+
+      & > .selector {
+        align-items: center;
+
+        @media screen and (max-width: 786px) {
+          padding: 3px 5px;
+          margin: 3px 0;
+        }
+
+        & img {
+          @media screen and (max-width: 786px) {
+            width: 8px;
+            height: 8px;
+          }
+        }
+
+        & p {
+          @media screen and (max-width: 786px) {
+            font-size: 8px;
+            line-height: 10px;
+            margin-left: 12px;
+          }
+        }
+      }
+    }
+
+    & > .viewAll {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+
+      padding: 13px 24px;
+
+      border: 1px solid #f20530;
+      border-radius: 45px;
+
+      @media screen and (max-width: 786px) {
+        padding: 7px 15px;
+      }
+
+      & > span {
+        height: 20px;
+        font-size: 16px;
+        line-height: 20px;
+        color: #f20530;
+
+        @media screen and (max-width: 786px) {
+          height: 12px;
+          font-size: 10px;
+          line-height: 12px;
+        }
+      }
+
+      text-decoration: none;
+
+      & > img {
+        display: block;
+        width: 14px;
+        height: 10px;
+
+        @media screen and (max-width: 786px) {
+          width: 4px;
+          height: 3px;
+        }
+      }
+    }
+  }
+
+  & > .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    & .photo {
+      $width: calc(100vw - 12vw - 12vw);
+
+      width: calc($width * 0.25 - 14px);
+      height: calc(($width * 0.25 - 14px) * 0.75);
+
+      @media screen and (max-width: 1280px) {
+        width: calc($width * 0.333 - 14px);
+        height: calc(($width * 0.333 - 14px) * 0.75);
+      }
+
+      @media screen and (max-width: 1024px) {
+        width: calc($width * 0.5 - 20px);
+        height: calc(($width * 0.5 - 20px) * 0.75);
+      }
+
+      @media screen and (max-width: 768px) {
+        $width: calc(100vw - 25px - 25px);
+
+        width: calc($width * 0.333 - 10px);
+        height: calc(($width * 0.333 - 10px) * 0.75);
+      }
+
+      @media screen and (max-width: 480px) {
+        $width: calc(100vw - 25px - 25px);
+
+        width: calc($width * 0.5 - 10px);
+        height: calc(($width * 0.5 - 10px) * 0.75);
+      }
+    }
+  }
+}

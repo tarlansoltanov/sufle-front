@@ -3,14 +3,14 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-import { Contact, About, Vacancy, Shops, Products, ErrorPage } from './views';
+import { Contact, About, Vacancy, Shops, Products, ErrorPage, Home } from './views';
 
 function App() {
   return (
     <>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
         {/* <Route path="/products/:id" element={<Product />} /> */}
         <Route path="/shops" element={<Shops />} />

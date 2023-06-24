@@ -21,8 +21,10 @@
 
   & > .icon {
     position: absolute;
+    display: flex;
 
     & > img {
+      display: block;
       width: 18px;
       height: auto;
 
