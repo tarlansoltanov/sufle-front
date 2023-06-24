@@ -1,0 +1,8 @@
+.product {
+  & > .photo {
+    width: 594px;
+    height: 565px;
+    border-radius: 25px;
+    overflow: hidden;
+  }
+}
