@@ -1,11 +1,21 @@
-import cs from 'classnames';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import cs from 'classnames';
+
+import { IShop } from '../../types';
+import { getMainShop } from '../../api/shops';
 
 import Container from '../Container/Container';
 
 import styles from './Footer.module.scss';
 
 const Footer = () => {
+  const [shop, setShop] = useState<IShop | null>(null);
+
+  useEffect(() => {
+    getMainShop().then((data) => setShop(data));
+  }, []);
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -78,15 +88,15 @@ const Footer = () => {
             <div className={styles.content}>
               <ul>
                 <li>
-                  <span>Sumqayit şəh. H.Əliyev prospekti</span>
+                  <span>{shop?.address}</span>
                 </li>
 
                 <li>
-                  <span>(055) 555-66-77</span>
+                  <span>{shop?.phone}</span>
                 </li>
 
                 <li>
-                  <span>info@suflecake.com</span>
+                  <span>{shop?.email}</span>
                 </li>
               </ul>
             </div>
@@ -99,17 +109,11 @@ const Footer = () => {
               <ul>
                 <li>
                   <a href="#">
-                    <img
-                      src="/src/assets/images/icons/app_store.svg"
-                      alt="App Store"
-                    />
+                    <img src="/src/assets/images/icons/app_store.svg" alt="App Store" />
                   </a>
 
                   <a href="#">
-                    <img
-                      src="/src/assets/images/icons/play_store.svg"
-                      alt="Play Store"
-                    />
+                    <img src="/src/assets/images/icons/play_store.svg" alt="Play Store" />
                   </a>
                 </li>
               </ul>
@@ -135,10 +139,7 @@ const Footer = () => {
             </a>
 
             <a href="#">
-              <img
-                src="/src/assets/images/icons/instagram.svg"
-                alt="Instagram"
-              />
+              <img src="/src/assets/images/icons/instagram.svg" alt="Instagram" />
             </a>
           </div>
         </div>
