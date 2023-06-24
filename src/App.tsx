@@ -18,7 +18,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
 
-        <Route path="*" element={<ErrorPage error_code={404} />} />
+        <Route path="*" element={<ErrorPage />} />
+        <Route path="/error/:error" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </>

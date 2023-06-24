@@ -1,18 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import Input from '../../components/Input/Input';
 
 import styles from './Errors.module.scss';
 
-interface Props {
-  error_code: number;
-}
+const ErrorPage = () => {
+  const { error_code } = useParams();
 
-const ErrorPage = ({ error_code }: Props) => {
   return (
     <main className={styles.main}>
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>{error_code}</h1>
+        <h1 className={styles.title}>{(error_code || 404)}</h1>
         <h2 className={styles.subtitle}>Oops! Bu Səhifə Tapılmadı!</h2>
         <p className={styles.text}>
           Səhifə adı düzgün yazılıb-yazılmadığını yoxlayın və ya səhifə artıq mövcud deyil.
