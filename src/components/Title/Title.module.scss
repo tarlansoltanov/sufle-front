@@ -5,7 +5,11 @@
   align-items: center;
   flex-direction: column;
 
+  justify-content: center;
+
   padding: 38px 220px;
+
+  text-align: center;
 
   @media screen and (max-width: 768px) {
     padding: 15px 26px;

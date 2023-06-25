@@ -181,41 +181,66 @@
     flex-wrap: wrap;
     justify-content: space-around;
 
-    & .photo {
-      $width: calc(100vw - 12vw - 12vw);
+    $width: calc(100vw - 12vw - 12vw);
 
-      width: calc($width * 0.25 - 14px);
-      height: calc(($width * 0.25 - 14px) * 0.75);
+    & .card {
+      max-width: calc($width * 0.25 - 14px);
 
-      @media screen and (max-width: 1280px) {
-        width: calc($width * 0.333 - 14px);
-        height: calc(($width * 0.333 - 14px) * 0.75);
+      & .photo {
+        width: calc($width * 0.25 - 14px);
+        height: calc(($width * 0.25 - 14px) * 0.75);
       }
+    }
 
-      @media screen and (max-width: 1024px) {
-        width: calc($width * 0.5 - 20px);
-        height: calc(($width * 0.5 - 20px) * 0.75);
+    @media screen and (max-width: 1280px) {
+      & .card {
+        max-width: calc($width * 0.333 - 14px);
+        & .photo {
+          width: calc($width * 0.333 - 14px);
+          height: calc(($width * 0.333 - 14px) * 0.75);
+        }
       }
+    }
 
-      @media screen and (max-width: 768px) {
-        $width: calc(100vw - 25px - 25px);
-
-        width: calc($width * 0.333 - 10px);
-        height: calc(($width * 0.333 - 10px) * 0.75);
+    @media screen and (max-width: 1024px) {
+      & .card {
+        max-width: calc($width * 0.5 - 20px);
+        & .photo {
+          width: calc($width * 0.5 - 20px);
+          height: calc(($width * 0.5 - 20px) * 0.75);
+        }
       }
+    }
 
-      @media screen and (max-width: 480px) {
-        $width: calc(100vw - 25px - 25px);
+    $width: calc(100vw - 25px - 25px);
 
-        width: calc($width * 0.5 - 10px);
-        height: calc(($width * 0.5 - 10px) * 0.75);
+    @media screen and (max-width: 768px) {
+      & .card {
+        max-width: calc($width * 0.333 - 10px);
+        & .photo {
+          width: calc($width * 0.333 - 10px);
+          height: calc(($width * 0.333 - 10px) * 0.75);
+        }
       }
+    }
 
-      @media screen and (max-width: 320px) {
-        $width: calc(100vw - 25px - 25px);
+    @media screen and (max-width: 480px) {
+      & .card {
+        max-width: calc($width * 0.5 - 10px);
+        & .photo {
+          width: calc($width * 0.5 - 10px);
+          height: calc(($width * 0.5 - 10px) * 0.75);
+        }
+      }
+    }
 
-        width: calc($width);
-        height: calc(($width) * 0.75);
+    @media screen and (max-width: 320px) {
+      & .card {
+        max-width: calc($width);
+        & .photo {
+          width: calc($width);
+          height: calc(($width) * 0.75);
+        }
       }
     }
   }
