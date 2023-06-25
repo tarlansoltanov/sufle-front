@@ -78,8 +78,9 @@
       flex-direction: column;
       align-items: center;
 
-      & > img {
-        width: 50%;
+      & img {
+        width: 100%;
+        height: auto;
       }
     }
 
