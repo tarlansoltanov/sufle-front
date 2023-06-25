@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 import cs from 'classnames';
 
 import Input from '../Input/Input';
@@ -21,14 +21,18 @@ const Header = () => {
           <img src="/src/assets/images/icons/menu.svg" alt="Menu" />
         </button>
 
-        <img className={styles.logo} src="/src/assets/images/logo.png" alt="Sufle" />
+        <Link to="/">
+          <img className={styles.logo} src="/src/assets/images/logo.png" alt="Sufle" />
+        </Link>
 
         <nav className={cs(styles.nav, { [styles.navOpen]: menuOpen })}>
           <div className={styles.navHeader}></div>
 
           <ul>
             <li className={styles.navHeader}>
-              <img className={styles.navLogo} src="/src/assets/images/logo.png" alt="Sufle" />
+              <Link to="/">
+                <img className={styles.navLogo} src="/src/assets/images/logo.png" alt="Sufle" />
+              </Link>
 
               <button className={styles.closeBtn} onClick={() => setMenuOpen(!menuOpen)}>
                 <img src="/src/assets/images/icons/close.svg" alt="Close" />
