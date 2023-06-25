@@ -12,11 +12,22 @@ interface Props {
   className?: string;
   photoClass?: string;
   style?: React.CSSProperties;
+  onClick?: () => void;
 }
 
-function Card({ photo, name, price, isNew, discount, className, photoClass, style }: Props) {
+function Card({
+  photo,
+  name,
+  price,
+  isNew,
+  discount,
+  className,
+  photoClass,
+  style,
+  onClick,
+}: Props) {
   return (
-    <div className={cs(className, styles.card)} style={style}>
+    <div className={cs(className, styles.card)} style={style} onClick={onClick}>
       <div className={cs(photoClass, styles.photo)}>
         <img src={photo} className={cs(styles.photo)} />
         {isNew && (
