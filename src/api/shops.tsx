@@ -2,14 +2,14 @@ import instance from './index';
 
 import { IShop } from '../types';
 
-const getAllShops = async (): Promise<IShop[] | null> => {
+const getAllShops = async (): Promise<IShop[]> => {
   try {
     const resp = await instance.get('shop');
     return resp.data as IShop[];
   } catch (error) {
     console.log(error);
+    throw error;
   }
-  return null;
 };
 
 export { getAllShops };
@@ -20,8 +20,8 @@ const getMainShop = async (): Promise<IShop | null> => {
     return resp.data as IShop;
   } catch (error) {
     console.log(error);
+    throw error;
   }
-  return null;
 };
 
 export { getMainShop };
