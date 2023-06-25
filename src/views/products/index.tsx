@@ -1,5 +1,9 @@
-import { useState } from 'react';
 import cs from 'classnames';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { IPaginatedProducts } from '../../types';
+import { getAllProducts } from '../../api';
 
 import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -8,11 +12,17 @@ import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
 import Selector from '../../components/Selector/Selector';
 import Card from '../../components/Card/Card';
+import Loader from '../../components/Loader/Loader';
 
 import styles from './Products.module.scss';
 import './range-slider.css';
 
 const Products = () => {
+  const navigate = useNavigate();
+
+  const [loading, setLoading] = useState<boolean>(true);
+
+  // Filter and Sort
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [sortOpen, setSortOpen] = useState<boolean>(false);
 
@@ -42,6 +52,19 @@ const Products = () => {
     const target = e.currentTarget;
     target.parentElement?.classList.toggle(styles.active);
   };
+
+  // Products
+
+  const [products, setProducts] = useState<IPaginatedProducts>();
+
+  useEffect(() => {
+    getAllProducts({}).then((res) => {
+      setProducts(res);
+      console.log(res);
+    });
+
+    setLoading(false);
+  }, []);
 
   return (
     <main>
@@ -236,6 +259,7 @@ const Products = () => {
                   onClick={() => {}}
                 />
               </ScrollContainer>
+
               <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
                 <button onClick={() => setSortOpen(!sortOpen)}>
                   <span>
@@ -272,64 +296,47 @@ const Products = () => {
               </div>
             </div>
 
-            <div className={styles.products}>
-              <Card
-                photo="/src/assets/images/product/product2.jpg"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-              <Card
-                photo="/src/assets/images/product/product2.jpg"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-              <Card
-                photo="/src/assets/images/product/product2.jpg"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-              <Card
-                photo="/src/assets/images/product/product1.png"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-              <Card
-                photo="/src/assets/images/product/product1.png"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-              <Card
-                photo="/src/assets/images/product/product1.png"
-                name="Karamelli Tort"
-                price={30.0}
-                photoClass={styles.photo}
-              />
-            </div>
-            <div className={styles.pagination}>
-              <a className={styles.pageBtn} href="#">
-                {'<<'}
-              </a>
-              <a className={styles.pageBtn} href="#">
-                {'<'}
-              </a>
-              <a className={cs(styles.current, styles.pageBtn)} href="#">
-                {'1'}
-              </a>
-              <a className={styles.pageBtn} href="#">
-                {'2'}
-              </a>
-              <a className={styles.pageBtn} href="#">
-                {'>'}
-              </a>
-              <a className={styles.pageBtn} href="#">
-                {'>>'}
-              </a>
-            </div>
+            {loading ? (
+              <Loader />
+            ) : (
+              <>
+                <div className={styles.products}>
+                  {products &&
+                    (products.results.length == 0 ? (
+                      <p className={styles.noProduct}>Axtardığınız məhsul tapılmadı</p>
+                    ) : (
+                      products.results.map((product) => (
+                        <Card
+                          key={product.id}
+                          photo={product.images[0].image}
+                          name={product.name}
+                          price={product.price}
+                          photoClass={styles.photo}
+                          onClick={() => {
+                            navigate(`/products/${product.id}`);
+                          }}
+                          isNew={product.is_new}
+                          discount={product.discount}
+                        />
+                      ))
+                    ))}
+                </div>
+                <div className={styles.pagination}>
+                  <a className={styles.pageBtn} href="">
+                    {'<'}
+                  </a>
+                  <a className={cs(styles.current, styles.pageBtn)} href="#">
+                    {'1'}
+                  </a>
+                  <a className={styles.pageBtn} href="#">
+                    {'2'}
+                  </a>
+                  <a className={styles.pageBtn} href="#">
+                    {'>'}
+                  </a>
+                </div>
+              </>
+            )}
           </section>
         </div>
       </Container>

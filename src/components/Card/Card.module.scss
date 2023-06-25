@@ -1,4 +1,7 @@
 .card {
+  cursor: pointer;
+  user-select: none;
+
   .photo {
     background-size: cover;
 
