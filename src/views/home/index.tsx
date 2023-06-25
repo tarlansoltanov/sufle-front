@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { IMainCategory, IPaginatedProducts } from '../../types';
@@ -13,6 +13,7 @@ import Card from '../../components/Card/Card';
 import styles from './Home.module.scss';
 
 const Home = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
 
   const [categories, setCategories] = useState<IMainCategory[]>([]);
@@ -103,6 +104,12 @@ const Home = () => {
                     name={product.name}
                     price={product.price}
                     photoClass={styles.photo}
+                    className={styles.card}
+                    onClick={() => {
+                      navigate(`/products/${product.id}`);
+                    }}
+                    isNew={product.is_new}
+                    discount={product.discount}
                   />
                 ))
               ))}
