@@ -26,11 +26,11 @@
 }
 
 
-.bullet {
+.image-gallery-bullet {
   background-color: #fff !important;
 }
 
-.bullet.active {
+.image-gallery-bullet.active {
   background-color: #F20530 !important;
   border-color: #F20530 !important;
 }
