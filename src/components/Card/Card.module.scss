@@ -71,6 +71,34 @@
     }
   }
 
+  .discount {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background: #f20530;
+
+    color: #fff;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+
+    padding: 28px 20px;
+
+    border-radius: 0px 25px;
+
+    @media screen and (max-width: 768px) {
+      gap: 3px;
+
+      font-size: 10px;
+      line-height: 13px;
+
+      padding: 2px 7px;
+      border-radius: 0px 10px;
+    }
+  }
+
   .title {
     font-weight: 500;
     font-size: 24px;
@@ -86,15 +114,38 @@
   }
 
   .price {
-    font-weight: 500;
-    font-size: 20px;
-    line-height: 32px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 
-    color: #f20530;
+    & > .oldPrice {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
 
-    @media screen and (max-width: 768px) {
-      font-size: 11px;
-      line-height: 12px;
+      color: #0e1735;
+
+      text-decoration-line: line-through;
+
+      margin-right: 10px;
+
+      @media screen and (max-width: 768px) {
+        font-size: 8px;
+        line-height: 9px;
+      }
+    }
+
+    & > .currentPrice {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 32px;
+
+      color: #f20530;
+
+      @media screen and (max-width: 768px) {
+        font-size: 11px;
+        line-height: 12px;
+      }
     }
   }
 }

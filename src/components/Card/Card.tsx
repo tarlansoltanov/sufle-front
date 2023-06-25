@@ -8,7 +8,7 @@ interface Props {
   name: string;
   price: number;
   isNew?: boolean;
-  discount?: number;
+  discount: number;
   className?: string;
   photoClass?: string;
   style?: React.CSSProperties;
@@ -30,6 +30,12 @@ function Card({
     <div className={cs(className, styles.card)} style={style} onClick={onClick}>
       <div className={cs(photoClass, styles.photo)}>
         <img src={photo} className={cs(styles.photo)} />
+        {discount > 0 && (
+          <div className={styles.discount}>
+            <span>{discount}%</span>
+          </div>
+        )}
+
         {isNew && (
           <div className={styles.tag}>
             <img src="/src/assets/images/icons/new.svg" alt="New" />
@@ -39,7 +45,10 @@ function Card({
       </div>
       <div className={styles.cardInfo}>
         <div className={styles.title}>{name}</div>
-        <div className={styles.price}>{price} AZN</div>
+        <div className={styles.price}>
+          <p className={styles.currentPrice}>{price * ((100 - discount) / 100)} AZN</p>
+          {discount > 0 && <p className={styles.oldPrice}>{price} AZN</p>}
+        </div>
       </div>
     </div>
   );
