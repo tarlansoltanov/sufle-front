@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
 import { IMainCategory, IPaginatedProducts } from '../../types';
-import { getMainCategories, getAllProducts } from '../../api';
+import { getMainCategories, getAllProducts, getProductsByCategory } from '../../api';
 
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
@@ -31,6 +31,19 @@ const Home = () => {
     setLoading(false);
   }, []);
 
+  const handleCategoryChange = (category: IMainCategory | null) => {
+    setSelectedCategory(category);
+    if (!category) {
+      getAllProducts({ limit: 8 })
+        .then((data) => setProducts(data))
+        .catch((err) => console.log(err));
+    } else {
+      getProductsByCategory({ limit: 8 }, category)
+        .then((data) => setProducts(data))
+        .catch((err) => console.log(err));
+    }
+  };
+
   if (loading) return <Loader />;
 
   return (
@@ -49,6 +62,15 @@ const Home = () => {
             </div>
 
             <ScrollContainer className={styles.categories}>
+              <Selector
+                title={'Hamısı'}
+                icon={'/src/assets/images/icons/all.svg'}
+                isSelected={selectedCategory === null}
+                onClick={() => {
+                  handleCategoryChange(null);
+                }}
+                className={styles.selector}
+              />
               {categories &&
                 categories.map((category) => (
                   <Selector
@@ -57,7 +79,7 @@ const Home = () => {
                     icon={category.logo}
                     isSelected={selectedCategory?.id === category.id}
                     onClick={() => {
-                      setSelectedCategory(category);
+                      handleCategoryChange(category);
                     }}
                     className={styles.selector}
                   />
@@ -71,14 +93,18 @@ const Home = () => {
           </div>
           <div className={styles.main}>
             {products &&
-              products.results.map((product) => (
-                <Card
-                  key={product.id}
-                  photo={product.images[0].image}
-                  name={product.name}
-                  price={product.price}
-                  photoClass={styles.photo}
-                />
+              (products.results.length == 0 ? (
+                <p className={styles.empty}>Məhsul tapılmadı</p>
+              ) : (
+                products.results.map((product) => (
+                  <Card
+                    key={product.id}
+                    photo={product.images[0].image}
+                    name={product.name}
+                    price={product.price}
+                    photoClass={styles.photo}
+                  />
+                ))
               ))}
           </div>
         </div>
