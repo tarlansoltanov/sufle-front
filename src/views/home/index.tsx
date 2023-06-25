@@ -1,13 +1,33 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
+import { IMainCategory } from '../../types';
+import { getMainCategories } from '../../api';
+
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
+import Loader from '../../components/Loader/Loader';
 import Card from '../../components/Card/Card';
 
 import styles from './Home.module.scss';
 
 const Home = () => {
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const [categories, setCategories] = useState<IMainCategory[]>([]);
+  const [selectedCategory, setSelectedCategory] = useState<IMainCategory | null>(null);
+
+  useEffect(() => {
+    getMainCategories()
+      .then((data) => setCategories(data))
+      .catch((err) => console.log(err));
+
+    setLoading(false);
+  }, []);
+
+  if (loading) return <Loader />;
+
   return (
     <main>
       <Container>
@@ -24,69 +44,18 @@ const Home = () => {
             </div>
 
             <ScrollContainer className={styles.categories}>
-              <Selector
-                title="Tortlar"
-                icon="/src/assets/images/category/cake_white.svg"
-                isSelected={true}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Donut"
-                icon="/src/assets/images/category/donut_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Desertlər"
-                icon="/src/assets/images/category/dessert_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Paxlavalar"
-                icon="/src/assets/images/category/paklava_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="For Kids"
-                icon="/src/assets/images/category/kids_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Donut"
-                icon="/src/assets/images/category/donut_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Desertlər"
-                icon="/src/assets/images/category/dessert_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="Paxlavalar"
-                icon="/src/assets/images/category/paklava_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
-              <Selector
-                title="For Kids"
-                icon="/src/assets/images/category/kids_grey.svg"
-                isSelected={false}
-                onClick={() => {}}
-                className={styles.selector}
-              />
+              {categories &&
+                categories.map((category) => (
+                  <Selector
+                    title={category.name}
+                    icon={category.logo}
+                    isSelected={selectedCategory?.id === category.id}
+                    onClick={() => {
+                      setSelectedCategory(category);
+                    }}
+                    className={styles.selector}
+                  />
+                ))}
             </ScrollContainer>
 
             <Link to="/products" className={styles.viewAll}>
