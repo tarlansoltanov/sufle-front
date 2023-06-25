@@ -19,7 +19,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/error/:error" element={<ErrorPage />} />
       </Routes>
       <Footer />
     </>
