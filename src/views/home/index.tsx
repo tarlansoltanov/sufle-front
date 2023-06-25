@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
-import { IMainCategory } from '../../types';
-import { getMainCategories } from '../../api';
+import { IMainCategory, IPaginatedProducts } from '../../types';
+import { getMainCategories, getAllProducts } from '../../api';
 
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
@@ -16,11 +16,16 @@ const Home = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   const [categories, setCategories] = useState<IMainCategory[]>([]);
+  const [products, setProducts] = useState<IPaginatedProducts | null>();
   const [selectedCategory, setSelectedCategory] = useState<IMainCategory | null>(null);
 
   useEffect(() => {
     getMainCategories()
       .then((data) => setCategories(data))
+      .catch((err) => console.log(err));
+
+    getAllProducts({ limit: 8 })
+      .then((data) => setProducts(data))
       .catch((err) => console.log(err));
 
     setLoading(false);
@@ -47,6 +52,7 @@ const Home = () => {
               {categories &&
                 categories.map((category) => (
                   <Selector
+                    key={category.id}
                     title={category.name}
                     icon={category.logo}
                     isSelected={selectedCategory?.id === category.id}
@@ -64,54 +70,16 @@ const Home = () => {
             </Link>
           </div>
           <div className={styles.main}>
-            <Card
-              photo="/src/assets/images/product/product2.jpg"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product2.jpg"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product2.jpg"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product1.png"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product1.png"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product1.png"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product1.png"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
-            <Card
-              photo="/src/assets/images/product/product1.png"
-              name="Karamelli Tort"
-              price={30.0}
-              photoClass={styles.photo}
-            />
+            {products &&
+              products.results.map((product) => (
+                <Card
+                  key={product.id}
+                  photo={product.images[0].image}
+                  name={product.name}
+                  price={product.price}
+                  photoClass={styles.photo}
+                />
+              ))}
           </div>
         </div>
       </Container>
