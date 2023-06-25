@@ -10,9 +10,9 @@ const Title = ({ title, subtitle }: Props) => {
     <div className={styles.container}>
       <hr />
 
-      <p>{title}</p>
+      <p>{subtitle}</p>
 
-      <h1>{subtitle}</h1>
+      <h1>{title}</h1>
     </div>
   );
 };
