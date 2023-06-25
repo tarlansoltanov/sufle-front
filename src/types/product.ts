@@ -1,7 +1,6 @@
-import ICategory from './category';
-import IImage from './image';
+import { ICategory, IImage } from '.';
 
-export default interface IProduct {
+export interface IProduct {
   id: number;
   name: string;
   category: ICategory;
@@ -11,4 +10,11 @@ export default interface IProduct {
   discount: number;
   is_new: boolean;
   created_at: string;
+}
+
+export interface IPaginatedProducts {
+  count: number;
+  next: string;
+  previous: string;
+  results: IProduct[];
 }
