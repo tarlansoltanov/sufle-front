@@ -12,3 +12,4 @@ export default instance;
 export { getAllVacancies } from './vacancy';
 export { getAllShops, getMainShop } from './shop';
 export { getProductDetails } from './product';
+export { getMainCategories } from './category';
