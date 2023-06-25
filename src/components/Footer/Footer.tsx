@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import cs from 'classnames';
 
 import { IShop } from '../../types';
-import { getMainShop } from '../../api/shops';
+import { getMainShop } from '../../api';
 
 import Container from '../Container/Container';
 
