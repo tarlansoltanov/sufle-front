@@ -2,8 +2,8 @@ import cs from 'classnames';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { IPaginatedProducts } from '../../types';
-import { getAllProducts } from '../../api';
+import { IPaginatedProducts, IMainCategory } from '../../types';
+import { getAllProducts, getMainCategories } from '../../api';
 
 import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -26,42 +26,82 @@ const Products = () => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [sortOpen, setSortOpen] = useState<boolean>(false);
 
+  interface IFilterProps {
+    categories: number[];
+    minPrice: number;
+    maxPrice: number;
+  }
+
+  const [filter, setFilter] = useState<IFilterProps>({
+    categories: [],
+    minPrice: 0,
+    maxPrice: 100,
+  });
+
   // Price Range Filter
 
-  const [minValue, setMinValue] = useState<number>(0);
-  const [maxValue, setMaxValue] = useState<number>(100);
-
   const handlePriceChange = (result: ChangeResult) => {
-    setMinValue(result.minValue);
-    setMaxValue(result.maxValue);
+    setFilter({ ...filter, minPrice: result.minValue, maxPrice: result.maxValue });
   };
 
   const handlePriceInput = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
 
     if (target.name === 'min') {
-      setMinValue(Number(target.value));
+      setFilter({ ...filter, minPrice: Number(target.value) });
     } else if (target.name === 'max') {
-      setMaxValue(Number(target.value));
+      setFilter({ ...filter, maxPrice: Number(target.value) });
     }
   };
 
   // Category Filter
 
-  const handleCategoryClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleCategoryFilterClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const target = e.currentTarget;
     target.parentElement?.classList.toggle(styles.active);
   };
+
+  const handleCategoryClick = (category_id: number | null) => {
+    if (!category_id) {
+      setFilter({ ...filter, categories: [] });
+      return;
+    }
+
+    if (filter.categories.includes(category_id)) {
+      setFilter({
+        ...filter,
+        categories: filter.categories.filter((item) => item !== category_id),
+      });
+    } else {
+      setFilter({ ...filter, categories: [...filter.categories, category_id] });
+      document.getElementById(`f-${category_id}`)?.classList.add(styles.active);
+    }
+  };
+
+  // Categories
+
+  const [categories, setCategories] = useState<IMainCategory[]>([]);
 
   // Products
 
   const [products, setProducts] = useState<IPaginatedProducts>();
 
   useEffect(() => {
-    getAllProducts({}).then((res) => {
-      setProducts(res);
-      console.log(res);
-    });
+    getAllProducts({})
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    getMainCategories()
+      .then((res) => {
+        setCategories(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
     setLoading(false);
   }, []);
@@ -109,61 +149,51 @@ const Products = () => {
 
               <div className={styles.content}>
                 <ul>
-                  <li>
-                    <div className={styles.mainCategory} onClick={handleCategoryClick}>
-                      <div className={styles.icon}>
-                        <img src="/src/assets/images/category/cake.svg" alt="Tortlar" />
-                      </div>
+                  {categories &&
+                    categories.map((category) => (
+                      <li key={category.id} id={`f-${category.id}`}>
+                        <div className={styles.mainCategory} onClick={handleCategoryFilterClick}>
+                          <div className={styles.icon}>
+                            <img src={category.logo} alt={category.name} />
+                          </div>
 
-                      <p>Tortlar</p>
+                          <p>{category.name}</p>
 
-                      <img
-                        src="/src/assets/images/icons/dropdown.svg"
-                        alt="Dropdown"
-                        className={styles.dropdown}
-                      />
-                    </div>
+                          <img
+                            src="/src/assets/images/icons/dropdown.svg"
+                            alt="Dropdown"
+                            className={styles.dropdown}
+                          />
+                        </div>
 
-                    <ul className={styles.subCategories}>
-                      <li>
-                        <input type="checkbox" name="all" />
-                        <label htmlFor="all">Bütün Tortlar</label>
+                        <ul className={styles.subCategories}>
+                          <li>
+                            <input
+                              type="checkbox"
+                              name={String(category.id)}
+                              id={String(category.id)}
+                              checked={filter.categories.includes(category.id)}
+                              onChange={() => handleCategoryClick(category.id)}
+                            />
+                            <label htmlFor="all">Bütün {category.name}</label>
+                          </li>
+
+                          {category.sub_categories &&
+                            category.sub_categories.map((sub) => (
+                              <li key={sub.id}>
+                                <input
+                                  type="checkbox"
+                                  name={String(sub.id)}
+                                  id={String(sub.id)}
+                                  checked={filter.categories.includes(sub.id)}
+                                  onChange={() => handleCategoryClick(sub.id)}
+                                />
+                                <label htmlFor={String(sub.id)}>{sub.name}</label>
+                              </li>
+                            ))}
+                        </ul>
                       </li>
-
-                      <li>
-                        <input type="checkbox" />
-                        <label htmlFor="">Ad Günü Tortları</label>
-                      </li>
-                    </ul>
-                  </li>
-
-                  <li>
-                    <div className={styles.mainCategory} onClick={handleCategoryClick}>
-                      <div className={styles.icon}>
-                        <img src="/src/assets/images/category/ekler.svg" alt="Ekler" />
-                      </div>
-
-                      <p>Ekler</p>
-
-                      <img
-                        src="/src/assets/images/icons/dropdown.svg"
-                        alt="Dropdown"
-                        className={styles.dropdown}
-                      />
-                    </div>
-
-                    <ul className={styles.subCategories}>
-                      <li>
-                        <input type="checkbox" name="all" />
-                        <label htmlFor="all">Bütün Ekler</label>
-                      </li>
-
-                      <li>
-                        <input type="checkbox" />
-                        <label htmlFor="">Ekler Sub</label>
-                      </li>
-                    </ul>
-                  </li>
+                    ))}
                 </ul>
               </div>
             </div>
@@ -183,8 +213,8 @@ const Products = () => {
                   min={0}
                   max={100}
                   step={1}
-                  minValue={minValue}
-                  maxValue={maxValue}
+                  minValue={filter.minPrice}
+                  maxValue={filter.maxPrice}
                   onInput={handlePriceChange}
                   label={false}
                   ruler={false}
@@ -192,8 +222,18 @@ const Products = () => {
                 />
 
                 <div className={styles.range}>
-                  <input type="text" name="min" value={minValue} onInput={handlePriceInput} />
-                  <input type="text" name="max" value={maxValue} onInput={handlePriceInput} />
+                  <input
+                    type="text"
+                    name="min"
+                    value={filter.minPrice}
+                    onInput={handlePriceInput}
+                  />
+                  <input
+                    type="text"
+                    name="max"
+                    value={filter.maxPrice}
+                    onInput={handlePriceInput}
+                  />
                 </div>
               </div>
             </div>
@@ -203,61 +243,29 @@ const Products = () => {
 
           <section className={styles.main}>
             <div className={styles.ordering}>
-              <ScrollContainer className={styles.categories}>
+              <ScrollContainer className={styles.categories} ignoreElements={'div'}>
                 <Selector
-                  title="Tortlar"
-                  icon="/src/assets/images/category/cake_white.svg"
-                  isSelected={true}
-                  onClick={() => {}}
+                  title={'Hamısı'}
+                  icon={'/src/assets/images/icons/all.svg'}
+                  isSelected={filter.categories.length === 0}
+                  onClick={() => {
+                    handleCategoryClick(null);
+                  }}
+                  className={styles.selector}
                 />
-                <Selector
-                  title="Donut"
-                  icon="/src/assets/images/category/donut_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="Desertlər"
-                  icon="/src/assets/images/category/dessert_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="Paxlavalar"
-                  icon="/src/assets/images/category/paklava_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="For Kids"
-                  icon="/src/assets/images/category/kids_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="Donut"
-                  icon="/src/assets/images/category/donut_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="Desertlər"
-                  icon="/src/assets/images/category/dessert_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="Paxlavalar"
-                  icon="/src/assets/images/category/paklava_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
-                <Selector
-                  title="For Kids"
-                  icon="/src/assets/images/category/kids_grey.svg"
-                  isSelected={false}
-                  onClick={() => {}}
-                />
+                {categories &&
+                  categories.map((category) => (
+                    <Selector
+                      key={`s${category.id}`}
+                      title={category.name}
+                      icon={category.logo}
+                      isSelected={filter.categories.includes(category.id)}
+                      onClick={() => {
+                        handleCategoryClick(category.id);
+                      }}
+                      className={styles.selector}
+                    />
+                  ))}
               </ScrollContainer>
 
               <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
