@@ -284,13 +284,13 @@ const Products = () => {
 
                 <div className={styles.range}>
                   <input
-                    type="text"
+                    type="number"
                     name="min"
                     value={filter.minPrice}
                     onInput={handlePriceInput}
                   />
                   <input
-                    type="text"
+                    type="number"
                     name="max"
                     value={filter.maxPrice}
                     onInput={handlePriceInput}
