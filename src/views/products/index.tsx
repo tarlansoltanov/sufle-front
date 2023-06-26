@@ -1,9 +1,9 @@
 import cs from 'classnames';
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { IPaginatedProducts, IMainCategory } from '../../types';
-import { getAllProducts, getMainCategories } from '../../api';
+import { IPaginatedProducts, IMainCategory, IFilterProps } from '../../types';
+import { getMainCategories, getProductsByFilter } from '../../api';
 
 import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
 import ScrollContainer from 'react-indiana-drag-scroll';
@@ -19,6 +19,7 @@ import './range-slider.css';
 
 const Products = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [loading, setLoading] = useState<boolean>(true);
 
@@ -26,18 +27,15 @@ const Products = () => {
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [sortOpen, setSortOpen] = useState<boolean>(false);
 
-  interface IFilterProps {
-    categories: number[];
-    minPrice: number;
-    maxPrice: number;
-    sort: string;
-  }
-
   const [filter, setFilter] = useState<IFilterProps>({
-    categories: [],
-    minPrice: 0,
-    maxPrice: 100,
-    sort: '',
+    categories:
+      searchParams
+        .get('categories')
+        ?.split(',')
+        .map((item: string) => Number(item)) || [],
+    minPrice: Number(searchParams.get('minPrice')) || 0,
+    maxPrice: Number(searchParams.get('maxPrice')) || 100,
+    ordering: searchParams.get('sort') || '',
   });
 
   const sortingOptions = [
@@ -51,11 +49,19 @@ const Products = () => {
   const filterProducts = () => {
     setLoading(true);
 
+    getProductsByFilter({}, filter)
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     navigate(
       `/products?${
         filter.categories.length > 0 ? `categories=${filter.categories.join(',')}` : ''
       }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
-        filter.sort ? `sort=${filter.sort}` : ''
+        filter.ordering ? `sort=${filter.ordering}` : ''
       }`
     );
 
@@ -63,17 +69,13 @@ const Products = () => {
   };
 
   const handleSortClick = (value: string) => {
-    setFilter({ ...filter, sort: value });
-
-    filterProducts();
+    setFilter({ ...filter, ordering: value });
   };
 
   // Price Range Filter
 
   const handlePriceChange = (result: ChangeResult) => {
     setFilter({ ...filter, minPrice: result.minValue, maxPrice: result.maxValue });
-
-    filterProducts();
   };
 
   const handlePriceInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -84,8 +86,6 @@ const Products = () => {
     } else if (target.name === 'max') {
       setFilter({ ...filter, maxPrice: Number(target.value) });
     }
-
-    filterProducts();
   };
 
   // Category Filter
@@ -110,8 +110,6 @@ const Products = () => {
       setFilter({ ...filter, categories: [...filter.categories, category_id] });
       document.getElementById(`f-${category_id}`)?.classList.add(styles.active);
     }
-
-    filterProducts();
   };
 
   // Categories
@@ -123,14 +121,6 @@ const Products = () => {
   const [products, setProducts] = useState<IPaginatedProducts>();
 
   useEffect(() => {
-    getAllProducts({})
-      .then((res) => {
-        setProducts(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
     getMainCategories()
       .then((res) => {
         setCategories(res);
@@ -141,6 +131,10 @@ const Products = () => {
 
     setLoading(false);
   }, []);
+
+  useEffect(() => {
+    filterProducts();
+  }, [filter]);
 
   return (
     <main>
@@ -251,7 +245,7 @@ const Products = () => {
                   step={1}
                   minValue={filter.minPrice}
                   maxValue={filter.maxPrice}
-                  onInput={handlePriceChange}
+                  onChange={handlePriceChange}
                   label={false}
                   ruler={false}
                   className="rangeSlider"
@@ -324,7 +318,7 @@ const Products = () => {
                   {sortingOptions.map((option, index) => (
                     <li
                       key={index}
-                      className={cs({ [styles.active]: filter.sort === option.value })}
+                      className={cs({ [styles.active]: filter.ordering === option.value })}
                       onClick={() => handleSortClick(option.value)}
                     >
                       <a>{option.label}</a>
