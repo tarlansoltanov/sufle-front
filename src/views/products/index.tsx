@@ -329,7 +329,9 @@ const Products = () => {
               <div className={cs(styles.sort, { [styles.sortOpen]: sortOpen })}>
                 <button onClick={() => setSortOpen(!sortOpen)}>
                   <span>
-                    <p>Sıralama</p>
+                    <p>
+                      {sortingOptions.find((option) => option.value === filter.ordering)?.label}
+                    </p>
                     <img src="/src/assets/images/icons/sort.svg" alt="Sort" />
                   </span>
                 </button>
@@ -383,17 +385,27 @@ const Products = () => {
                 </div>
                 <div className={styles.pagination}>
                   {products && products.previous ? (
-                    <a className={styles.pageBtn} onClick={() => changePage(page - 1)}>
-                      {'<'}
-                    </a>
+                    <>
+                      <a className={styles.pageBtn} onClick={() => changePage(page - 1)}>
+                        {'<'}
+                      </a>
+                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                        {page - 1}
+                      </a>
+                    </>
                   ) : null}
                   {products && products.count > 0 ? (
                     <a className={cs(styles.current, styles.pageBtn)}>{page}</a>
                   ) : null}
                   {products && products.previous ? (
-                    <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
-                      {'<'}
-                    </a>
+                    <>
+                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                        {page + 1}
+                      </a>
+                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                        {'<'}
+                      </a>
+                    </>
                   ) : null}
                 </div>
               </>
