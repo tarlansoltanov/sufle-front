@@ -23,6 +23,34 @@ const Products = () => {
 
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Pagination
+
+  const [page, setPage] = useState<number>(Number(searchParams.get('page')) || 1);
+
+  const changePage = (page: number) => {
+    setLoading(true);
+
+    getProductsByFilter({ page }, filter)
+      .then((res) => {
+        setProducts(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setPage(page);
+
+    navigate(
+      `/products?${
+        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}` : ''
+      }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
+        filter.ordering ? `sort=${filter.ordering}` : ''
+      }&page=${page}`
+    );
+
+    setLoading(false);
+  };
+
   // Filter and Sort
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [sortOpen, setSortOpen] = useState<boolean>(false);
@@ -354,18 +382,19 @@ const Products = () => {
                     ))}
                 </div>
                 <div className={styles.pagination}>
-                  <a className={styles.pageBtn} href="">
-                    {'<'}
-                  </a>
-                  <a className={cs(styles.current, styles.pageBtn)} href="#">
-                    {'1'}
-                  </a>
-                  <a className={styles.pageBtn} href="#">
-                    {'2'}
-                  </a>
-                  <a className={styles.pageBtn} href="#">
-                    {'>'}
-                  </a>
+                  {products && products.previous ? (
+                    <a className={styles.pageBtn} onClick={() => changePage(page - 1)}>
+                      {'<'}
+                    </a>
+                  ) : null}
+                  {products && products.count > 0 ? (
+                    <a className={cs(styles.current, styles.pageBtn)}>{page}</a>
+                  ) : null}
+                  {products && products.previous ? (
+                    <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                      {'<'}
+                    </a>
+                  ) : null}
                 </div>
               </>
             )}
