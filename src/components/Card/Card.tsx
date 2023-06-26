@@ -1,10 +1,12 @@
 import React from 'react';
 import cs from 'classnames';
 
+import { IImage } from '../../types';
+
 import styles from './Card.module.scss';
 
 interface Props {
-  photo: string;
+  photos: IImage[];
   name: string;
   price: number;
   isNew?: boolean;
@@ -16,7 +18,7 @@ interface Props {
 }
 
 function Card({
-  photo,
+  photos,
   name,
   price,
   isNew,
@@ -29,7 +31,8 @@ function Card({
   return (
     <div className={cs(className, styles.card)} style={style} onClick={onClick}>
       <div className={cs(photoClass, styles.photo)}>
-        <img src={photo} className={cs(styles.photo)} />
+        <img src={photos[0].image} className={cs(styles.standart)} />
+        <img src={photos.length > 1 ? photos[1].image : photos[0].image} className={cs(styles.hover)} />
         {discount > 0 && (
           <div className={styles.discount}>
             <span>{discount}%</span>

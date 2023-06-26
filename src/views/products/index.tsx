@@ -373,7 +373,7 @@ const Products = () => {
                       products.results.map((product) => (
                         <Card
                           key={product.id}
-                          photo={product.images[0].image}
+                          photos={product.images}
                           name={product.name}
                           price={product.price}
                           photoClass={styles.photo}
