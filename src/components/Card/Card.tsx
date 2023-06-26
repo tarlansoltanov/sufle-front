@@ -46,7 +46,7 @@ function Card({
       <div className={styles.cardInfo}>
         <div className={styles.title}>{name}</div>
         <div className={styles.price}>
-          <p className={styles.currentPrice}>{price * ((100 - discount) / 100)} AZN</p>
+          <p className={styles.currentPrice}>{(price * ((100 - discount) / 100)).toFixed(2)} AZN</p>
           {discount > 0 && <p className={styles.oldPrice}>{price} AZN</p>}
         </div>
       </div>
