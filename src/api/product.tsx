@@ -46,7 +46,7 @@ export { getProductsByCategory };
 
 const getProductsByFilter = async (
   { page, limit }: IPaginationProps,
-  { categories, minPrice, maxPrice, ordering }: IFilterProps
+  { categories, minPrice, maxPrice, ordering, search }: IFilterProps
 ): Promise<IPaginatedProducts> => {
   try {
     const resp = await instance.get(
@@ -54,7 +54,7 @@ const getProductsByFilter = async (
         categories ? `category_id=${categories.join(',')}` : ''
       }&${minPrice ? `min_price=${minPrice}` : ''}&${maxPrice ? `max_price=${maxPrice}` : ''}&${
         ordering ? `ordering=${ordering}` : ''
-      }`
+      }&${search ? `search=${search}` : ''}`
     );
     return resp.data as IPaginatedProducts;
   } catch (error) {

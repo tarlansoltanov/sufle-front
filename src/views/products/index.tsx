@@ -64,6 +64,7 @@ const Products = () => {
     minPrice: Number(searchParams.get('minPrice')) || 0,
     maxPrice: Number(searchParams.get('maxPrice')) || 100,
     ordering: searchParams.get('sort') || '',
+    search: searchParams.get('search') || '',
   });
 
   const sortingOptions = [
@@ -87,9 +88,11 @@ const Products = () => {
 
     navigate(
       `/products?${
-        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}` : ''
-      }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
-        filter.ordering ? `sort=${filter.ordering}` : ''
+        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}&` : ''
+      }${filter.minPrice > 0 ? `minPrice=${filter.minPrice}&` : ''}${
+        filter.maxPrice < 100 ? `maxPrice=${filter.maxPrice}&` : ''
+      }${filter.ordering ? `sort=${filter.ordering}&` : ''}${
+        filter.search ? `search=${filter.search}` : ''
       }`
     );
 

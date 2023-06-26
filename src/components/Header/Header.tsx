@@ -106,12 +106,14 @@ const Header = () => {
           </ul>
         </nav>
 
-        <Input
-          name="search"
-          placeholder="Axtarış..."
-          className={styles.search}
-          icon="/src/assets/images/icons/search.svg"
-        />
+        <form method="GET" action="/products">
+          <Input
+            name="search"
+            placeholder="Axtarış..."
+            className={styles.search}
+            icon="/src/assets/images/icons/search.svg"
+          />
+        </form>
       </div>
     </header>
   );

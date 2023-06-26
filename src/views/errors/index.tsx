@@ -24,12 +24,14 @@ const ErrorPage = ({ error_code }: Props) => {
           <Link to="/">Ana Səhifəyə</Link> qayıt
         </h3>
 
-        <Input
-          name="search"
-          placeholder="Axtarış..."
-          className={styles.search}
-          icon="/src/assets/images/icons/search.svg"
-        />
+        <form method="GET" action="/products">
+          <Input
+            name="search"
+            placeholder="Axtarış..."
+            className={styles.search}
+            icon="/src/assets/images/icons/search.svg"
+          />
+        </form>
       </div>
     </main>
   );

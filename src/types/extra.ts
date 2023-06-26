@@ -3,6 +3,7 @@ export interface IFilterProps {
   minPrice: number;
   maxPrice: number;
   ordering: string;
+  search: string;
 }
 
 export interface IPaginationProps {
