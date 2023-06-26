@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <footer className={styles.footer}>
-      <Container>
+      <Container className={styles.container}>
         <hr />
 
         <section className={styles.widgetSection}>
@@ -132,10 +132,6 @@ const Footer = () => {
           <div className={styles.social}>
             <a href="#">
               <img src="/src/assets/images/icons/facebook.svg" alt="Facebook" />
-            </a>
-
-            <a href="#">
-              <img src="/src/assets/images/icons/twitter.svg" alt="Twitter" />
             </a>
 
             <a href="#">

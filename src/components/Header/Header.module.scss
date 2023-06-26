@@ -78,7 +78,11 @@
   &Footer {
     display: none;
 
+    gap: 40px;
+
     & > a {
+      width: auto;
+
       & > img {
         @media screen and (max-width: 1280px) {
           filter: invert(17%) sepia(64%) saturate(6667%) hue-rotate(342deg) brightness(91%)

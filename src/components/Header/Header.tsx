@@ -96,10 +96,6 @@ const Header = () => {
               </a>
 
               <a href="#">
-                <img src="/src/assets/images/icons/twitter.svg" alt="Twitter" />
-              </a>
-
-              <a href="#">
                 <img src="/src/assets/images/icons/instagram.svg" alt="Instagram" />
               </a>
             </li>
