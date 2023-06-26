@@ -1,6 +1,6 @@
 import instance from './index';
 
-import { IProduct, IPaginatedProducts, ICategory } from '../types';
+import { IProduct, IPaginatedProducts, ICategory, IFilterProps, IPaginationProps } from '../types';
 
 const getProductDetails = async (id: number): Promise<IProduct> => {
   try {
@@ -12,11 +12,6 @@ const getProductDetails = async (id: number): Promise<IProduct> => {
 };
 
 export { getProductDetails };
-
-interface IPaginationProps {
-  page?: number;
-  limit?: number;
-}
 
 const getAllProducts = async ({ page, limit }: IPaginationProps): Promise<IPaginatedProducts> => {
   try {
@@ -48,3 +43,23 @@ const getProductsByCategory = async (
 };
 
 export { getProductsByCategory };
+
+const getProductsByFilter = async (
+  { page, limit }: IPaginationProps,
+  { categories, minPrice, maxPrice, ordering }: IFilterProps
+): Promise<IPaginatedProducts> => {
+  try {
+    const resp = await instance.get(
+      `product?${limit ? `limit=${limit}` : ''}&${page ? `page=${page}` : ''}&${
+        categories ? `category_id=${categories.join(',')}` : ''
+      }&${minPrice ? `min_price=${minPrice}` : ''}&${maxPrice ? `max_price=${maxPrice}` : ''}&${
+        ordering ? `ordering=${ordering}` : ''
+      }`
+    );
+    return resp.data as IPaginatedProducts;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { getProductsByFilter };
