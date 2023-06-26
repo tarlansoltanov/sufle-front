@@ -481,14 +481,22 @@
           }
 
           & > li {
+            user-select: none;
+            cursor: pointer;
+
+            color: #727272;
+            font-weight: 300;
+
             & > a {
-              font-weight: 300;
               font-size: 16px;
               line-height: 20px;
 
               text-decoration: none;
+            }
 
-              color: #727272;
+            &.active {
+              color: #f20530;
+              font-weight: 400;
             }
           }
         }

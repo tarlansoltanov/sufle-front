@@ -30,24 +30,42 @@ const Products = () => {
     categories: number[];
     minPrice: number;
     maxPrice: number;
+    sort: string;
   }
 
   const [filter, setFilter] = useState<IFilterProps>({
     categories: [],
     minPrice: 0,
     maxPrice: 100,
+    sort: '',
   });
+
+  const sortingOptions = [
+    { value: '', label: 'Standart' },
+    { value: '-created_at', label: 'Ən Yenilər' },
+    { value: 'price', label: 'Ən Aşağı Qiymət' },
+    { value: '-price', label: 'Ən Yuxarı Qiymət' },
+    { value: 'discount', label: 'Endirimdə olanlar' },
+  ];
 
   const filterProducts = () => {
     setLoading(true);
 
     navigate(
       `/products?${
-        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}&` : ''
-      }minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}`
+        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}` : ''
+      }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
+        filter.sort ? `sort=${filter.sort}` : ''
+      }`
     );
 
     setLoading(false);
+  };
+
+  const handleSortClick = (value: string) => {
+    setFilter({ ...filter, sort: value });
+
+    filterProducts();
   };
 
   // Price Range Filter
@@ -92,7 +110,7 @@ const Products = () => {
       setFilter({ ...filter, categories: [...filter.categories, category_id] });
       document.getElementById(`f-${category_id}`)?.classList.add(styles.active);
     }
-    
+
     filterProducts();
   };
 
@@ -303,21 +321,15 @@ const Products = () => {
                     </button>
                   </li>
 
-                  <li>
-                    <a href="">Standart</a>
-                  </li>
-                  <li>
-                    <a href="">Ən Yenilər</a>
-                  </li>
-                  <li>
-                    <a href="">Ən Ucuz Qiymət</a>
-                  </li>
-                  <li>
-                    <a href="">Ən Bahalı Qiymət</a>
-                  </li>
-                  <li>
-                    <a href="">Endirimdə olanlar</a>
-                  </li>
+                  {sortingOptions.map((option, index) => (
+                    <li
+                      key={index}
+                      className={cs({ [styles.active]: filter.sort === option.value })}
+                      onClick={() => handleSortClick(option.value)}
+                    >
+                      <a>{option.label}</a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
