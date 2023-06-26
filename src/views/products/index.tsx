@@ -38,10 +38,24 @@ const Products = () => {
     maxPrice: 100,
   });
 
+  const filterProducts = () => {
+    setLoading(true);
+
+    navigate(
+      `/products?${
+        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}&` : ''
+      }minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}`
+    );
+
+    setLoading(false);
+  };
+
   // Price Range Filter
 
   const handlePriceChange = (result: ChangeResult) => {
     setFilter({ ...filter, minPrice: result.minValue, maxPrice: result.maxValue });
+
+    filterProducts();
   };
 
   const handlePriceInput = (e: React.FormEvent<HTMLInputElement>) => {
@@ -52,6 +66,8 @@ const Products = () => {
     } else if (target.name === 'max') {
       setFilter({ ...filter, maxPrice: Number(target.value) });
     }
+
+    filterProducts();
   };
 
   // Category Filter
@@ -76,6 +92,8 @@ const Products = () => {
       setFilter({ ...filter, categories: [...filter.categories, category_id] });
       document.getElementById(`f-${category_id}`)?.classList.add(styles.active);
     }
+    
+    filterProducts();
   };
 
   // Categories
