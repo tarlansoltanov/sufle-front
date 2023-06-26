@@ -5,7 +5,7 @@
   flex-wrap: wrap;
 
   & > .photo {
-    width: 594px;
+    width: 500px;
     height: 565px;
 
     border-radius: 25px;
@@ -13,23 +13,23 @@
 
     $width: calc(100vw - 12vw - 12vw);
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1024px) {
       width: $width;
-      height: calc($width * 565px / 594px);
+      height: calc($width * 565px / 500px);
     }
 
     $width: calc(100vw - 25px - 25px);
 
     @media screen and (max-width: 768px) {
       width: $width;
-      height: calc($width * 565px / 594px);
+      height: calc($width * 565px / 500px);
     }
   }
 
   & > .details {
-    max-width: calc(100% - 594px - 85px);
+    max-width: calc(100% - 500px - 85px);
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1024px) {
       max-width: 100%;
     }
 
