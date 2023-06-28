@@ -3,7 +3,11 @@ import cs from 'classnames';
 import styles from './Selector.module.scss';
 
 interface SelectorProps {
-  icon: string;
+  icon: {
+    white: string;
+    grey: string;
+    red?: string;
+  };
   title: string;
   isSelected: boolean;
   onClick: () => void;
@@ -17,7 +21,7 @@ const Selector = ({ icon, title, isSelected = false, onClick, className }: Selec
       onClick={onClick}
     >
       <div className={styles.icon}>
-        <img src={icon} alt={title} />
+        <img src={isSelected ? icon.white : icon.grey} alt={title} />
       </div>
       <p>{title}</p>
     </div>
