@@ -215,7 +215,7 @@ const Products = () => {
                       <li key={category.id} id={`f-${category.id}`}>
                         <div className={styles.mainCategory} onClick={handleCategoryFilterClick}>
                           <div className={styles.icon}>
-                            <img src={category.logo} alt={category.name} />
+                            <img src={category.logo.red} alt={category.name} />
                           </div>
 
                           <p>{category.name}</p>
