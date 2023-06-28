@@ -72,7 +72,7 @@ const Products = () => {
     { value: '-created_at', label: 'Ən Yenilər' },
     { value: 'price', label: 'Ən Aşağı Qiymət' },
     { value: '-price', label: 'Ən Yuxarı Qiymət' },
-    { value: 'discount', label: 'Endirimdə olanlar' },
+    { value: '-discount', label: 'Endirimdə olanlar' },
   ];
 
   const filterProducts = () => {
