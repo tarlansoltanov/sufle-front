@@ -65,7 +65,10 @@ const Home = () => {
             <ScrollContainer className={styles.categories}>
               <Selector
                 title={'Hamısı'}
-                icon={'/src/assets/images/icons/all.svg'}
+                icon={{
+                  grey: '/src/assets/images/icons/allGrey.svg',
+                  white: '/src/assets/images/icons/allWhite.svg',
+                }}
                 isSelected={selectedCategory === null}
                 onClick={() => {
                   handleCategoryChange(null);

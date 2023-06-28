@@ -307,7 +307,10 @@ const Products = () => {
               <ScrollContainer className={styles.categories} ignoreElements={'div'}>
                 <Selector
                   title={'Hamısı'}
-                  icon={'/src/assets/images/icons/all.svg'}
+                  icon={{
+                    grey: '/src/assets/images/icons/allGrey.svg',
+                    white: '/src/assets/images/icons/allWhite.svg',
+                  }}
                   isSelected={filter.categories.length === 0}
                   onClick={() => {
                     handleCategoryClick(null);
@@ -317,7 +320,7 @@ const Products = () => {
                 {categories &&
                   categories.map((category) => (
                     <Selector
-                      key={`s${category.id}`}
+                      key={category.id}
                       title={category.name}
                       icon={category.logo}
                       isSelected={filter.categories.includes(category.id)}
