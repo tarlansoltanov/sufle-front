@@ -17,4 +17,5 @@ export {
   getAllProducts,
   getProductsByCategory,
   getProductsByFilter,
+  getProductsByPromo,
 } from './product';

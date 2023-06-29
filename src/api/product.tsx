@@ -1,6 +1,13 @@
 import instance from './index';
 
-import { IProduct, IPaginatedProducts, ICategory, IFilterProps, IPaginationProps } from '../types';
+import {
+  IProduct,
+  IPaginatedProducts,
+  ICategory,
+  IFilterProps,
+  IPromoProps,
+  IPaginationProps,
+} from '../types';
 
 const getProductDetails = async (id: number): Promise<IProduct> => {
   try {
@@ -28,7 +35,7 @@ export { getAllProducts };
 
 const getProductsByCategory = async (
   { page, limit }: IPaginationProps,
-  category: ICategory
+  category: ICategory | null
 ): Promise<IPaginatedProducts> => {
   try {
     const resp = await instance.get(
@@ -63,3 +70,21 @@ const getProductsByFilter = async (
 };
 
 export { getProductsByFilter };
+
+const getProductsByPromo = async (
+  { page, limit }: IPaginationProps,
+  { isNew, discount }: IPromoProps
+): Promise<IPaginatedProducts> => {
+  try {
+    const resp = await instance.get(
+      `product?${limit ? `limit=${limit}` : ''}&${page ? `page=${page}` : ''}&${
+        isNew ? 'is_new=true' : ''
+      }&${discount ? 'discount=true' : ''}`
+    );
+    return resp.data as IPaginatedProducts;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { getProductsByPromo };
