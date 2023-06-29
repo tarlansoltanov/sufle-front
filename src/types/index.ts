@@ -3,4 +3,4 @@ export type { default as IShop } from './shop';
 export type { ICategory, IMainCategory, ISubCategory } from './category';
 export type { default as IImage } from './image';
 export type { IProduct, IPaginatedProducts } from './product';
-export type { IFilterProps, IPaginationProps } from './extra';
+export type { IFilterProps, IPromoProps, IPaginationProps } from './extra';

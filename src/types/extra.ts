@@ -6,6 +6,11 @@ export interface IFilterProps {
   search: string;
 }
 
+export interface IPromoProps {
+  isNew?: boolean;
+  discount?: boolean;
+}
+
 export interface IPaginationProps {
   page?: number;
   limit?: number;
