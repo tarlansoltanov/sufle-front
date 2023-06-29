@@ -78,6 +78,10 @@
       display: flex;
       column-gap: 25px;
 
+      @media screen and (max-width: 786px) {
+        column-gap: 10px;
+      }
+
       width: 100%;
 
       overflow: hidden;
@@ -125,6 +129,7 @@
 
       @media screen and (max-width: 786px) {
         column-gap: 3px;
+        margin: 3px 0;
       }
 
       & > .btn {
@@ -358,6 +363,10 @@
     & > .categories {
       display: flex;
       column-gap: 25px;
+
+      @media screen and (max-width: 786px) {
+        column-gap: 10px;
+      }
 
       width: 100%;
 

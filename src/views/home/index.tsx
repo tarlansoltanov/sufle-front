@@ -134,7 +134,9 @@ const Home = () => {
                   white: '/src/assets/images/icons/arrowLeft.svg',
                 }}
                 isSelected={false}
-                onClick={() => setActiveItemIndex(activeItemIndex - 1)}
+                onClick={() => {
+                  if (activeItemIndex > 0) setActiveItemIndex(activeItemIndex - 1);
+                }}
                 className={cs(styles.prevBtn, styles.btn)}
               />
 
@@ -145,7 +147,10 @@ const Home = () => {
                   white: '/src/assets/images/icons/arrowRight.svg',
                 }}
                 isSelected={true}
-                onClick={() => setActiveItemIndex(activeItemIndex + 1)}
+                onClick={() => {
+                  if (promotions?.results && activeItemIndex + 4 < promotions?.results.length)
+                    setActiveItemIndex(activeItemIndex + 1);
+                }}
                 className={styles.btn}
               />
             </div>
@@ -168,13 +173,15 @@ const Home = () => {
                   : 1
               }
               activePosition={'left'}
-              gutter={window.innerWidth > 1024
-                ? 40
-                : window.innerWidth > 768
-                ? 20
-                : window.innerWidth > 320
-                ? 10
-                : 0}
+              gutter={
+                window.innerWidth > 1024
+                  ? 40
+                  : window.innerWidth > 768
+                  ? 20
+                  : window.innerWidth > 320
+                  ? 10
+                  : 0
+              }
               chevronWidth={0}
               classes={{
                 wrapper: styles.wrapper,

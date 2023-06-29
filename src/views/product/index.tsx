@@ -1,21 +1,26 @@
 import { useRef, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import ImageGallery from 'react-image-gallery';
+import ItemsCarousel from 'react-items-carousel';
+import cs from 'classnames';
 
 import { IProduct } from '../../types';
-import { getProductDetails } from '../../api';
+import { getProductDetails, getProductsByCategory } from '../../api';
 
 import Error from '../errors';
 
 import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
+import Selector from '../../components/Selector/Selector';
 import Loader from '../../components/Loader/Loader';
+import Card from '../../components/Card/Card';
 
 import styles from './Product.module.scss';
 import './image-gallery.css';
 
 const Product = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   // Product Details
 
@@ -37,6 +42,26 @@ const Product = () => {
   const onClickHandler = () => {
     imageGalleryRef.current.toggleFullScreen();
   };
+
+  // Related Products
+
+  const [activeItemIndex, setActiveItemIndex] = useState(0);
+
+  const [relatedProducts, setRelatedProducts] = useState<IProduct[]>([]);
+
+  useEffect(() => {
+    if (product === null) return;
+    getProductsByCategory({}, product.category)
+      .then((data) => setRelatedProducts(data.results))
+      .catch((resp) => {
+        setStatus(resp.status);
+      });
+
+    document.documentElement.style.setProperty(
+      '--scrollbar-width',
+      window.innerWidth - document.documentElement.clientWidth + 'px'
+    );
+  }, [product]);
 
   // Error or Loader
 
@@ -87,6 +112,104 @@ const Product = () => {
             <div className={styles.description}>
               <p>{product.ingredients}</p>
             </div>
+          </div>
+        </div>
+
+        <div className={styles.relatedProducts}>
+          <div className={styles.header}>
+            <div className={styles.title}>
+              <div className={styles.subtitle}>
+                <hr />
+                <h2>Digər Məhsullar</h2>
+              </div>
+              <h1>Digər Məhsullar</h1>
+            </div>
+
+            <div className={styles.sliderBtns}>
+              <Selector
+                title={''}
+                icon={{
+                  grey: '/src/assets/images/icons/arrowLeft.svg',
+                  white: '/src/assets/images/icons/arrowLeft.svg',
+                }}
+                isSelected={false}
+                onClick={() => {
+                  if (activeItemIndex > 0) setActiveItemIndex(activeItemIndex - 1);
+                }}
+                className={cs(styles.prevBtn, styles.btn)}
+              />
+
+              <Selector
+                title={''}
+                icon={{
+                  grey: '/src/assets/images/icons/arrowRight.svg',
+                  white: '/src/assets/images/icons/arrowRight.svg',
+                }}
+                isSelected={true}
+                onClick={() => {
+                  if (activeItemIndex + 4 < relatedProducts.length)
+                    setActiveItemIndex(activeItemIndex + 1);
+                }}
+                className={styles.btn}
+              />
+            </div>
+          </div>
+          <div className={styles.main}>
+            <ItemsCarousel
+              requestToChangeActive={setActiveItemIndex}
+              activeItemIndex={activeItemIndex}
+              numberOfCards={
+                window.innerWidth > 1280
+                  ? 4
+                  : window.innerWidth > 1024
+                  ? 3
+                  : window.innerWidth > 768
+                  ? 2
+                  : window.innerWidth > 480
+                  ? 3
+                  : window.innerWidth > 320
+                  ? 2
+                  : 1
+              }
+              activePosition={'left'}
+              gutter={
+                window.innerWidth > 1024
+                  ? 40
+                  : window.innerWidth > 768
+                  ? 20
+                  : window.innerWidth > 320
+                  ? 10
+                  : 0
+              }
+              chevronWidth={0}
+              classes={{
+                wrapper: styles.wrapper,
+                itemsWrapper: styles.itemsWrapper,
+                itemsInnerWrapper: styles.itemsInnerWrapper,
+                itemWrapper: styles.itemWrapper,
+              }}
+            >
+              {relatedProducts &&
+                (relatedProducts.length == 0 ? (
+                  <p className={styles.empty}>Məhsul tapılmadı</p>
+                ) : (
+                  relatedProducts.map((product) => (
+                    <Card
+                      key={product.id}
+                      photos={product.images}
+                      name={product.name}
+                      price={product.price}
+                      photoClass={styles.photo}
+                      className={styles.card}
+                      onClick={() => {
+                        navigate(`/products/${product.id}`);
+                      }}
+                      isNew={product.is_new}
+                      discount={product.discount}
+                    />
+                  ))
+                ))}
+            </ItemsCarousel>
           </div>
         </div>
       </Container>
