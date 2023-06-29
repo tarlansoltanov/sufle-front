@@ -16,8 +16,9 @@ const Home = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Categories
+
   const [categories, setCategories] = useState<IMainCategory[]>([]);
-  const [products, setProducts] = useState<IPaginatedProducts | null>();
   const [selectedCategory, setSelectedCategory] = useState<IMainCategory | null>(null);
 
   useEffect(() => {
@@ -25,25 +26,29 @@ const Home = () => {
       .then((data) => setCategories(data))
       .catch((err) => console.log(err));
 
-    getAllProducts({ limit: 8 })
+    setLoading(false);
+  }, []);
+
+  // Products
+
+  const [products, setProducts] = useState<IPaginatedProducts | null>();
+
+  useEffect(() => {
+    setLoading(true);
+
+    getProductsByCategory({ limit: 8 }, selectedCategory)
       .then((data) => setProducts(data))
       .catch((err) => console.log(err));
 
     setLoading(false);
-  }, []);
+  }, [selectedCategory]);
 
-  const handleCategoryChange = (category: IMainCategory | null) => {
-    setSelectedCategory(category);
-    if (!category) {
-      getAllProducts({ limit: 8 })
-        .then((data) => setProducts(data))
-        .catch((err) => console.log(err));
-    } else {
-      getProductsByCategory({ limit: 8 }, category)
-        .then((data) => setProducts(data))
-        .catch((err) => console.log(err));
-    }
-  };
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      '--scrollbar-width',
+      window.innerWidth - document.documentElement.clientWidth + 'px'
+    );
+  }, [loading]);
 
   if (loading) return <Loader />;
 
@@ -70,9 +75,7 @@ const Home = () => {
                   white: '/src/assets/images/icons/allWhite.svg',
                 }}
                 isSelected={selectedCategory === null}
-                onClick={() => {
-                  handleCategoryChange(null);
-                }}
+                onClick={() => setSelectedCategory(null)}
                 className={styles.selector}
               />
               {categories &&
@@ -82,9 +85,7 @@ const Home = () => {
                     title={category.name}
                     icon={category.logo}
                     isSelected={selectedCategory?.id === category.id}
-                    onClick={() => {
-                      handleCategoryChange(category);
-                    }}
+                    onClick={() => setSelectedCategory(category)}
                     className={styles.selector}
                   />
                 ))}
