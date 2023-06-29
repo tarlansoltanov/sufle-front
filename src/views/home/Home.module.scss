@@ -179,42 +179,54 @@
   & > .main {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
 
-    $width: calc(100vw - 12vw - 12vw);
+    gap: 40px;
+
+    $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
+    $space: calc(40px * 3 / 4);
 
     & .card {
-      max-width: calc($width * 0.25 - 14px);
+      max-width: calc($width * 0.25 - $space);
 
       & .photo {
-        width: calc($width * 0.25 - 14px);
-        height: calc(($width * 0.25 - 14px) * 0.75);
+        width: calc($width * 0.25 - $space);
+        height: calc(($width * 0.25 - $space) * 0.75);
       }
     }
 
     @media screen and (max-width: 1280px) {
       & .card {
-        max-width: calc($width * 0.333 - 14px);
+        max-width: calc($width * 0.333 - $space);
+
         & .photo {
-          width: calc($width * 0.333 - 14px);
-          height: calc(($width * 0.333 - 14px) * 0.75);
+          width: calc($width * 0.333 - $space);
+          height: calc(($width * 0.333 - $space) * 0.75);
         }
       }
     }
+
+    $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
+    $space: calc(30px * 3 / 4);
 
     @media screen and (max-width: 1024px) {
+      gap: 30px;
+
       & .card {
-        max-width: calc($width * 0.5 - 20px);
+        max-width: calc($width * 0.5 - $space);
+        
         & .photo {
-          width: calc($width * 0.5 - 20px);
-          height: calc(($width * 0.5 - 20px) * 0.75);
+          width: calc($width * 0.5 - $space);
+          height: calc(($width * 0.5 - $space) * 0.75);
         }
       }
     }
 
-    $width: calc(100vw - 25px - 25px);
+    $width: calc(100vw - 25px - 25px - var(--scrollbar-width));
+    $space: calc(10px * 3 / 4);
 
     @media screen and (max-width: 768px) {
+      gap: 10px;
+
       & .card {
         max-width: calc($width * 0.333 - 10px);
         & .photo {
