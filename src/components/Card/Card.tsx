@@ -32,7 +32,10 @@ function Card({
     <div className={cs(className, styles.card)} style={style} onClick={onClick}>
       <div className={cs(photoClass, styles.photo)}>
         <img src={photos[0].image} className={cs(styles.standart)} />
-        <img src={photos.length > 1 ? photos[1].image : photos[0].image} className={cs(styles.hover)} />
+        <img
+          src={photos.length > 1 ? photos[1].image : photos[0].image}
+          className={cs(styles.hover)}
+        />
         {discount > 0 && (
           <div className={styles.discount}>
             <span>{discount}%</span>
@@ -41,7 +44,7 @@ function Card({
 
         {isNew && (
           <div className={styles.tag}>
-            <img src="/src/assets/images/icons/new.svg" alt="New" />
+            <img src="/src/assets/images/icons/newRed.svg" alt="New" />
             <span>New</span>
           </div>
         )}
