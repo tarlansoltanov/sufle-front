@@ -117,6 +117,7 @@ const Home = () => {
               }}
               style={{ backgroundImage: `url('/src/assets/images/banner/banner1.jpg')` }}
             >
+              <div className={styles.square}></div>
               <span>Tortlar</span>
             </div>
             <div
@@ -126,6 +127,7 @@ const Home = () => {
               }}
               style={{ backgroundImage: `url('/src/assets/images/banner/banner2.jpg')` }}
             >
+              <div className={styles.square}></div>
               <span>Donuts</span>
             </div>
             <div
@@ -135,6 +137,7 @@ const Home = () => {
               }}
               style={{ backgroundImage: `url('/src/assets/images/banner/banner3.jpg')` }}
             >
+              <div className={styles.square}></div>
               <span>Desert</span>
             </div>
           </div>

@@ -111,17 +111,18 @@
   }
 
   & > .cards {
-    $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
-    width: calc($width * 0.7);
-    height: calc($width * 0.7 * 0.6);
+    $widthDesktop: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
+    $widthMobile: calc(100vw - 25px - 25px - var(--scrollbar-width));
+
+    width: calc($widthDesktop * 0.7);
+    height: calc($widthDesktop * 0.7 * 0.6);
 
     display: flex;
     gap: 40px;
 
     @media screen and (max-width: 768px) {
-      $width: calc(100vw - 25px - 25px - var(--scrollbar-width));
-      width: calc($width * 0.7);
-      height: calc($width * 0.7 * 0.6);
+      width: calc($widthMobile * 0.7);
+      height: calc($widthMobile * 0.7 * 0.6);
 
       gap: 10px;
     }
@@ -133,6 +134,7 @@
 
       overflow: hidden;
       cursor: pointer;
+      user-select: none;
 
       border-radius: 15px;
       border: none;
@@ -149,15 +151,38 @@
       background-size: cover;
       background-repeat: no-repeat;
 
+      @media screen and (max-width: 786px) {
+        border-radius: 10px;
+      }
+
       & > span {
-        min-width: 14em;
-        padding: 0.5em;
-        text-align: center;
+        position: absolute;
+
+        line-height: calc($widthDesktop * 0.06125);
+        bottom: calc($widthDesktop * 0.030625);
+        left: calc($widthDesktop * 0.030625);
+
+        color: #ffffff;
+        font-size: 58px;
+        font-weight: 400;
+
         transform: rotate(-90deg);
+        transform-origin: left;
         transition: all 0.5s;
         text-transform: uppercase;
-        color: #ffffff;
         letter-spacing: 0.1em;
+
+        @media screen and (max-width: 1280px) {
+          font-size: 37px;
+        }
+
+        @media screen and (max-width: 768px) {
+          font-size: 16px;
+
+          line-height: calc($widthMobile * 0.06125);
+          bottom: calc($widthMobile * 0.06125);
+          left: calc($widthMobile * 0.030625);
+        }
       }
 
       &.open {
@@ -165,6 +190,25 @@
 
         & span {
           transform: rotate(0);
+          left: calc($widthDesktop * 0.091875);
+        }
+      }
+
+      & > .square {
+        position: absolute;
+        bottom: calc($widthDesktop * 0.030625);
+        left: 0;
+
+        width: calc($widthDesktop * 0.06125);
+        height: calc($widthDesktop * 0.06125);
+
+        background-color: #f20530;
+
+        @media screen and (max-width: 768px) {
+          bottom: calc($widthMobile * 0.06125);
+
+          width: calc($widthMobile * 0.06125);
+          height: calc($widthMobile * 0.06125);
         }
       }
     }
