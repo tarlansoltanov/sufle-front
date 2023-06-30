@@ -18,6 +18,10 @@ const Home = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(true);
 
+  // Banner
+
+  const [activeCardIndex, setActiveCardIndex] = useState<number>(1);
+
   // Promotions
 
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -104,6 +108,35 @@ const Home = () => {
               Məhsullar
               <img src="/src/assets/images/icons/arrowLineWhite.svg" />
             </Link>
+          </div>
+          <div className={styles.cards}>
+            <div
+              className={cs(styles.card, { [styles.open]: activeCardIndex === 1 })}
+              onMouseEnter={() => {
+                setActiveCardIndex(1);
+              }}
+              style={{ backgroundImage: `url('/src/assets/images/banner/banner1.jpg')` }}
+            >
+              <span>Tortlar</span>
+            </div>
+            <div
+              className={cs(styles.card, { [styles.open]: activeCardIndex === 2 })}
+              onMouseEnter={() => {
+                setActiveCardIndex(2);
+              }}
+              style={{ backgroundImage: `url('/src/assets/images/banner/banner2.jpg')` }}
+            >
+              <span>Donuts</span>
+            </div>
+            <div
+              className={cs(styles.card, { [styles.open]: activeCardIndex === 3 })}
+              onMouseEnter={() => {
+                setActiveCardIndex(3);
+              }}
+              style={{ backgroundImage: `url('/src/assets/images/banner/banner3.jpg')` }}
+            >
+              <span>Desert</span>
+            </div>
           </div>
         </div>
         <div className={styles.promotions}>
@@ -258,7 +291,7 @@ const Home = () => {
 
             <Link to="/products" className={styles.viewAll}>
               <span>Hamısı</span>
-              <img src="/src/assets/images/icons/arrow-L.svg" alt="Arrow Left" />
+              <img src="/src/assets/images/icons/arrowLineRed.svg" alt="Arrow Left" />
             </Link>
           </div>
           <div className={styles.main}>
