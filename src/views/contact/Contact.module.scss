@@ -10,8 +10,8 @@
   & > .box {
     display: grid;
 
-    grid-template-columns: 55px 40px auto;
-    grid-template-rows: 38px 23px auto;
+    grid-template-columns: 55px 25px auto;
+    grid-template-rows: 38px 15px auto;
     grid-template-areas: 'icon . title' 'icon . .' 'icon . text';
 
     @media screen and (max-width: 1280px) and (min-width: 768px) {
@@ -31,8 +31,8 @@
     }
 
     & > .icon {
-      width: 55px;
-      height: 55px;
+      width: 45px;
+      height: 45px;
 
       display: flex;
       justify-content: center;
@@ -51,7 +51,7 @@
     }
 
     & > .title {
-      font-size: 30px;
+      font-size: 20px;
       line-height: 38px;
 
       text-transform: capitalize;
@@ -61,15 +61,17 @@
       grid-area: title;
 
       @media screen and (max-width: 768px) {
-        font-size: 20px;
+        font-size: 16px;
         line-height: 25px;
       }
     }
 
     & > .text {
       font-weight: 300;
-      font-size: 24px;
-      line-height: 30px;
+      font-size: 20px;
+      line-height: 25px;
+
+      color: #585858;
 
       word-wrap: break-word;
       word-break: break-word;
@@ -80,6 +82,8 @@
       grid-area: text;
 
       @media screen and (max-width: 1280px) {
+        font-size: 18px;
+        line-height: 20px;
         max-width: 100%;
         text-align: center;
       }
@@ -88,6 +92,11 @@
         text-align: left;
         font-size: 16px;
         line-height: 20px;
+      }
+
+      @media screen and (max-width: 480px) {
+        font-size: 14px;
+        line-height: 16px;
       }
     }
   }
@@ -153,8 +162,8 @@
 
     padding: 15px 66px;
 
-    font-size: 32px;
-    line-height: 40px;
+    font-size: 27px;
+    line-height: 35px;
 
     color: #ffffff;
 
