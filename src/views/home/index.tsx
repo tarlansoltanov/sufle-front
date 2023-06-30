@@ -95,8 +95,17 @@ const Home = () => {
 
   return (
     <main>
-      <Container>
-        <div className={styles.banner}></div>
+      <Container className={styles.container}>
+        <div className={styles.banner}>
+          <div className={styles.content}>
+            <h1 className={styles.title}>Sufle Cake House</h1>
+            <p className={styles.text}>Lorem ipsum dolor sit amet consectetur.</p>
+            <Link to="/products" className={styles.btn}>
+              Məhsullar
+              <img src="/src/assets/images/icons/arrowLineWhite.svg" />
+            </Link>
+          </div>
+        </div>
         <div className={styles.promotions}>
           <div className={styles.header}>
             <div className={styles.title}>
