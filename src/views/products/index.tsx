@@ -68,8 +68,8 @@ const Products = () => {
   });
 
   const sortingOptions = [
-    { value: '', label: 'Standart' },
-    { value: '-created_at', label: 'Ən Yenilər' },
+    { value: '', label: 'Ən Yenilər' },
+    { value: '-views', label: 'Ən Popular' },
     { value: 'price', label: 'Ən Aşağı Qiymət' },
     { value: '-price', label: 'Ən Yuxarı Qiymət' },
     { value: '-discount', label: 'Endirimdə olanlar' },
@@ -299,7 +299,9 @@ const Products = () => {
               </div>
             </div>
 
-            <button className={styles.submitBtn}>Tətbiq et</button>
+            <button className={styles.submitBtn} onClick={() => setFilterOpen(false)}>
+              Tətbiq et
+            </button>
           </section>
 
           <section className={styles.main}>

@@ -302,6 +302,10 @@
   }
 
   & > .submitBtn {
+    @media screen and (min-width: 1280px) {
+      display: none;
+    }
+
     width: 100%;
 
     font-weight: 400;
