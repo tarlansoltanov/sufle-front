@@ -1,7 +1,8 @@
+export { default as Vacancy } from './vacancy';
 export { default as Contact } from './contact';
 export { default as About } from './about';
-export { default as Vacancy } from './vacancy';
 export { default as Shops } from './shops';
+export { default as Gallery } from './gallery';
 export { default as Products } from './products';
 export { default as Product } from './product';
 export { default as ErrorPage } from './errors';
