@@ -16,12 +16,13 @@ const Gallery = () => {
   // Gallery Items
 
   const [galleryItems, setGalleryItems] = useState<IGallery[]>([]);
+  const [galleryType, setGalleryType] = useState<'image' | 'video' | null>(null);
 
   useEffect(() => {
-    getGalleryItems()
+    getGalleryItems(galleryType)
       .then((res) => setGalleryItems(res))
       .catch((err) => console.log(err));
-  }, []);
+  }, [galleryType]);
 
   // Slider
   const [activeItemIndex, setActiveItemIndex] = useState(0);
@@ -46,8 +47,8 @@ const Gallery = () => {
                   grey: '/src/assets/images/icons/allGrey.svg',
                   white: '/src/assets/images/icons/allWhite.svg',
                 }}
-                isSelected={true}
-                onClick={() => {}}
+                isSelected={galleryType === null}
+                onClick={() => setGalleryType(null)}
                 className={styles.selector}
               />
               <Selector
@@ -56,8 +57,8 @@ const Gallery = () => {
                   grey: '/src/assets/images/icons/videoGrey.svg',
                   white: '/src/assets/images/icons/videoWhite.svg',
                 }}
-                isSelected={true}
-                onClick={() => {}}
+                isSelected={galleryType == 'video'}
+                onClick={() => setGalleryType('video')}
                 className={styles.selector}
               />
               <Selector
@@ -66,8 +67,8 @@ const Gallery = () => {
                   grey: '/src/assets/images/icons/imageGrey.svg',
                   white: '/src/assets/images/icons/imageWhite.svg',
                 }}
-                isSelected={false}
-                onClick={() => {}}
+                isSelected={galleryType == 'image'}
+                onClick={() => setGalleryType('image')}
                 className={styles.selector}
               />
             </div>
