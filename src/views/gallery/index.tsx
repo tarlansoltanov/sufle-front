@@ -2,13 +2,28 @@ import cs from 'classnames';
 import { useEffect, useState } from 'react';
 import ItemsCarousel from 'react-items-carousel';
 
+import { IGallery } from '../../types';
+import { getGalleryItems } from '../../api';
+
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
 import Title from '../../components/Title/Title';
 
 import styles from './Gallery.module.scss';
+import { getVideoThumbnail } from '../../utils';
 
 const Gallery = () => {
+  // Gallery Items
+
+  const [galleryItems, setGalleryItems] = useState<IGallery[]>([]);
+
+  useEffect(() => {
+    getGalleryItems()
+      .then((res) => setGalleryItems(res))
+      .catch((err) => console.log(err));
+  }, []);
+
+  // Slider
   const [activeItemIndex, setActiveItemIndex] = useState(0);
 
   useEffect(() => {
@@ -16,7 +31,7 @@ const Gallery = () => {
       '--scrollbar-width',
       window.innerWidth - document.documentElement.clientWidth + 'px'
     );
-  }, [window.innerWidth]);
+  }, [galleryItems]);
 
   return (
     <main>
@@ -79,7 +94,8 @@ const Gallery = () => {
                 }}
                 isSelected={true}
                 onClick={() => {
-                  if (activeItemIndex + 2 < 3) setActiveItemIndex(activeItemIndex + 1);
+                  if (activeItemIndex + 3 < galleryItems.length)
+                    setActiveItemIndex(activeItemIndex + 1);
                 }}
                 className={styles.btn}
               />
@@ -89,7 +105,7 @@ const Gallery = () => {
             <ItemsCarousel
               requestToChangeActive={setActiveItemIndex}
               activeItemIndex={activeItemIndex}
-              numberOfCards={window.innerWidth > 320 ? 2 : 1}
+              numberOfCards={window.innerWidth > 320 ? 3 : 1}
               activePosition={'left'}
               gutter={
                 window.innerWidth > 1024
@@ -108,27 +124,27 @@ const Gallery = () => {
                 itemWrapper: styles.itemWrapper,
               }}
             >
-              <div
-                className={styles.card}
-                style={{ backgroundImage: "url('/src/assets/images/gallery/gallery1.jpg')" }}
-              >
-                <span>İş prosesi</span>
-                <div className={styles.square}></div>
-              </div>
-              <div
-                className={styles.card}
-                style={{ backgroundImage: "url('/src/assets/images/gallery/gallery1.jpg')" }}
-              >
-                <span>İş prosesi</span>
-                <div className={styles.square}></div>
-              </div>
-              <div
-                className={styles.card}
-                style={{ backgroundImage: "url('/src/assets/images/gallery/gallery1.jpg')" }}
-              >
-                <span>İş prosesi</span>
-                <div className={styles.square}></div>
-              </div>
+              {galleryItems.map((item) =>
+                item.type === 'image' ? (
+                  <div
+                    key={item.id}
+                    className={styles.card}
+                    style={{ backgroundImage: `url('${item.url}')` }}
+                  >
+                    <span>{item.title}</span>
+                    <div className={styles.square}></div>
+                  </div>
+                ) : (
+                  <div
+                    key={item.id}
+                    className={styles.card}
+                    style={{ backgroundImage: `url('${getVideoThumbnail(item.url)}')` }}
+                  >
+                    <span>{item.title}</span>
+                    <div className={styles.square}></div>
+                  </div>
+                )
+              )}
             </ItemsCarousel>
           </div>
         </div>

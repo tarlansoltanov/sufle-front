@@ -125,16 +125,16 @@
   & .itemsInnerWrapper {
     width: 100%;
   }
-  $widthDesktop: calc(100vw - 12vw - 12vw - var(--scrollbarWidth, 0px));
-  $widthMobile: calc(100vw - 25px - 25px - var(--scrollbarWidth, 0px));
+  $widthDesktop: calc(100vw - 12vw - 12vw - var(--scrollbar-width, 0px));
+  $widthMobile: calc(100vw - 25px - 25px - var(--scrollbar-width, 0px));
 
   & .itemWrapper {
     width: auto;
   }
 
   & .card {
-    width: calc(($widthDesktop - 40px) * 0.5);
-    height: calc(($widthDesktop - 40px) * 0.5);
+    width: calc(($widthDesktop - 80px) * 0.333);
+    height: calc(($widthDesktop - 80px) * 0.333);
 
     position: relative;
 
@@ -150,14 +150,14 @@
     background-repeat: no-repeat;
 
     @media screen and (max-width: 1024px) {
-      width: calc(($widthDesktop - 20px) * 0.5);
-      height: calc(($widthDesktop - 20px) * 0.5);
+      width: calc(($widthDesktop - 40px) * 0.333);
+      height: calc(($widthDesktop - 40px) * 0.333);
     }
 
     @media screen and (max-width: 786px) {
       border-radius: 10px;
-      width: calc(($widthMobile - 10px) * 0.5);
-      height: calc(($widthMobile - 10px) * 0.5);
+      width: calc(($widthMobile - 20px) * 0.333);
+      height: calc(($widthMobile - 20px) * 0.333);
     }
 
     @media screen and (max-width: 320px) {
