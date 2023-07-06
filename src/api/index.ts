@@ -13,6 +13,7 @@ export { getAllVacancies } from './vacancy';
 export { getAllShops, getMainShop } from './shop';
 export { getMainCategories } from './category';
 export { getGalleryItems } from './gallery';
+export { getAdverts } from './advert';
 export {
   getProductDetails,
   getAllProducts,
