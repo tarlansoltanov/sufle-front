@@ -3,6 +3,10 @@ import cs from 'classnames';
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
 
+import AboutImage1 from '../../assets/images/about/about1.png';
+import AboutImage2 from '../../assets/images/about/about2.png';
+import AboutImage3 from '../../assets/images/about/about3.png';
+
 import styles from './About.module.scss';
 
 const About = () => {
@@ -19,14 +23,13 @@ const About = () => {
 
           <div className={styles.content}>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa
-              convallis amet neque quam. Pretium vestibulum eget enim pharetra
-              ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit
-              ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec
-              tincidunt risus platea volutpat posuere. Mi cursus quis sit
-              feugiat donec scelerisque tempor in. Facilisis commodo tristique
-              lectus vel parturient nisi quis. Id ultrices amet ac non enim
-              bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.
+              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque
+              quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet
+              amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas
+              donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec
+              scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id
+              ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed
+              auctor.
             </p>
           </div>
 
@@ -34,7 +37,7 @@ const About = () => {
             <div
               className={cs(styles.photo, styles.photoBig)}
               style={{
-                backgroundImage: "url('/src/assets/images/about/about1.png')",
+                backgroundImage: `url(${AboutImage1})`,
               }}
             >
               <div className={styles.square}></div>
@@ -44,7 +47,7 @@ const About = () => {
             <div
               className={cs(styles.photo, styles.photoSmall)}
               style={{
-                backgroundImage: "url('/src/assets/images/about/about2.png')",
+                backgroundImage: `url(${AboutImage2})`,
               }}
             >
               <div className={styles.square}></div>
@@ -83,14 +86,13 @@ const About = () => {
 
           <div className={styles.content}>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa
-              convallis amet neque quam. Pretium vestibulum eget enim pharetra
-              ut in congue arcu et. Ipsum pulvinar amet amet amet. Ornare sit
-              ullamcorper facilisi in eu enim iaculis etiam quam. Egestas donec
-              tincidunt risus platea volutpat posuere. Mi cursus quis sit
-              feugiat donec scelerisque tempor in. Facilisis commodo tristique
-              lectus vel parturient nisi quis. Id ultrices amet ac non enim
-              bibendum commodo. Sit et ut elementum nisl scelerisque sed auctor.
+              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque
+              quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet
+              amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas
+              donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec
+              scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id
+              ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed
+              auctor.
             </p>
           </div>
 
@@ -98,7 +100,7 @@ const About = () => {
             <div
               className={styles.photo}
               style={{
-                backgroundImage: "url('/src/assets/images/about/about3.png')",
+                backgroundImage: `url(${AboutImage3})`,
               }}
             >
               <div className={styles.square}></div>

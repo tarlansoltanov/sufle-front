@@ -3,6 +3,8 @@ import cs from 'classnames';
 
 import { IImage } from '../../types';
 
+import { NewIconRed } from '../../assets/images/icons';
+
 import styles from './Card.module.scss';
 
 interface Props {
@@ -44,8 +46,8 @@ function Card({
 
         {isNew && (
           <div className={styles.tag}>
-            <img src="/src/assets/images/icons/newRed.svg" alt="New" />
-            <span>New</span>
+            <img src={NewIconRed} alt="New" />
+            <span>Yeni</span>
           </div>
         )}
       </div>

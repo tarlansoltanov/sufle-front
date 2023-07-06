@@ -5,6 +5,14 @@ import cs from 'classnames';
 import { IShop } from '../../types';
 import { getMainShop } from '../../api';
 
+import {
+  AppStoreIcon,
+  PlayStoreIcon,
+  InstagramIconGrey,
+  FacebookIconGrey,
+  CopyrightIcon,
+} from '../../assets/images/icons';
+
 import Container from '../Container/Container';
 
 import styles from './Footer.module.scss';
@@ -109,11 +117,11 @@ const Footer = () => {
               <ul>
                 <li>
                   <a href="#">
-                    <img src="/src/assets/images/icons/app_store.svg" alt="App Store" />
+                    <img src={AppStoreIcon} alt="App Store" />
                   </a>
 
                   <a href="#">
-                    <img src="/src/assets/images/icons/play_store.svg" alt="Play Store" />
+                    <img src={PlayStoreIcon} alt="Play Store" />
                   </a>
                 </li>
               </ul>
@@ -125,17 +133,17 @@ const Footer = () => {
 
         <div className={cs(styles.widget, styles.footnote)}>
           <div className={styles.copyright}>
-            <img src="/src/assets/images/icons/copyright.svg" alt="Copyright" />
+            <img src={CopyrightIcon} alt="Copyright" />
             <h2>Bütün hüquqlar qorunur</h2>
           </div>
 
           <div className={styles.social}>
             <a href="#">
-              <img src="/src/assets/images/icons/facebook.svg" alt="Facebook" />
+              <img src={FacebookIconGrey} alt="Facebook" />
             </a>
 
             <a href="#">
-              <img src="/src/assets/images/icons/instagram.svg" alt="Instagram" />
+              <img src={InstagramIconGrey} alt="Instagram" />
             </a>
           </div>
         </div>

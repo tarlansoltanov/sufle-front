@@ -1,12 +1,20 @@
 import cs from 'classnames';
 import { useState, useEffect } from 'react';
+import ScrollContainer from 'react-indiana-drag-scroll';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
 
 import { IPaginatedProducts, IMainCategory, IFilterProps } from '../../types';
 import { getMainCategories, getProductsByFilter } from '../../api';
 
-import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import {
+  AllIconGrey,
+  AllIconWhite,
+  CloseIcon,
+  DropdownIcon,
+  FilterIconWhite,
+  SortIcon,
+} from '../../assets/images/icons';
 
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
@@ -180,13 +188,13 @@ const Products = () => {
             >
               <p>Filtr</p>
 
-              <img src="/src/assets/images/icons/filter.svg" alt="Filter" />
+              <img src={FilterIconWhite} alt="Filter" />
             </button>
 
             <button className={cs(styles.sortBtn)} onClick={() => setSortOpen(!sortOpen)}>
               <p>Sıralama</p>
 
-              <img src="/src/assets/images/icons/sort.svg" alt="Sort" />
+              <img src={SortIcon} alt="Sort" />
             </button>
           </div>
 
@@ -195,7 +203,7 @@ const Products = () => {
               <h1>Filtr</h1>
 
               <button className={styles.closeBtn} onClick={() => setFilterOpen(!filterOpen)}>
-                <img src="/src/assets/images/icons/close.svg" alt="Close" />
+                <img src={CloseIcon} alt="Close" />
               </button>
             </div>
 
@@ -220,11 +228,7 @@ const Products = () => {
 
                           <p>{category.name}</p>
 
-                          <img
-                            src="/src/assets/images/icons/dropdown.svg"
-                            alt="Dropdown"
-                            className={styles.dropdown}
-                          />
+                          <img src={DropdownIcon} alt="Dropdown" className={styles.dropdown} />
                         </div>
 
                         <ul className={styles.subCategories}>
@@ -310,8 +314,8 @@ const Products = () => {
                 <Selector
                   title={'Hamısı'}
                   icon={{
-                    grey: '/src/assets/images/icons/allGrey.svg',
-                    white: '/src/assets/images/icons/allWhite.svg',
+                    grey: AllIconGrey,
+                    white: AllIconWhite,
                   }}
                   isSelected={filter.categories.length === 0}
                   onClick={() => {
@@ -340,7 +344,7 @@ const Products = () => {
                     <p>
                       {sortingOptions.find((option) => option.value === filter.ordering)?.label}
                     </p>
-                    <img src="/src/assets/images/icons/sort.svg" alt="Sort" />
+                    <img src={SortIcon} alt="Sort" />
                   </span>
                 </button>
 
@@ -349,7 +353,7 @@ const Products = () => {
                     <h1>Sıralama</h1>
 
                     <button className={styles.closeBtn} onClick={() => setSortOpen(!sortOpen)}>
-                      <img src="/src/assets/images/icons/close.svg" alt="Close" />
+                      <img src={CloseIcon} alt="Close" />
                     </button>
                   </li>
 

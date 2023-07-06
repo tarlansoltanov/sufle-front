@@ -4,13 +4,24 @@ import ItemsCarousel from 'react-items-carousel';
 
 import { IGallery } from '../../types';
 import { getGalleryItems } from '../../api';
+import { getVideoThumbnail } from '../../utils';
+
+import {
+  AllIconGrey,
+  AllIconWhite,
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  ImageIconGrey,
+  ImageIconWhite,
+  VideoIconGrey,
+  VideoIconWhite,
+} from '../../assets/images/icons';
 
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
 import Title from '../../components/Title/Title';
 
 import styles from './Gallery.module.scss';
-import { getVideoThumbnail } from '../../utils';
 
 const Gallery = () => {
   // Gallery Items
@@ -44,8 +55,8 @@ const Gallery = () => {
               <Selector
                 title={'Hamısı'}
                 icon={{
-                  grey: '/src/assets/images/icons/allGrey.svg',
-                  white: '/src/assets/images/icons/allWhite.svg',
+                  grey: AllIconGrey,
+                  white: AllIconWhite,
                 }}
                 isSelected={galleryType === null}
                 onClick={() => setGalleryType(null)}
@@ -54,8 +65,8 @@ const Gallery = () => {
               <Selector
                 title={'Videolar'}
                 icon={{
-                  grey: '/src/assets/images/icons/videoGrey.svg',
-                  white: '/src/assets/images/icons/videoWhite.svg',
+                  grey: VideoIconGrey,
+                  white: VideoIconWhite,
                 }}
                 isSelected={galleryType == 'video'}
                 onClick={() => setGalleryType('video')}
@@ -64,8 +75,8 @@ const Gallery = () => {
               <Selector
                 title={'Şəkillər'}
                 icon={{
-                  grey: '/src/assets/images/icons/imageGrey.svg',
-                  white: '/src/assets/images/icons/imageWhite.svg',
+                  grey: ImageIconGrey,
+                  white: ImageIconWhite,
                 }}
                 isSelected={galleryType == 'image'}
                 onClick={() => setGalleryType('image')}
@@ -77,8 +88,8 @@ const Gallery = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowLeft.svg',
-                  white: '/src/assets/images/icons/arrowLeft.svg',
+                  grey: ArrowLeftIcon,
+                  white: ArrowLeftIcon,
                 }}
                 isSelected={false}
                 onClick={() => {
@@ -90,8 +101,8 @@ const Gallery = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowRight.svg',
-                  white: '/src/assets/images/icons/arrowRight.svg',
+                  grey: ArrowRightIcon,
+                  white: ArrowRightIcon,
                 }}
                 isSelected={true}
                 onClick={() => {

@@ -7,7 +7,7 @@ import cs from 'classnames';
 import { IProduct } from '../../types';
 import { getProductDetails, getProductsByCategory } from '../../api';
 
-import Error from '../errors';
+import { ArrowLeftIcon, ArrowRightIcon } from '../../assets/images/icons';
 
 import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
@@ -129,8 +129,8 @@ const Product = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowLeft.svg',
-                  white: '/src/assets/images/icons/arrowLeft.svg',
+                  grey: ArrowLeftIcon,
+                  white: ArrowLeftIcon,
                 }}
                 isSelected={false}
                 onClick={() => {
@@ -142,8 +142,8 @@ const Product = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowRight.svg',
-                  white: '/src/assets/images/icons/arrowRight.svg',
+                  grey: ArrowRightIcon,
+                  white: ArrowRightIcon,
                 }}
                 isSelected={true}
                 onClick={() => {

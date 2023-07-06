@@ -13,6 +13,18 @@ import Loader from '../../components/Loader/Loader';
 import Card from '../../components/Card/Card';
 
 import styles from './Home.module.scss';
+import {
+  AllIconGrey,
+  AllIconWhite,
+  ArrowLeftIcon,
+  ArrowLineIconRed,
+  ArrowLineIconWhite,
+  ArrowRightIcon,
+  DiscountIconGrey,
+  DiscountIconWhite,
+  NewIconGrey,
+  NewIconWhite,
+} from '../../assets/images/icons';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -31,16 +43,16 @@ const Home = () => {
       label: 'Yeni Gələnlər',
       value: 'new',
       icons: {
-        grey: '/src/assets/images/icons/newGrey.svg',
-        white: '/src/assets/images/icons/newWhite.svg',
+        grey: NewIconGrey,
+        white: NewIconWhite,
       },
     },
     {
       label: 'Endirimdə olanlar',
       value: 'discount',
       icons: {
-        grey: '/src/assets/images/icons/discountGrey.svg',
-        white: '/src/assets/images/icons/discountWhite.svg',
+        grey: DiscountIconGrey,
+        white: DiscountIconWhite,
       },
     },
   ];
@@ -106,7 +118,7 @@ const Home = () => {
             <p className={styles.text}>Lorem ipsum dolor sit amet consectetur.</p>
             <Link to="/products" className={styles.btn}>
               Məhsullar
-              <img src="/src/assets/images/icons/arrowLineWhite.svg" />
+              <img src={ArrowLineIconWhite} />
             </Link>
           </div>
           <div className={styles.cards}>
@@ -175,8 +187,8 @@ const Home = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowLeft.svg',
-                  white: '/src/assets/images/icons/arrowLeft.svg',
+                  grey: ArrowLeftIcon,
+                  white: ArrowLeftIcon,
                 }}
                 isSelected={false}
                 onClick={() => {
@@ -188,8 +200,8 @@ const Home = () => {
               <Selector
                 title={''}
                 icon={{
-                  grey: '/src/assets/images/icons/arrowRight.svg',
-                  white: '/src/assets/images/icons/arrowRight.svg',
+                  grey: ArrowRightIcon,
+                  white: ArrowRightIcon,
                 }}
                 isSelected={true}
                 onClick={() => {
@@ -272,8 +284,8 @@ const Home = () => {
               <Selector
                 title={'Hamısı'}
                 icon={{
-                  grey: '/src/assets/images/icons/allGrey.svg',
-                  white: '/src/assets/images/icons/allWhite.svg',
+                  grey: AllIconGrey,
+                  white: AllIconWhite,
                 }}
                 isSelected={selectedCategory === null}
                 onClick={() => setSelectedCategory(null)}
@@ -294,7 +306,7 @@ const Home = () => {
 
             <Link to="/products" className={styles.viewAll}>
               <span>Hamısı</span>
-              <img src="/src/assets/images/icons/arrowLineRed.svg" alt="Arrow Left" />
+              <img src={ArrowLineIconRed} alt="Arrow Left" />
             </Link>
           </div>
           <div className={styles.main}>

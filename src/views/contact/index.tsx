@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { IShop } from '../../types';
 import { getMainShop } from '../../api';
 
+import { ClockIcon, LocationIcon, PhoneIcon } from '../../assets/images/icons';
+
 import Container from '../../components/Container/Container';
 import Title from '../../components/Title/Title';
 import Input from '../../components/Input/Input';
@@ -43,7 +45,7 @@ const Contact = () => {
         <div className={styles.contacts}>
           <div className={styles.box}>
             <div className={styles.icon}>
-              <img src="/src/assets/images/icons/location.svg" alt="Location" />
+              <img src={LocationIcon} alt="Location" />
             </div>
 
             <h2 className={styles.title}>Ünvan</h2>
@@ -53,7 +55,7 @@ const Contact = () => {
 
           <div className={styles.box}>
             <div className={styles.icon}>
-              <img src="/src/assets/images/icons/phone.svg" alt="Phone" />
+              <img src={PhoneIcon} alt="Phone" />
             </div>
 
             <h2 className={styles.title}>Əlaqə</h2>
@@ -66,7 +68,7 @@ const Contact = () => {
 
           <div className={styles.box}>
             <div className={styles.icon}>
-              <img src="/src/assets/images/icons/clock.svg" alt="Clock" />
+              <img src={ClockIcon} alt="Clock" />
             </div>
 
             <h2 className={styles.title}>İş Saatları</h2>

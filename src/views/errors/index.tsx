@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { SearchIcon } from '../../assets/images/icons';
+
 import Input from '../../components/Input/Input';
 
 import styles from './Errors.module.scss';
@@ -29,7 +31,7 @@ const ErrorPage = ({ error_code }: Props) => {
             name="search"
             placeholder="Axtarış..."
             className={styles.search}
-            icon="/src/assets/images/icons/search.svg"
+            icon={SearchIcon}
           />
         </form>
       </div>
