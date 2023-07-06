@@ -4,8 +4,13 @@ import ItemsCarousel from 'react-items-carousel';
 import { Link, useNavigate } from 'react-router-dom';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
-import { IMainCategory, IPaginatedProducts } from '../../types';
-import { getMainCategories, getProductsByCategory, getProductsByPromo } from '../../api';
+import { IAdvert, IMainCategory, IPaginatedProducts } from '../../types';
+import {
+  getAdverts,
+  getMainCategories,
+  getProductsByCategory,
+  getProductsByPromo,
+} from '../../api';
 
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
@@ -32,7 +37,18 @@ const Home = () => {
 
   // Banner
 
-  const [activeCardIndex, setActiveCardIndex] = useState<number>(1);
+  const [activeCardIndex, setActiveCardIndex] = useState<number>(0);
+  const [adverts, setAdverts] = useState<IAdvert[]>([]);
+
+  useEffect(() => {
+    setLoading(true);
+
+    getAdverts()
+      .then((data) => setAdverts(data))
+      .catch((err) => console.log(err));
+
+    setLoading(false);
+  }, []);
 
   // Promotions
 
@@ -122,36 +138,19 @@ const Home = () => {
             </Link>
           </div>
           <div className={styles.cards}>
-            <div
-              className={cs(styles.card, { [styles.open]: activeCardIndex === 1 })}
-              onMouseEnter={() => {
-                setActiveCardIndex(1);
-              }}
-              style={{ backgroundImage: `url('/src/assets/images/banner/banner1.jpg')` }}
-            >
-              <div className={styles.square}></div>
-              <span>Tortlar</span>
-            </div>
-            <div
-              className={cs(styles.card, { [styles.open]: activeCardIndex === 2 })}
-              onMouseEnter={() => {
-                setActiveCardIndex(2);
-              }}
-              style={{ backgroundImage: `url('/src/assets/images/banner/banner2.jpg')` }}
-            >
-              <div className={styles.square}></div>
-              <span>Donuts</span>
-            </div>
-            <div
-              className={cs(styles.card, { [styles.open]: activeCardIndex === 3 })}
-              onMouseEnter={() => {
-                setActiveCardIndex(3);
-              }}
-              style={{ backgroundImage: `url('/src/assets/images/banner/banner3.jpg')` }}
-            >
-              <div className={styles.square}></div>
-              <span>Desert</span>
-            </div>
+            {adverts &&
+              adverts.map((advert, index) => (
+                <div
+                  className={cs(styles.card, { [styles.open]: activeCardIndex === index })}
+                  onMouseEnter={() => {
+                    setActiveCardIndex(index);
+                  }}
+                  style={{ backgroundImage: `url(${advert.photo})` }}
+                >
+                  <div className={styles.square}></div>
+                  <span>{advert.title}</span>
+                </div>
+              ))}
           </div>
         </div>
         <div className={styles.promotions}>
