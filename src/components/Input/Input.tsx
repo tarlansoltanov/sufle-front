@@ -15,6 +15,7 @@ interface Props {
   ) => void;
   isSearch?: boolean;
   isTextArea?: boolean;
+  readonly?: boolean;
 }
 
 const Input = ({
@@ -27,6 +28,7 @@ const Input = ({
   style,
   onChange,
   isTextArea,
+  readonly,
 }: Props) => {
   return (
     <div
@@ -46,6 +48,7 @@ const Input = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          readOnly={readonly}
         ></textarea>
       ) : (
         <input
@@ -54,6 +57,7 @@ const Input = ({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
+          readOnly={readonly}
         />
       )}
     </div>
