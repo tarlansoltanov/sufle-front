@@ -14,6 +14,7 @@ import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
 import Loader from '../../components/Loader/Loader';
 import Card from '../../components/Card/Card';
+import ErrorPage from '../errors';
 
 import styles from './Product.module.scss';
 import './image-gallery.css';
@@ -67,7 +68,7 @@ const Product = () => {
 
   if (product === null) {
     if (status !== null) {
-      return <Error error_code={status} />;
+      return <ErrorPage error_code={status} />;
     }
     return <Loader />;
   }
