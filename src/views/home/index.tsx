@@ -141,11 +141,13 @@ const Home = () => {
             {adverts &&
               adverts.map((advert, index) => (
                 <div
+                  key={advert.id}
                   className={cs(styles.card, { [styles.open]: activeCardIndex === index })}
                   onMouseEnter={() => {
                     setActiveCardIndex(index);
                   }}
                   style={{ backgroundImage: `url(${advert.photo})` }}
+                  onClick={() => navigate(`/products?categories=${advert.category}`)}
                 >
                   <div className={styles.square}></div>
                   <span>{advert.title}</span>
