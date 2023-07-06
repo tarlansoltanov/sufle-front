@@ -1,9 +1,9 @@
+import cs from 'classnames';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import cs from 'classnames';
 
-import { IShop } from '../../types';
-import { getMainShop } from '../../api';
+import { IShop, IMainCategory } from '../../types';
+import { getMainShop, getMainCategories } from '../../api';
 
 import {
   AppStoreIcon,
@@ -19,9 +19,11 @@ import styles from './Footer.module.scss';
 
 const Footer = () => {
   const [shop, setShop] = useState<IShop | null>(null);
+  const [categories, setCategories] = useState<IMainCategory[]>([]);
 
   useEffect(() => {
     getMainShop().then((data) => setShop(data));
+    getMainCategories().then((data) => setCategories(data));
   }, []);
 
   return (
@@ -63,29 +65,12 @@ const Footer = () => {
 
             <div className={styles.content}>
               <ul>
-                <li>
-                  <a href="#">Tortlar</a>
-                </li>
-
-                <li>
-                  <a href="#">Donuts</a>
-                </li>
-
-                <li>
-                  <a href="#">Ekler</a>
-                </li>
-
-                <li>
-                  <a href="#">Bulka & Qoğal</a>
-                </li>
-
-                <li>
-                  <a href="#">Paxlavalar</a>
-                </li>
-
-                <li>
-                  <a href="#">For Kids</a>
-                </li>
+                {categories &&
+                  categories.map((category) => (
+                    <li key={category.id}>
+                      <NavLink to="/products?categories=category.id">{category.name}</NavLink>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
