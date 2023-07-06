@@ -115,7 +115,7 @@ const Home = () => {
         <div className={styles.banner}>
           <div className={styles.content}>
             <h1 className={styles.title}>Sufle Cake House</h1>
-            <p className={styles.text}>Lorem ipsum dolor sit amet consectetur.</p>
+            <p className={styles.text}>Qəlbinizdəki hislərin Şirin dadı</p>
             <Link to="/products" className={styles.btn}>
               Məhsullar
               <img src={ArrowLineIconWhite} />
