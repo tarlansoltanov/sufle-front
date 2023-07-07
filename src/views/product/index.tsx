@@ -13,6 +13,7 @@ import Title from '../../components/Title/Title';
 import Container from '../../components/Container/Container';
 import Selector from '../../components/Selector/Selector';
 import Loader from '../../components/Loader/Loader';
+import Input from '../../components/Input/Input';
 import Card from '../../components/Card/Card';
 import ErrorPage from '../errors';
 
@@ -112,6 +113,28 @@ const Product = () => {
 
             <div className={styles.description}>
               <p>{product.ingredients}</p>
+            </div>
+
+            <div className={styles.priceCalculator}>
+              <div className={cs(styles.count, styles.personCount)}>
+                <h1>Adam Sayı</h1>
+                <Input
+                  type="number"
+                  className={styles.input}
+                  placeholder="Adam sayını daxil edin"
+                  name="person_count"
+                />
+              </div>
+              <div className={cs(styles.count, styles.weight)}>
+                <h1>Çəki (kq)</h1>
+                <Input
+                  type="number"
+                  className={styles.input}
+                  placeholder="0"
+                  name="weight"
+                  readonly
+                />
+              </div>
             </div>
           </div>
         </div>
