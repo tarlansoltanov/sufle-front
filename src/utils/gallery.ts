@@ -7,7 +7,7 @@ export { getVideoId };
 
 const getVideoThumbnail = (url: string) => {
   const videoId = getVideoId(url);
-  return videoId ? `https://img.youtube.com/vi/${videoId}/default.jpg` : null;
+  return videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : null;
 };
 
 export { getVideoThumbnail };
