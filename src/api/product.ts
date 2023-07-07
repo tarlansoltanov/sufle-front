@@ -7,6 +7,7 @@ import {
   IFilterProps,
   IPromoProps,
   IPaginationProps,
+  IWeight,
 } from '../types';
 
 const getProductDetails = async (id: number): Promise<IProduct> => {
@@ -88,3 +89,14 @@ const getProductsByPromo = async (
 };
 
 export { getProductsByPromo };
+
+const getWeights = async (): Promise<IWeight[]> => {
+  try {
+    const resp = await instance.get('weight');
+    return resp.data as IWeight[];
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { getWeights };

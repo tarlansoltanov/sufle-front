@@ -20,4 +20,5 @@ export {
   getProductsByCategory,
   getProductsByFilter,
   getProductsByPromo,
+  getWeights,
 } from './product';

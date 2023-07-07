@@ -5,4 +5,4 @@ export type { default as IImage } from './image';
 export type { default as IGallery } from './gallery';
 export type { default as IAdvert } from './advert';
 export type { IProduct, IPaginatedProducts } from './product';
-export type { IFilterProps, IPromoProps, IPaginationProps } from './extra';
+export type { IFilterProps, IPromoProps, IPaginationProps, IWeight } from './extra';

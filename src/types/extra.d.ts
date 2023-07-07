@@ -15,3 +15,8 @@ export interface IPaginationProps {
   page?: number;
   limit?: number;
 }
+
+export interface IWeight {
+  person_count: number;
+  weight: decimal;
+}
