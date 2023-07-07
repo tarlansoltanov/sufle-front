@@ -36,8 +36,6 @@ const Product = () => {
       .catch((resp) => {
         setStatus(resp.status);
       });
-
-    setPrice(product?.price || 0);
   }, [id]);
 
   // Image Gallery
@@ -62,6 +60,8 @@ const Product = () => {
       .catch((resp) => {
         setStatus(resp.status);
       });
+
+    setPrice(product?.price || 0);
 
     document.documentElement.style.setProperty(
       '--scrollbar-width',
