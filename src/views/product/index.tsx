@@ -4,8 +4,8 @@ import ImageGallery from 'react-image-gallery';
 import ItemsCarousel from 'react-items-carousel';
 import cs from 'classnames';
 
-import { IProduct } from '../../types';
-import { getProductDetails, getProductsByCategory } from '../../api';
+import { IProduct, IWeight } from '../../types';
+import { getProductDetails, getProductsByCategory, getWeights } from '../../api';
 
 import { ArrowLeftIcon, ArrowRightIcon } from '../../assets/images/icons';
 
@@ -28,6 +28,7 @@ const Product = () => {
 
   const [product, setProduct] = useState<IProduct | null>(null);
   const [status, setStatus] = useState<number | null>(null);
+  const [price, setPrice] = useState<number>(0);
 
   useEffect(() => {
     getProductDetails(Number(id))
@@ -35,6 +36,8 @@ const Product = () => {
       .catch((resp) => {
         setStatus(resp.status);
       });
+
+    setPrice(product?.price || 0);
   }, [id]);
 
   // Image Gallery
@@ -53,6 +56,7 @@ const Product = () => {
 
   useEffect(() => {
     if (product === null) return;
+
     getProductsByCategory({}, product.category)
       .then((data) => setRelatedProducts(data.results))
       .catch((resp) => {
@@ -64,6 +68,44 @@ const Product = () => {
       window.innerWidth - document.documentElement.clientWidth + 'px'
     );
   }, [product]);
+
+  // Price Calculation
+
+  const [weights, setWeights] = useState<IWeight[]>([]);
+
+  useEffect(() => {
+    getWeights()
+      .then((data) => setWeights(data))
+      .catch((resp) => setStatus(resp.status));
+  }, []);
+
+  const [calcData, setCalcData] = useState<any>({
+    person_count: 0,
+    weight: 0,
+  });
+
+  const changePrice = (e: any) => {
+    if (product === null) return 0;
+
+    const value = e.target.value;
+
+    weights.forEach((weight) => {
+      if (value >= weight.person_count) {
+        setCalcData({ person_count: Number(value), weight: weight.weight });
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (product === null) return;
+
+    if (calcData.person_count === 0) {
+      setPrice(product.price);
+      return;
+    }
+
+    setPrice(product.price * calcData.weight * calcData.person_count);
+  }, [calcData]);
 
   // Error or Loader
 
@@ -101,9 +143,7 @@ const Product = () => {
           <div className={styles.details}>
             <div className={styles.price}>
               {product.discount > 0 && <p className={styles.oldPrice}>{product.price} AZN</p>}
-              <p className={styles.currentPrice}>
-                {product.price * ((100 - product.discount) / 100)} AZN
-              </p>
+              <p className={styles.currentPrice}>{price} AZN</p>
               {product.discount > 0 && <p className={styles.discount}>{product.discount}%</p>}
             </div>
 
@@ -123,15 +163,25 @@ const Product = () => {
                   className={styles.input}
                   placeholder="Adam sayını daxil edin"
                   name="person_count"
+                  onChange={(e) => {
+                    changePrice(e);
+                  }}
                 />
               </div>
               <div className={cs(styles.count, styles.weight)}>
                 <h1>Çəki (kq)</h1>
                 <Input
-                  type="number"
+                  type="text"
                   className={styles.input}
                   placeholder="0"
                   name="weight"
+                  value={
+                    calcData.person_count === 0
+                      ? '0'
+                      : `${calcData.person_count} x ${calcData.weight} = ${
+                          calcData.person_count * calcData.weight
+                        } kq`
+                  }
                   readonly
                 />
               </div>
