@@ -7,8 +7,6 @@ import { getGalleryItems } from '../../api';
 import { getVideoThumbnail } from '../../utils';
 
 import {
-  AllIconGrey,
-  AllIconWhite,
   ArrowLeftIcon,
   ArrowRightIcon,
   ImageIconGrey,
@@ -27,12 +25,14 @@ const Gallery = () => {
   // Gallery Items
 
   const [galleryItems, setGalleryItems] = useState<IGallery[]>([]);
-  const [galleryType, setGalleryType] = useState<'image' | 'video' | null>(null);
+  const [galleryType, setGalleryType] = useState<'image' | 'video'>('image');
 
   useEffect(() => {
     getGalleryItems(galleryType)
       .then((res) => setGalleryItems(res))
       .catch((err) => console.log(err));
+
+    setActiveItemIndex(0);
   }, [galleryType]);
 
   // Slider
@@ -53,13 +53,13 @@ const Gallery = () => {
           <div className={styles.header}>
             <div className={styles.selections}>
               <Selector
-                title={'Hamısı'}
+                title={'Şəkillər'}
                 icon={{
-                  grey: AllIconGrey,
-                  white: AllIconWhite,
+                  grey: ImageIconGrey,
+                  white: ImageIconWhite,
                 }}
-                isSelected={galleryType === null}
-                onClick={() => setGalleryType(null)}
+                isSelected={galleryType == 'image'}
+                onClick={() => setGalleryType('image')}
                 className={styles.selector}
               />
               <Selector
@@ -70,16 +70,6 @@ const Gallery = () => {
                 }}
                 isSelected={galleryType == 'video'}
                 onClick={() => setGalleryType('video')}
-                className={styles.selector}
-              />
-              <Selector
-                title={'Şəkillər'}
-                icon={{
-                  grey: ImageIconGrey,
-                  white: ImageIconWhite,
-                }}
-                isSelected={galleryType == 'image'}
-                onClick={() => setGalleryType('image')}
                 className={styles.selector}
               />
             </div>
