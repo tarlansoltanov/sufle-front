@@ -77,11 +77,12 @@
 
   &Footer {
     display: none;
+    justify-content: flex-start !important;
 
     gap: 40px;
 
     & > a {
-      width: auto;
+      width: auto !important;
     }
   }
 
