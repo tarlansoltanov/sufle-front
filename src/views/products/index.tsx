@@ -1,11 +1,11 @@
-import cs from 'classnames';
-import { useState, useEffect } from 'react';
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import MultiRangeSlider, { ChangeResult } from 'multi-range-slider-react';
+import cs from "classnames";
+import { useState, useEffect } from "react";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
 
-import { IPaginatedProducts, IMainCategory, IFilterProps } from '../../types';
-import { getMainCategories, getProductsByFilter } from '../../api';
+import { IPaginatedProducts, IMainCategory, IFilterProps } from "../../types";
+import { getMainCategories, getProductsByFilter } from "../../api";
 
 import {
   AllIconGrey,
@@ -14,16 +14,16 @@ import {
   DropdownIcon,
   FilterIconWhite,
   SortIcon,
-} from '../../assets/images/icons';
+} from "../../assets/images/icons";
 
-import Container from '../../components/Container/Container';
-import Title from '../../components/Title/Title';
-import Selector from '../../components/Selector/Selector';
-import Card from '../../components/Card/Card';
-import Loader from '../../components/Loader/Loader';
+import Container from "../../components/Container/Container";
+import Title from "../../components/Title/Title";
+import Selector from "../../components/Selector/Selector";
+import Card from "../../components/Card/Card";
+import Loader from "../../components/Loader/Loader";
 
-import styles from './Products.module.scss';
-import './range-slider.css';
+import styles from "./Products.module.scss";
+import "./range-slider.css";
 
 const Products = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Products = () => {
 
   // Pagination
 
-  const [page, setPage] = useState<number>(Number(searchParams.get('page')) || 1);
+  const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1);
 
   const changePage = (page: number) => {
     setLoading(true);
@@ -50,9 +50,9 @@ const Products = () => {
 
     navigate(
       `/products?${
-        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}` : ''
+        filter.categories.length > 0 ? `categories=${filter.categories.join(",")}` : ""
       }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
-        filter.ordering ? `sort=${filter.ordering}` : ''
+        filter.ordering ? `sort=${filter.ordering}` : ""
       }&page=${page}`
     );
 
@@ -66,21 +66,21 @@ const Products = () => {
   const [filter, setFilter] = useState<IFilterProps>({
     categories:
       searchParams
-        .get('categories')
-        ?.split(',')
+        .get("categories")
+        ?.split(",")
         .map((item: string) => Number(item)) || [],
-    minPrice: Number(searchParams.get('minPrice')) || 0,
-    maxPrice: Number(searchParams.get('maxPrice')) || 100,
-    ordering: searchParams.get('sort') || '',
-    search: searchParams.get('search') || '',
+    minPrice: Number(searchParams.get("minPrice")) || 0,
+    maxPrice: Number(searchParams.get("maxPrice")) || 100,
+    ordering: searchParams.get("sort") || "",
+    search: searchParams.get("search") || "",
   });
 
   const sortingOptions = [
-    { value: '', label: 'Ən Yenilər' },
-    { value: '-views', label: 'Ən Popular' },
-    { value: 'price', label: 'Ən Aşağı Qiymət' },
-    { value: '-price', label: 'Ən Yuxarı Qiymət' },
-    { value: '-discount', label: 'Endirimdə olanlar' },
+    { value: "", label: "Ən Yenilər" },
+    { value: "-views", label: "Ən Popular" },
+    { value: "price", label: "Ən Aşağı Qiymət" },
+    { value: "-price", label: "Ən Yuxarı Qiymət" },
+    { value: "-discount", label: "Endirimdə olanlar" },
   ];
 
   const filterProducts = () => {
@@ -96,11 +96,11 @@ const Products = () => {
 
     navigate(
       `/products?${
-        filter.categories.length > 0 ? `categories=${filter.categories.join(',')}&` : ''
-      }${filter.minPrice > 0 ? `minPrice=${filter.minPrice}&` : ''}${
-        filter.maxPrice < 100 ? `maxPrice=${filter.maxPrice}&` : ''
-      }${filter.ordering ? `sort=${filter.ordering}&` : ''}${
-        filter.search ? `search=${filter.search}` : ''
+        filter.categories.length > 0 ? `categories=${filter.categories.join(",")}&` : ""
+      }${filter.minPrice > 0 ? `minPrice=${filter.minPrice}&` : ""}${
+        filter.maxPrice < 100 ? `maxPrice=${filter.maxPrice}&` : ""
+      }${filter.ordering ? `sort=${filter.ordering}&` : ""}${
+        filter.search ? `search=${filter.search}` : ""
       }`
     );
 
@@ -120,9 +120,9 @@ const Products = () => {
   const handlePriceInput = (e: React.FormEvent<HTMLInputElement>) => {
     const target = e.currentTarget;
 
-    if (target.name === 'min') {
+    if (target.name === "min") {
       setFilter({ ...filter, minPrice: Number(target.value) });
-    } else if (target.name === 'max') {
+    } else if (target.name === "max") {
       setFilter({ ...filter, maxPrice: Number(target.value) });
     }
   };
@@ -173,6 +173,11 @@ const Products = () => {
 
   useEffect(() => {
     filterProducts();
+    
+    document.documentElement.style.setProperty(
+      "--scrollbar-width",
+      window.innerWidth - document.documentElement.clientWidth + "px"
+    );
   }, [filter]);
 
   return (
@@ -310,9 +315,9 @@ const Products = () => {
 
           <section className={styles.main}>
             <div className={styles.ordering}>
-              <ScrollContainer className={styles.categories} ignoreElements={'div'}>
+              <ScrollContainer className={styles.categories} ignoreElements={"div"}>
                 <Selector
-                  title={'Hamısı'}
+                  title={"Hamısı"}
                   icon={{
                     grey: AllIconGrey,
                     white: AllIconWhite,
@@ -399,7 +404,7 @@ const Products = () => {
                   {products && products.previous ? (
                     <>
                       <a className={styles.pageBtn} onClick={() => changePage(page - 1)}>
-                        {'<'}
+                        {"<"}
                       </a>
                       <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
                         {page - 1}
@@ -415,7 +420,7 @@ const Products = () => {
                         {page + 1}
                       </a>
                       <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
-                        {'<'}
+                        {"<"}
                       </a>
                     </>
                   ) : null}
