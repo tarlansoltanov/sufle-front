@@ -1,10 +1,17 @@
-import cs from 'classnames';
-import { useEffect, useState } from 'react';
-import ItemsCarousel from 'react-items-carousel';
+import cs from "classnames";
+import { useEffect, useState } from "react";
+import ItemsCarousel from "react-items-carousel";
 
-import { IGallery } from '../../types';
-import { getGalleryItems } from '../../api';
-import { getVideoThumbnail } from '../../utils';
+// Preview Modals
+import Lightbox from "react-18-image-lightbox";
+import "react-18-image-lightbox/style.css";
+
+import ModalVideo from "react-modal-video";
+import "react-modal-video/scss/modal-video.scss";
+
+import { IGallery } from "../../types";
+import { getGalleryItems } from "../../api";
+import { getVideoThumbnail, getVideoId } from "../../utils";
 
 import {
   ArrowLeftIcon,
@@ -13,19 +20,20 @@ import {
   ImageIconWhite,
   VideoIconGrey,
   VideoIconWhite,
-} from '../../assets/images/icons';
+} from "../../assets/images/icons";
 
-import Container from '../../components/Container/Container';
-import Selector from '../../components/Selector/Selector';
-import Title from '../../components/Title/Title';
+import Container from "../../components/Container/Container";
+import Selector from "../../components/Selector/Selector";
+import Title from "../../components/Title/Title";
+import Loader from "../../components/Loader/Loader";
 
-import styles from './Gallery.module.scss';
+import styles from "./Gallery.module.scss";
 
 const Gallery = () => {
   // Gallery Items
 
   const [galleryItems, setGalleryItems] = useState<IGallery[]>([]);
-  const [galleryType, setGalleryType] = useState<'image' | 'video'>('image');
+  const [galleryType, setGalleryType] = useState<"image" | "video">("image");
 
   useEffect(() => {
     getGalleryItems(galleryType)
@@ -40,10 +48,17 @@ const Gallery = () => {
 
   useEffect(() => {
     document.documentElement.style.setProperty(
-      '--scrollbar-width',
-      window.innerWidth - document.documentElement.clientWidth + 'px'
+      "--scrollbar-width",
+      window.innerWidth - document.documentElement.clientWidth + "px"
     );
   }, [galleryItems]);
+
+  // Lightbox
+  const [selectedImage, setSelectedImage] = useState<number>(-1);
+  const [videoModal, setVideoModal] = useState<boolean>(false);
+  const [videoId, setVideoId] = useState<string>("");
+
+  if (galleryItems.length === 0) return <Loader />;
 
   return (
     <main>
@@ -53,30 +68,30 @@ const Gallery = () => {
           <div className={styles.header}>
             <div className={styles.selections}>
               <Selector
-                title={'Şəkillər'}
+                title={"Şəkillər"}
                 icon={{
                   grey: ImageIconGrey,
                   white: ImageIconWhite,
                 }}
-                isSelected={galleryType == 'image'}
-                onClick={() => setGalleryType('image')}
+                isSelected={galleryType == "image"}
+                onClick={() => setGalleryType("image")}
                 className={styles.selector}
               />
               <Selector
-                title={'Videolar'}
+                title={"Videolar"}
                 icon={{
                   grey: VideoIconGrey,
                   white: VideoIconWhite,
                 }}
-                isSelected={galleryType == 'video'}
-                onClick={() => setGalleryType('video')}
+                isSelected={galleryType == "video"}
+                onClick={() => setGalleryType("video")}
                 className={styles.selector}
               />
             </div>
 
             <div className={styles.sliderBtns}>
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowLeftIcon,
                   white: ArrowLeftIcon,
@@ -89,7 +104,7 @@ const Gallery = () => {
               />
 
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowRightIcon,
                   white: ArrowRightIcon,
@@ -108,7 +123,7 @@ const Gallery = () => {
               requestToChangeActive={setActiveItemIndex}
               activeItemIndex={activeItemIndex}
               numberOfCards={window.innerWidth > 320 ? 3 : 1}
-              activePosition={'left'}
+              activePosition={"left"}
               gutter={
                 window.innerWidth > 1024
                   ? 40
@@ -127,11 +142,12 @@ const Gallery = () => {
               }}
             >
               {galleryItems.map((item) =>
-                item.type === 'image' ? (
+                item.type === "image" ? (
                   <div
                     key={item.id}
                     className={styles.card}
                     style={{ backgroundImage: `url('${item.url}')` }}
+                    onClick={() => setSelectedImage(galleryItems.indexOf(item))}
                   >
                     <span>{item.title}</span>
                     <div className={styles.square}></div>
@@ -141,6 +157,10 @@ const Gallery = () => {
                     key={item.id}
                     className={styles.card}
                     style={{ backgroundImage: `url('${getVideoThumbnail(item.url)}')` }}
+                    onClick={() => {
+                      setVideoId(getVideoId(item.url) || "");
+                      setVideoModal(true);
+                    }}
                   >
                     <span>{item.title}</span>
                     <div className={styles.square}></div>
@@ -148,6 +168,33 @@ const Gallery = () => {
                 )
               )}
             </ItemsCarousel>
+            {selectedImage !== -1 ? (
+              <Lightbox
+                mainSrc={galleryItems[selectedImage].url}
+                nextSrc={galleryItems[(selectedImage + 1) % galleryItems.length].url}
+                prevSrc={
+                  galleryItems[(selectedImage + galleryItems.length - 1) % galleryItems.length].url
+                }
+                imageCaption={galleryItems[selectedImage].title}
+                onCloseRequest={() => setSelectedImage(-1)}
+                onMovePrevRequest={() =>
+                  setSelectedImage((selectedImage + galleryItems.length - 1) % galleryItems.length)
+                }
+                onMoveNextRequest={() =>
+                  setSelectedImage((selectedImage + 1) % galleryItems.length)
+                }
+                
+              />
+            ) : null}
+
+            <ModalVideo
+              videoId={videoId}
+              channel="youtube"
+              isOpen={videoModal}
+              onClose={() => {
+                setVideoModal(!videoModal);
+              }}
+            />
           </div>
         </div>
       </Container>
