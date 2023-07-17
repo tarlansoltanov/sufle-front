@@ -173,7 +173,7 @@ const Products = () => {
 
   useEffect(() => {
     filterProducts();
-    
+
     document.documentElement.style.setProperty(
       "--scrollbar-width",
       window.innerWidth - document.documentElement.clientWidth + "px"
@@ -315,7 +315,7 @@ const Products = () => {
 
           <section className={styles.main}>
             <div className={styles.ordering}>
-              <ScrollContainer className={styles.categories} ignoreElements={"div"}>
+              <ScrollContainer className={styles.categories}>
                 <Selector
                   title={"Hamısı"}
                   icon={{

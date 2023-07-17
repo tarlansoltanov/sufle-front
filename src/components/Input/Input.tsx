@@ -1,6 +1,6 @@
-import cs from 'classnames';
+import cs from "classnames";
 
-import styles from './Input.module.scss';
+import styles from "./Input.module.scss";
 
 interface Props {
   name: string;
@@ -10,6 +10,7 @@ interface Props {
   icon?: string;
   className?: string;
   style?: React.CSSProperties;
+  required?: boolean;
   onChange?: (
     e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
   ) => void;
@@ -26,6 +27,7 @@ const Input = ({
   icon,
   className,
   style,
+  required,
   onChange,
   isTextArea,
   readonly,
@@ -49,15 +51,17 @@ const Input = ({
           value={value}
           onChange={onChange}
           readOnly={readonly}
+          required={required}
         ></textarea>
       ) : (
         <input
           name={name}
-          type={type ? type : 'text'}
+          type={type ? type : "text"}
           placeholder={placeholder}
           value={value}
           onChange={onChange}
           readOnly={readonly}
+          required={required}
         />
       )}
     </div>

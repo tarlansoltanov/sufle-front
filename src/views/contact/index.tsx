@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+import cs from "classnames";
 
-import { IShop } from '../../types';
-import { getMainShop } from '../../api';
+import { IShop } from "../../types";
+import { getMainShop } from "../../api";
 
-import { ClockIcon, LocationIcon, PhoneIcon } from '../../assets/images/icons';
+import { ClockIcon, LocationIcon, PhoneIcon } from "../../assets/images/icons";
 
-import Container from '../../components/Container/Container';
-import Title from '../../components/Title/Title';
-import Input from '../../components/Input/Input';
+import Container from "../../components/Container/Container";
+import Title from "../../components/Title/Title";
+import Input from "../../components/Input/Input";
 
-import styles from './Contact.module.scss';
+import styles from "./Contact.module.scss";
+import axios from "axios";
 
 const Contact = () => {
   const [shop, setShop] = useState<IShop | null>(null);
@@ -19,11 +21,11 @@ const Contact = () => {
   }, []);
 
   const [form, setForm] = useState({
-    first_name: '',
-    last_name: '',
-    phone: '',
-    email: '',
-    message: '',
+    name: "",
+    surname: "",
+    phone: "",
+    email: "",
+    message: "",
   });
 
   const handleInputChange = (
@@ -34,7 +36,31 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(form);
+    axios({
+      method: "POST",
+      url: "https://api.sufle.az/api/contact/",
+      data: form,
+    })
+      .then((res) => {
+        setForm({
+          name: "",
+          surname: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+        console.log(res);
+      })
+      .catch((err) => {
+        setForm({
+          name: "",
+          surname: "",
+          phone: "",
+          email: "",
+          message: "",
+        });
+        console.log(err);
+      });
   };
 
   return (
@@ -60,7 +86,7 @@ const Contact = () => {
 
             <h2 className={styles.title}>Əlaqə</h2>
 
-            <p className={styles.text}>
+            <p className={cs(styles.text, styles.phone)}>
               Telefon: {shop?.phone} <br />
               Email: {shop?.email}
             </p>
@@ -83,19 +109,21 @@ const Contact = () => {
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <Input
-            name="first_name"
+            name="name"
             placeholder="Ad"
-            value={form.first_name}
+            value={form.name}
             onChange={handleInputChange}
             className={styles.input}
+            required
           />
 
           <Input
-            name="last_name"
+            name="surname"
             placeholder="Soyad"
-            value={form.last_name}
+            value={form.surname}
             onChange={handleInputChange}
             className={styles.input}
+            required
           />
 
           <Input
@@ -104,6 +132,7 @@ const Contact = () => {
             value={form.phone}
             onChange={handleInputChange}
             className={styles.input}
+            required
           />
 
           <Input
@@ -120,6 +149,7 @@ const Contact = () => {
             value={form.message}
             onChange={handleInputChange}
             className={styles.textarea}
+            required
             isTextArea
           ></Input>
 

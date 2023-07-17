@@ -1,23 +1,23 @@
-import cs from 'classnames';
-import { useState, useEffect } from 'react';
-import ItemsCarousel from 'react-items-carousel';
-import { Link, useNavigate } from 'react-router-dom';
-import ScrollContainer from 'react-indiana-drag-scroll';
+import cs from "classnames";
+import { useState, useEffect } from "react";
+import ItemsCarousel from "react-items-carousel";
+import { Link, useNavigate } from "react-router-dom";
+import ScrollContainer from "react-indiana-drag-scroll";
 
-import { IAdvert, IMainCategory, IPaginatedProducts } from '../../types';
+import { IAdvert, IMainCategory, IPaginatedProducts } from "../../types";
 import {
   getAdverts,
   getMainCategories,
   getProductsByCategory,
   getProductsByPromo,
-} from '../../api';
+} from "../../api";
 
-import Container from '../../components/Container/Container';
-import Selector from '../../components/Selector/Selector';
-import Loader from '../../components/Loader/Loader';
-import Card from '../../components/Card/Card';
+import Container from "../../components/Container/Container";
+import Selector from "../../components/Selector/Selector";
+import Loader from "../../components/Loader/Loader";
+import Card from "../../components/Card/Card";
 
-import styles from './Home.module.scss';
+import styles from "./Home.module.scss";
 import {
   AllIconGrey,
   AllIconWhite,
@@ -29,7 +29,7 @@ import {
   DiscountIconWhite,
   NewIconGrey,
   NewIconWhite,
-} from '../../assets/images/icons';
+} from "../../assets/images/icons";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -56,16 +56,16 @@ const Home = () => {
 
   const promotionOptions = [
     {
-      label: 'Yeni Gələnlər',
-      value: 'new',
+      label: "Yeni Gələnlər",
+      value: "new",
       icons: {
         grey: NewIconGrey,
         white: NewIconWhite,
       },
     },
     {
-      label: 'Endirimdə olanlar',
-      value: 'discount',
+      label: "Endirimdə olanlar",
+      value: "discount",
       icons: {
         grey: DiscountIconGrey,
         white: DiscountIconWhite,
@@ -74,14 +74,14 @@ const Home = () => {
   ];
 
   const [promotions, setPromotions] = useState<IPaginatedProducts | null>(null);
-  const [selectedPromotion, setSelectedPromotion] = useState<string>('new');
+  const [selectedPromotion, setSelectedPromotion] = useState<string>("new");
 
   useEffect(() => {
     setLoading(true);
 
     getProductsByPromo(
       { limit: 8 },
-      { isNew: selectedPromotion === 'new', discount: selectedPromotion === 'discount' }
+      { isNew: selectedPromotion === "new", discount: selectedPromotion === "discount" }
     )
       .then((data) => setPromotions(data))
       .catch((err) => console.log(err));
@@ -118,8 +118,8 @@ const Home = () => {
 
   useEffect(() => {
     document.documentElement.style.setProperty(
-      '--scrollbar-width',
-      window.innerWidth - document.documentElement.clientWidth + 'px'
+      "--scrollbar-width",
+      window.innerWidth - document.documentElement.clientWidth + "px"
     );
   }, [loading]);
 
@@ -131,7 +131,7 @@ const Home = () => {
         <div className={styles.banner}>
           <div className={styles.content}>
             <h1 className={styles.title}>Sufle Cake House</h1>
-            <p className={styles.text}>Qəlbinizdəki hislərin Şirin dadı</p>
+            <p className={styles.text}>Qəlbinizdəki hislərin şirin dadı</p>
             <Link to="/products" className={styles.btn}>
               Məhsullar
               <img src={ArrowLineIconWhite} />
@@ -186,7 +186,7 @@ const Home = () => {
 
             <div className={styles.sliderBtns}>
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowLeftIcon,
                   white: ArrowLeftIcon,
@@ -199,7 +199,7 @@ const Home = () => {
               />
 
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowRightIcon,
                   white: ArrowRightIcon,
@@ -230,7 +230,7 @@ const Home = () => {
                   ? 2
                   : 1
               }
-              activePosition={'left'}
+              activePosition={"left"}
               gutter={
                 window.innerWidth > 1024
                   ? 40
@@ -283,7 +283,7 @@ const Home = () => {
 
             <ScrollContainer className={styles.categories}>
               <Selector
-                title={'Hamısı'}
+                title={"Hamısı"}
                 icon={{
                   grey: AllIconGrey,
                   white: AllIconWhite,
@@ -306,7 +306,7 @@ const Home = () => {
             </ScrollContainer>
 
             <Link to="/products" className={styles.viewAll}>
-              <span>Hamısı</span>
+              <span>Daha Çox</span>
               <img src={ArrowLineIconRed} alt="Arrow Left" />
             </Link>
           </div>

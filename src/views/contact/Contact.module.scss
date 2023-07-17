@@ -12,7 +12,7 @@
 
     grid-template-columns: 55px 25px auto;
     grid-template-rows: 38px 15px auto;
-    grid-template-areas: 'icon . title' 'icon . .' 'icon . text';
+    grid-template-areas: "icon . title" "icon . ." "icon . text";
 
     @media screen and (max-width: 1280px) and (min-width: 768px) {
       display: flex;
@@ -27,7 +27,7 @@
       max-width: 100%;
       grid-template-columns: 20px 12px auto;
       grid-template-rows: 25px 16px auto;
-      grid-template-areas: 'icon . title' '. . .' 'text text text';
+      grid-template-areas: "icon . title" ". . ." "text text text";
     }
 
     & > .icon {
@@ -97,6 +97,13 @@
       @media screen and (max-width: 480px) {
         font-size: 14px;
         line-height: 16px;
+      }
+
+      &.phone {
+        @media screen and (max-width: 480px) {
+          font-size: 14px;
+          line-height: 25px;
+        }
       }
     }
   }

@@ -161,7 +161,7 @@
 
         line-height: calc($widthDesktop * 0.06125);
         bottom: calc($widthDesktop * 0.030625);
-        left: calc($widthDesktop * 0.030625);
+        left: calc(($widthDesktop * 0.030625) + 1vw);
 
         color: #ffffff;
         font-size: 46px;
@@ -170,11 +170,10 @@
         transform: rotate(-90deg);
         transform-origin: left;
         transition: all 0.5s;
-        text-transform: uppercase;
         letter-spacing: 0.1em;
 
         @media screen and (max-width: 1280px) {
-          font-size: 37px;
+          font-size: 30px;
         }
 
         @media screen and (max-width: 768px) {
@@ -182,7 +181,7 @@
 
           line-height: calc($widthMobile * 0.06125);
           bottom: calc($widthMobile * 0.06125);
-          left: calc($widthMobile * 0.030625);
+          left: calc(($widthMobile * 0.030625) + 1vw);
         }
       }
 
@@ -637,7 +636,7 @@
       border-radius: 45px;
 
       @media screen and (max-width: 786px) {
-        padding: 7px 15px;
+        padding: 7px 10px;
       }
 
       & > span {
@@ -646,10 +645,12 @@
         line-height: 20px;
         color: #f20530;
 
+        white-space: nowrap;
+
         @media screen and (max-width: 786px) {
-          height: 12px;
-          font-size: 10px;
-          line-height: 12px;
+          height: 8px;
+          font-size: 8px;
+          line-height: 8px;
         }
       }
 
