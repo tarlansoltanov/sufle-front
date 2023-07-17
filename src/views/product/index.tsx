@@ -1,24 +1,24 @@
-import { useRef, useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import ImageGallery from 'react-image-gallery';
-import ItemsCarousel from 'react-items-carousel';
-import cs from 'classnames';
+import { useRef, useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import ImageGallery from "react-image-gallery";
+import ItemsCarousel from "react-items-carousel";
+import cs from "classnames";
 
-import { IProduct, IWeight } from '../../types';
-import { getProductDetails, getProductsByCategory, getWeights } from '../../api';
+import { IProduct, IWeight } from "../../types";
+import { getProductDetails, getProductsByCategory, getWeights } from "../../api";
 
-import { ArrowLeftIcon, ArrowRightIcon } from '../../assets/images/icons';
+import { ArrowLeftIcon, ArrowRightIcon } from "../../assets/images/icons";
 
-import Title from '../../components/Title/Title';
-import Container from '../../components/Container/Container';
-import Selector from '../../components/Selector/Selector';
-import Loader from '../../components/Loader/Loader';
-import Input from '../../components/Input/Input';
-import Card from '../../components/Card/Card';
-import ErrorPage from '../errors';
+import Title from "../../components/Title/Title";
+import Container from "../../components/Container/Container";
+import Selector from "../../components/Selector/Selector";
+import Loader from "../../components/Loader/Loader";
+import Input from "../../components/Input/Input";
+import Card from "../../components/Card/Card";
+import ErrorPage from "../errors";
 
-import styles from './Product.module.scss';
-import './image-gallery.css';
+import styles from "./Product.module.scss";
+import "./image-gallery.css";
 
 const Product = () => {
   const { id } = useParams();
@@ -64,8 +64,8 @@ const Product = () => {
     setPrice(product?.price || 0);
 
     document.documentElement.style.setProperty(
-      '--scrollbar-width',
-      window.innerWidth - document.documentElement.clientWidth + 'px'
+      "--scrollbar-width",
+      window.innerWidth - document.documentElement.clientWidth + "px"
     );
   }, [product]);
 
@@ -143,7 +143,7 @@ const Product = () => {
           <div className={styles.details}>
             <div className={styles.price}>
               {product.discount > 0 && <p className={styles.oldPrice}>{product.price} AZN</p>}
-              <p className={styles.currentPrice}>{price} AZN</p>
+              <p className={styles.currentPrice}>{Number(price).toFixed(2)} AZN</p>
               {product.discount > 0 && <p className={styles.discount}>{product.discount}%</p>}
             </div>
 
@@ -177,7 +177,7 @@ const Product = () => {
                   name="weight"
                   value={
                     calcData.person_count === 0
-                      ? '0'
+                      ? "0"
                       : `${calcData.person_count} x ${calcData.weight} = ${
                           calcData.person_count * calcData.weight
                         } kq`
@@ -201,7 +201,7 @@ const Product = () => {
 
             <div className={styles.sliderBtns}>
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowLeftIcon,
                   white: ArrowLeftIcon,
@@ -214,7 +214,7 @@ const Product = () => {
               />
 
               <Selector
-                title={''}
+                title={""}
                 icon={{
                   grey: ArrowRightIcon,
                   white: ArrowRightIcon,
@@ -245,7 +245,7 @@ const Product = () => {
                   ? 2
                   : 1
               }
-              activePosition={'left'}
+              activePosition={"left"}
               gutter={
                 window.innerWidth > 1024
                   ? 40
