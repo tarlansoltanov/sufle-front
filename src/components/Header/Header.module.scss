@@ -14,12 +14,8 @@
 
   gap: 10px;
 
-  margin: 0 auto;
-  padding: 0 10px;
-
-  @media screen and (min-width: 1280px) {
-    max-width: 1500px;
-  }
+  padding-bottom: 0;
+  padding-top: 0;
 }
 
 .openBtn {
@@ -115,7 +111,7 @@
         display: flex;
         justify-content: space-between;
 
-        font-family: 'Montserrat';
+        font-family: "Montserrat";
         font-weight: 400;
         font-size: 14px;
         line-height: 22px;
@@ -171,7 +167,7 @@
   }
 
   & > img {
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1650px) {
       position: relative;
       left: 0;
       top: 0;
@@ -184,7 +180,7 @@
     background: #f8f8f8;
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.05);
 
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1650px) {
       display: none;
     }
 

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { NavLink, useLocation, Link } from 'react-router-dom';
-import cs from 'classnames';
+import { useState, useEffect } from "react";
+import { NavLink, useLocation, Link } from "react-router-dom";
+import cs from "classnames";
 
-import Logo from '/src/assets/images/logo.png';
+import Logo from "/src/assets/images/logo.png";
 import {
   MenuIcon,
   CloseIcon,
@@ -10,11 +10,12 @@ import {
   FacebookIconRed,
   InstagramIconRed,
   SearchIcon,
-} from '../../assets/images/icons';
+} from "../../assets/images/icons";
 
-import Input from '../Input/Input';
+import Input from "../Input/Input";
+import Container from "../Container/Container";
 
-import styles from './Header.module.scss';
+import styles from "./Header.module.scss";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +27,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
+      <Container className={styles.container}>
         <button className={styles.openBtn} onClick={() => setMenuOpen(!menuOpen)}>
           <img src={MenuIcon} alt="Menu" />
         </button>
@@ -50,49 +51,49 @@ const Header = () => {
             </li>
 
             <li>
-              <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Ana Səhifə
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/products" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/products" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Məhsullar
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/gallery" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/gallery" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Qalereya
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/shops" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/shops" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Mağazalarımız
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/about" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/about" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Haqqımızda
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/contact" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/contact" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Əlaqə
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
             </li>
 
             <li>
-              <NavLink to="/vacancy" className={({ isActive }) => (isActive ? styles.active : '')}>
+              <NavLink to="/vacancy" className={({ isActive }) => (isActive ? styles.active : "")}>
                 Vakansiya
                 <img src={ArrowIcon} alt="Arrow" />
               </NavLink>
@@ -120,7 +121,7 @@ const Header = () => {
             icon={SearchIcon}
           />
         </form>
-      </div>
+      </Container>
     </header>
   );
 };
