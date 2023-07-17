@@ -24,6 +24,8 @@ const Header = () => {
     setMenuOpen(false);
   }, [pathname]);
 
+  const [isSearchOpen, setSearchOpen] = useState(false);
+
   return (
     <header className={styles.header}>
       <Container className={styles.container}>
@@ -113,10 +115,26 @@ const Header = () => {
         </nav>
 
         <form method="GET" action="/products">
-          <div className={styles.search}>
-            <img src={SearchIcon} alt="Search" />
+          <div className={cs(styles.search, { [styles.openSearch]: isSearchOpen })}>
+            <img
+              src={SearchIcon}
+              alt="Search"
+              className={styles.searchIcon}
+              onClick={() => {
+                setSearchOpen(!isSearchOpen);
+              }}
+            />
 
             <input name="search" type="text" placeholder="Axtarış..." />
+
+            <img
+              src={CloseIcon}
+              alt="Close"
+              className={styles.closeSearch}
+              onClick={() => {
+                setSearchOpen(!isSearchOpen);
+              }}
+            />
           </div>
         </form>
       </Container>
