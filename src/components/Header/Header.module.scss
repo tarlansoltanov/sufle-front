@@ -160,13 +160,22 @@
 }
 
 .search {
+  position: relative;
   width: auto;
 
-  @media screen and (max-width: 1280px) {
+  @media screen and (max-width: 1650px) {
     width: 24px;
   }
 
   & > img {
+    position: absolute;
+
+    width: 21px;
+    height: 21px;
+
+    left: 20px;
+    top: 13px;
+
     @media screen and (max-width: 1650px) {
       position: relative;
       left: 0;
@@ -177,17 +186,35 @@
   }
 
   & > input {
+    width: 100%;
+
+    padding: 13px 20px 13px 58px;
+
+    border-radius: 10px;
+    border: none;
+
     background: #f8f8f8;
     box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.05);
-
-    @media screen and (max-width: 1650px) {
-      display: none;
-    }
 
     font-weight: 200;
     font-size: 16px;
     line-height: 20px;
 
     color: #a9a9a9;
+
+    @media screen and (max-width: 1650px) {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 20px;
+
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

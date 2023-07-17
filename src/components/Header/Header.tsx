@@ -12,7 +12,6 @@ import {
   SearchIcon,
 } from "../../assets/images/icons";
 
-import Input from "../Input/Input";
 import Container from "../Container/Container";
 
 import styles from "./Header.module.scss";
@@ -114,12 +113,11 @@ const Header = () => {
         </nav>
 
         <form method="GET" action="/products">
-          <Input
-            name="search"
-            placeholder="Axtarış..."
-            className={styles.search}
-            icon={SearchIcon}
-          />
+          <div className={styles.search}>
+            <img src={SearchIcon} alt="Search" />
+
+            <input name="search" type="text" placeholder="Axtarış..." />
+          </div>
         </form>
       </Container>
     </header>
