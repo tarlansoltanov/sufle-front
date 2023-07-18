@@ -35,30 +35,6 @@ const Products = () => {
 
   const [page, setPage] = useState<number>(Number(searchParams.get("page")) || 1);
 
-  const changePage = (page: number) => {
-    setLoading(true);
-
-    getProductsByFilter({ page }, filter)
-      .then((res) => {
-        setProducts(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    setPage(page);
-
-    navigate(
-      `/products?${
-        filter.categories.length > 0 ? `categories=${filter.categories.join(",")}` : ""
-      }&minPrice=${filter.minPrice}&maxPrice=${filter.maxPrice}&${
-        filter.ordering ? `sort=${filter.ordering}` : ""
-      }&page=${page}`
-    );
-
-    setLoading(false);
-  };
-
   // Filter and Sort
   const [filterOpen, setFilterOpen] = useState<boolean>(false);
   const [sortOpen, setSortOpen] = useState<boolean>(false);
@@ -86,7 +62,7 @@ const Products = () => {
   const filterProducts = () => {
     setLoading(true);
 
-    getProductsByFilter({}, filter)
+    getProductsByFilter({ page }, filter)
       .then((res) => {
         setProducts(res);
       })
@@ -100,8 +76,8 @@ const Products = () => {
       }${filter.minPrice > 0 ? `minPrice=${filter.minPrice}&` : ""}${
         filter.maxPrice < 100 ? `maxPrice=${filter.maxPrice}&` : ""
       }${filter.ordering ? `sort=${filter.ordering}&` : ""}${
-        filter.search ? `search=${filter.search}` : ""
-      }`
+        filter.search ? `search=${filter.search}&` : ""
+      }page=${page}`
     );
 
     setLoading(false);
@@ -178,7 +154,7 @@ const Products = () => {
       "--scrollbar-width",
       window.innerWidth - document.documentElement.clientWidth + "px"
     );
-  }, [filter]);
+  }, [filter, page]);
 
   return (
     <main>
@@ -403,10 +379,10 @@ const Products = () => {
                 <div className={styles.pagination}>
                   {products && products.previous ? (
                     <>
-                      <a className={styles.pageBtn} onClick={() => changePage(page - 1)}>
+                      <a className={styles.pageBtn} onClick={() => setPage(page - 1)}>
                         {"<"}
                       </a>
-                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                      <a className={styles.pageBtn} onClick={() => setPage(page - 1)}>
                         {page - 1}
                       </a>
                     </>
@@ -414,13 +390,13 @@ const Products = () => {
                   {products && products.count > 0 ? (
                     <a className={cs(styles.current, styles.pageBtn)}>{page}</a>
                   ) : null}
-                  {products && products.previous ? (
+                  {products && products.next ? (
                     <>
-                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
+                      <a className={styles.pageBtn} onClick={() => setPage(page + 1)}>
                         {page + 1}
                       </a>
-                      <a className={styles.pageBtn} onClick={() => changePage(page + 1)}>
-                        {"<"}
+                      <a className={styles.pageBtn} onClick={() => setPage(page + 1)}>
+                        {">"}
                       </a>
                     </>
                   ) : null}
