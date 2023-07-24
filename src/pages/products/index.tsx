@@ -1,12 +1,19 @@
-import cs from "classnames";
 import { useState, useEffect } from "react";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { useNavigate, useSearchParams } from "react-router-dom";
+
+// Import External Libraries
 import MultiRangeSlider, { ChangeResult } from "multi-range-slider-react";
+import ScrollContainer from "react-indiana-drag-scroll";
+import cs from "classnames";
 
-import { IPaginatedProducts, IMainCategory, IFilterProps } from "../../types";
-import { getMainCategories, getProductsByFilter } from "../../api";
+// Import Components
+import Container from "src/components/Container/Container";
+import Title from "src/components/Title/Title";
+import Selector from "src/components/Selector/Selector";
+import Card from "src/components/Card/Card";
+import Loader from "src/components/Loader/Loader";
 
+// Import Images
 import {
   AllIconGrey,
   AllIconWhite,
@@ -14,16 +21,14 @@ import {
   DropdownIcon,
   FilterIconWhite,
   SortIcon,
-} from "../../assets/images/icons";
+} from "src/assets/images/icons";
 
-import Container from "../../components/Container/Container";
-import Title from "../../components/Title/Title";
-import Selector from "../../components/Selector/Selector";
-import Card from "../../components/Card/Card";
-import Loader from "../../components/Loader/Loader";
+// Import Styles
+import styles from "./styles.module.scss";
+import "src/assets/css/range-slider.css";
 
-import styles from "./Products.module.scss";
-import "./range-slider.css";
+import { IPaginatedProducts, IMainCategory, IFilterProps } from "src/types";
+import { getMainCategories, getProductsByFilter } from "src/api";
 
 const Products = () => {
   const navigate = useNavigate();

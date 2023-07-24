@@ -1,13 +1,17 @@
-import { useState, useEffect } from 'react';
-import cs from 'classnames';
+import { useState, useEffect } from "react";
 
-import { IShop } from '../../types';
-import { getAllShops } from '../../api';
+// Import External Libraries
+import cs from "classnames";
 
-import Title from '../../components/Title/Title';
-import Container from '../../components/Container/Container';
+// Import Components
+import Title from "src/components/Title/Title";
+import Container from "src/components/Container/Container";
 
-import styles from './Shops.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
+
+import { IShop } from "src/types";
+import { getAllShops } from "src/api";
 
 const Shops = () => {
   const [shops, setShops] = useState<IShop[]>([]);

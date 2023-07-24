@@ -1,13 +1,15 @@
-import cs from 'classnames';
+// Import External Libraries
+import cs from "classnames";
 
-import Container from '../../components/Container/Container';
-import Title from '../../components/Title/Title';
+// Import Components
+import Container from "src/components/Container/Container";
+import Title from "src/components/Title/Title";
 
-import AboutImage1 from '../../assets/images/about/about1.png';
-import AboutImage2 from '../../assets/images/about/about2.png';
-import AboutImage3 from '../../assets/images/about/about3.png';
+// Import Images
+import { AboutImage1, AboutImage2, AboutImage3 } from "src/assets/images";
 
-import styles from './About.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
 
 const About = () => {
   return (

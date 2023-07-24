@@ -1,26 +1,31 @@
 import { useRef, useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import ImageGallery from "react-image-gallery";
+
+// Import External Libraries
 import ItemsCarousel from "react-items-carousel";
+import ImageGallery from "react-image-gallery";
 import cs from "classnames";
 
-import { IProduct, IWeight } from "../../types";
-import { getProductDetails, getProductsByCategory, getWeights } from "../../api";
+// Import Components
+import Container from "src/components/Container/Container";
+import Selector from "src/components/Selector/Selector";
+import Loader from "src/components/Loader/Loader";
+import Input from "src/components/Input/Input";
+import Card from "src/components/Card/Card";
+import Title from "src/components/Title/Title";
+import ErrorPage from "src/pages/ErrorPage";
 
-import { ArrowLeftIcon, ArrowRightIcon } from "../../assets/images/icons";
+// Import Images
+import { ArrowLeftIcon, ArrowRightIcon } from "src/assets/images/icons";
 
-import Title from "../../components/Title/Title";
-import Container from "../../components/Container/Container";
-import Selector from "../../components/Selector/Selector";
-import Loader from "../../components/Loader/Loader";
-import Input from "../../components/Input/Input";
-import Card from "../../components/Card/Card";
-import ErrorPage from "../errors";
+// Import Styles
+import styles from "./styles.module.scss";
+import "src/assets/css/image-gallery.css";
 
-import styles from "./Product.module.scss";
-import "./image-gallery.css";
+import { IProduct, IWeight } from "src/types";
+import { getProductDetails, getProductsByCategory, getWeights } from "src/api";
 
-const Product = () => {
+const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
@@ -291,4 +296,4 @@ const Product = () => {
   );
 };
 
-export default Product;
+export default ProductDetail;

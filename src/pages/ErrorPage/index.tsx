@@ -1,10 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-import { SearchIcon } from '../../assets/images/icons';
+// Import Components
+import Input from "src/components/Input/Input";
 
-import Input from '../../components/Input/Input';
+// Import Images
+import { SearchIcon } from "src/assets/images/icons";
 
-import styles from './Errors.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
 
 interface Props {
   error_code?: number;

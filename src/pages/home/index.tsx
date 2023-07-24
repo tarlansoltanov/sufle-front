@@ -1,23 +1,18 @@
-import cs from "classnames";
 import { useState, useEffect } from "react";
-import ItemsCarousel from "react-items-carousel";
 import { Link, useNavigate } from "react-router-dom";
+
+// Import External Libraries
+import cs from "classnames";
+import ItemsCarousel from "react-items-carousel";
 import ScrollContainer from "react-indiana-drag-scroll";
 
-import { IAdvert, IMainCategory, IPaginatedProducts } from "../../types";
-import {
-  getAdverts,
-  getMainCategories,
-  getProductsByCategory,
-  getProductsByPromo,
-} from "../../api";
+// Import Components
+import Container from "src/components/Container/Container";
+import Selector from "src/components/Selector/Selector";
+import Loader from "src/components/Loader/Loader";
+import Card from "src/components/Card/Card";
 
-import Container from "../../components/Container/Container";
-import Selector from "../../components/Selector/Selector";
-import Loader from "../../components/Loader/Loader";
-import Card from "../../components/Card/Card";
-
-import styles from "./Home.module.scss";
+// Import Images
 import {
   AllIconGrey,
   AllIconWhite,
@@ -29,7 +24,13 @@ import {
   DiscountIconWhite,
   NewIconGrey,
   NewIconWhite,
-} from "../../assets/images/icons";
+} from "src/assets/images/icons";
+
+// Import Styles
+import styles from "./styles.module.scss";
+
+import { IAdvert, IMainCategory, IPaginatedProducts } from "src/types";
+import { getAdverts, getMainCategories, getProductsByCategory, getProductsByPromo } from "src/api";
 
 const Home = () => {
   const navigate = useNavigate();

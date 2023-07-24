@@ -1,18 +1,23 @@
-import cs from "classnames";
 import { useEffect, useState } from "react";
+
+// Import External Libraries
 import ItemsCarousel from "react-items-carousel";
 
-// Preview Modals
+import cs from "classnames";
+
 import Lightbox from "react-18-image-lightbox";
 import "react-18-image-lightbox/style.css";
 
 import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
 
-import { IGallery } from "../../types";
-import { getGalleryItems } from "../../api";
-import { getVideoThumbnail, getVideoId } from "../../utils";
+// Import Components
+import Container from "src/components/Container/Container";
+import Selector from "src/components/Selector/Selector";
+import Loader from "src/components/Loader/Loader";
+import Title from "src/components/Title/Title";
 
+// Import Images
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -20,18 +25,16 @@ import {
   ImageIconWhite,
   VideoIconGrey,
   VideoIconWhite,
-} from "../../assets/images/icons";
+} from "src/assets/images/icons";
 
-import Container from "../../components/Container/Container";
-import Selector from "../../components/Selector/Selector";
-import Title from "../../components/Title/Title";
-import Loader from "../../components/Loader/Loader";
+// Import Styles
+import styles from "./styles.module.scss";
 
-import styles from "./Gallery.module.scss";
+import { IGallery } from "src/types";
+import { getGalleryItems } from "src/api";
+import { getVideoThumbnail, getVideoId } from "src/utils";
 
 const Gallery = () => {
-  // Gallery Items
-
   const [galleryItems, setGalleryItems] = useState<IGallery[]>([]);
   const [galleryType, setGalleryType] = useState<"image" | "video">("image");
 
@@ -183,7 +186,6 @@ const Gallery = () => {
                 onMoveNextRequest={() =>
                   setSelectedImage((selectedImage + 1) % galleryItems.length)
                 }
-                
               />
             ) : null}
 

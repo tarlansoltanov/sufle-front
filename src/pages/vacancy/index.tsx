@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
-import { getAllVacancies } from '../../api';
-import { IVacancy } from '../../types';
+// Import Components
+import Container from "src/components/Container/Container";
+import Title from "src/components/Title/Title";
 
-import Title from '../../components/Title/Title';
-import Container from '../../components/Container/Container';
+// Import Styles
+import styles from "./styles.module.scss";
 
-import styles from './Vacancy.module.scss';
+import { getAllVacancies } from "src/api";
+import { IVacancy } from "src/types";
 
 const Vacancy = () => {
   const [vacancies, setVacancies] = useState<IVacancy[] | null>([]);

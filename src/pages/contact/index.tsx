@@ -1,17 +1,22 @@
 import { useState, useEffect } from "react";
+
+// Import External Libraries
 import cs from "classnames";
-
-import { IShop } from "../../types";
-import { getMainShop } from "../../api";
-
-import { ClockIcon, LocationIcon, PhoneIcon } from "../../assets/images/icons";
-
-import Container from "../../components/Container/Container";
-import Title from "../../components/Title/Title";
-import Input from "../../components/Input/Input";
-
-import styles from "./Contact.module.scss";
 import axios from "axios";
+
+// Import Components
+import Container from "src/components/Container/Container";
+import Input from "src/components/Input/Input";
+import Title from "src/components/Title/Title";
+
+// Import Images
+import { ClockIcon, LocationIcon, PhoneIcon } from "src/assets/images/icons";
+
+// Import Styles
+import styles from "./styles.module.scss";
+
+import { IShop } from "src/types";
+import { getMainShop } from "src/api";
 
 const Contact = () => {
   const [shop, setShop] = useState<IShop | null>(null);
