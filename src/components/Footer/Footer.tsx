@@ -1,9 +1,7 @@
-import cs from 'classnames';
-import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 
-import { IShop, IMainCategory } from '../../types';
-import { getMainShop, getMainCategories } from '../../api';
+import cs from "classnames";
 
 import {
   AppStoreIcon,
@@ -11,11 +9,14 @@ import {
   InstagramIconGrey,
   FacebookIconGrey,
   CopyrightIcon,
-} from '../../assets/images/icons';
+} from "src/assets/images/icons";
 
-import Container from '../Container/Container';
+import Container from "../Container/Container";
 
-import styles from './Footer.module.scss';
+import { IShop, IMainCategory } from "src/types";
+import { getMainShop, getMainCategories } from "src/api";
+
+import styles from "./Footer.module.scss";
 
 const Footer = () => {
   const [shop, setShop] = useState<IShop | null>(null);
@@ -68,7 +69,7 @@ const Footer = () => {
                 {categories &&
                   categories.map((category) => (
                     <li key={category.id}>
-                      <NavLink to="/products?categories=category.id">{category.name}</NavLink>
+                      <NavLink to={`/products?categories=${category.id}`}>{category.name}</NavLink>
                     </li>
                   ))}
               </ul>
