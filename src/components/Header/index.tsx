@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { NavLink, useLocation, Link } from "react-router-dom";
+
+// Import External Libraries
 import cs from "classnames";
 
-import Logo from "/src/assets/images/logo.png";
+// Import Components
+import Container from "src/components/Container";
+
+// Import Images
+import { Logo } from "src/assets/images";
 import {
   MenuIcon,
   CloseIcon,
@@ -10,11 +16,10 @@ import {
   FacebookIconRed,
   InstagramIconRed,
   SearchIcon,
-} from "../../assets/images/icons";
+} from "src/assets/images/icons";
 
-import Container from "../Container/Container";
-
-import styles from "./Header.module.scss";
+// Import Styles
+import styles from "./styles.module.scss";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

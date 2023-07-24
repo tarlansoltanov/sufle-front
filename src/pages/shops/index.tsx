@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import cs from "classnames";
 
 // Import Components
-import Title from "src/components/Title/Title";
-import Container from "src/components/Container/Container";
+import { Title, Container } from "src/components";
 
 // Import Styles
 import styles from "./styles.module.scss";

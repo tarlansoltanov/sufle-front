@@ -1,4 +1,5 @@
-import styles from './Title.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
 
 interface Props {
   title: string;

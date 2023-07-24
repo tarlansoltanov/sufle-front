@@ -7,10 +7,7 @@ import ItemsCarousel from "react-items-carousel";
 import ScrollContainer from "react-indiana-drag-scroll";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Selector from "src/components/Selector/Selector";
-import Loader from "src/components/Loader/Loader";
-import Card from "src/components/Card/Card";
+import { Container, Loader, Selector, Card } from "src/components";
 
 // Import Images
 import {

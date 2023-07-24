@@ -1,6 +1,10 @@
+import React from "react";
+
+// Import External Libraries
 import cs from "classnames";
 
-import styles from "./Input.module.scss";
+// Import Styles
+import styles from "./styles.module.scss";
 
 interface Props {
   name: string;

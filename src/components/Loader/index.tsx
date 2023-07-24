@@ -1,6 +1,8 @@
-import Container from '../Container/Container';
+// Import Components
+import Container from "src/components/Container";
 
-import styles from './Loader.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
 
 const Loader = () => {
   return (

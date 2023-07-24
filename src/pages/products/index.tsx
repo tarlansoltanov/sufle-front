@@ -7,11 +7,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import cs from "classnames";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Title from "src/components/Title/Title";
-import Selector from "src/components/Selector/Selector";
-import Card from "src/components/Card/Card";
-import Loader from "src/components/Loader/Loader";
+import { Title, Container, Loader, Card, Selector } from "src/components";
 
 // Import Images
 import {
@@ -25,7 +21,7 @@ import {
 
 // Import Styles
 import styles from "./styles.module.scss";
-import "src/assets/css/range-slider.css";
+import "src/assets/css/rangeSlider.css";
 
 import { IPaginatedProducts, IMainCategory, IFilterProps } from "src/types";
 import { getMainCategories, getProductsByFilter } from "src/api";

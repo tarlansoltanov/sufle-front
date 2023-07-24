@@ -1,11 +1,15 @@
-import React from 'react';
-import cs from 'classnames';
+import React from "react";
 
-import { IImage } from '../../types';
+// Import External Libraries
+import cs from "classnames";
 
-import { NewIconRed } from '../../assets/images/icons';
+// Import Images
+import { NewIconRed } from "src/assets/images/icons";
 
-import styles from './Card.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
+
+import { IImage } from "src/types";
 
 interface Props {
   photos: IImage[];

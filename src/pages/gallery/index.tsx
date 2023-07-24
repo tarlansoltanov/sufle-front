@@ -12,10 +12,7 @@ import ModalVideo from "react-modal-video";
 import "react-modal-video/scss/modal-video.scss";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Selector from "src/components/Selector/Selector";
-import Loader from "src/components/Loader/Loader";
-import Title from "src/components/Title/Title";
+import { Title, Container, Loader, Selector } from "src/components";
 
 // Import Images
 import {

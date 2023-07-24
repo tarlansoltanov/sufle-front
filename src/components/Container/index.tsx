@@ -1,7 +1,10 @@
-import React from 'react';
-import cs from 'classnames';
+import React from "react";
 
-import styles from './Container.module.scss';
+// Import External Libraries
+import cs from "classnames";
+
+// Import Styles
+import styles from "./styles.module.scss";
 
 interface Props {
   children: React.ReactNode;

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 // Import Components
-import Input from "src/components/Input/Input";
+import { Input } from "src/components";
 
 // Import Images
 import { SearchIcon } from "src/assets/images/icons";

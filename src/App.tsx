@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Header from "src/components/Header/Header";
-import Footer from "src/components/Footer/Footer";
+import Header from "src/components/Header";
+import Footer from "src/components/Footer";
 
 import { publicRoutes } from "./routes";
 import { ScrollToTop } from "./routes/middleware";

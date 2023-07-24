@@ -7,12 +7,7 @@ import ImageGallery from "react-image-gallery";
 import cs from "classnames";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Selector from "src/components/Selector/Selector";
-import Loader from "src/components/Loader/Loader";
-import Input from "src/components/Input/Input";
-import Card from "src/components/Card/Card";
-import Title from "src/components/Title/Title";
+import { Title, Container, Loader, Card, Selector, Input } from "src/components";
 import ErrorPage from "src/pages/ErrorPage";
 
 // Import Images

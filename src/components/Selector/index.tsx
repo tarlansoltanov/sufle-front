@@ -1,6 +1,8 @@
-import cs from 'classnames';
+// Import External Libraries
+import cs from "classnames";
 
-import styles from './Selector.module.scss';
+// Import Styles
+import styles from "./styles.module.scss";
 
 interface SelectorProps {
   icon: {

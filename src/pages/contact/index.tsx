@@ -5,9 +5,7 @@ import cs from "classnames";
 import axios from "axios";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Input from "src/components/Input/Input";
-import Title from "src/components/Title/Title";
+import { Title, Container, Input } from "src/components";
 
 // Import Images
 import { ClockIcon, LocationIcon, PhoneIcon } from "src/assets/images/icons";

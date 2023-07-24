@@ -1,8 +1,13 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
+// Import External Libraries
 import cs from "classnames";
 
+// Import Components
+import Container from "src/components/Container";
+
+// Import Images
 import {
   AppStoreIcon,
   PlayStoreIcon,
@@ -11,12 +16,11 @@ import {
   CopyrightIcon,
 } from "src/assets/images/icons";
 
-import Container from "../Container/Container";
+// Import Styles
+import styles from "./styles.module.scss";
 
 import { IShop, IMainCategory } from "src/types";
 import { getMainShop, getMainCategories } from "src/api";
-
-import styles from "./Footer.module.scss";
 
 const Footer = () => {
   const [shop, setShop] = useState<IShop | null>(null);

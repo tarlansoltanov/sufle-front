@@ -2,8 +2,7 @@
 import cs from "classnames";
 
 // Import Components
-import Container from "src/components/Container/Container";
-import Title from "src/components/Title/Title";
+import { Title, Container } from "src/components";
 
 // Import Images
 import { AboutImage1, AboutImage2, AboutImage3 } from "src/assets/images";
