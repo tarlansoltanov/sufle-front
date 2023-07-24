@@ -11,7 +11,7 @@ const publicRoutes = [
   { path: "/products/:id", component: <Pages.ProductDetail /> },
 
   // Gallery
-  { path: "/gallery", component: <Pages.Home /> },
+  { path: "/gallery", component: <Pages.Gallery /> },
 
   // Shops
   { path: "/shops", component: <Pages.Shops /> },
