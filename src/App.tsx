@@ -5,16 +5,19 @@ import Header from "src/components/Header/Header";
 import Footer from "src/components/Footer/Footer";
 
 import { publicRoutes } from "./routes";
+import { ScrollToTop } from "./routes/middleware";
 
 function App() {
   return (
     <React.Fragment>
       <Header />
-      <Routes>
-        {publicRoutes.map((route, index) => (
-          <Route key={index} path={route.path} element={route.component} />
-        ))}
-      </Routes>
+      <ScrollToTop>
+        <Routes>
+          {publicRoutes.map((route, index) => (
+            <Route key={index} path={route.path} element={route.component} />
+          ))}
+        </Routes>
+      </ScrollToTop>
       <Footer />
     </React.Fragment>
   );
