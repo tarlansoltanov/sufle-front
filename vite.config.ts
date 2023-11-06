@@ -9,7 +9,4 @@ export default defineConfig({
       src: "/src",
     },
   },
-  server: {
-    host: true,
-  },
 });

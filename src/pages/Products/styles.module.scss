@@ -525,45 +525,74 @@
       column-gap: 0;
     }
 
-    & .photo {
-      $width: calc(100vw - 12vw - 12vw - 250px - 90px - var(--scrollbar-width, 0px));
+    $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
+    $space: calc(40px * 3 / 4);
 
-      width: calc($width * 0.333 - 26px);
-      height: calc(($width * 0.333 - 26px) * 0.75);
+    & .card {
+      max-width: calc($width * 0.25 - $space);
 
-      @media screen and (max-width: 1280px) {
-        $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width, 0px));
-
-        width: calc($width * 0.333 - 26px);
-        height: calc(($width * 0.333 - 26px) * 0.75);
+      & .photo {
+        width: calc($width * 0.25 - $space);
+        height: calc(($width * 0.25 - $space) * 1.1235);
       }
+    }
 
-      @media screen and (max-width: 1024px) {
-        $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width, 0px));
-
-        width: calc($width * 0.5 - 20px);
-        height: calc(($width * 0.5 - 20px) * 0.75);
+    @media screen and (max-width: 1280px) {
+      & .card {
+        max-width: calc($width * 0.333 - $space);
+        & .photo {
+          width: calc($width * 0.333 - $space);
+          height: calc(($width * 0.333 - $space) * 1.1235);
+        }
       }
+    }
 
-      @media screen and (max-width: 768px) {
-        $width: calc(100vw - 25px - 25px - var(--scrollbar-width, 0px));
+    $space: calc(20px * 3 / 4);
 
-        width: calc($width * 0.333 - 10px);
-        height: calc(($width * 0.333 - 10px) * 0.75);
+    @media screen and (max-width: 1024px) {
+      gap: 20px;
+
+      & .card {
+        max-width: calc($width * 0.5 - $space);
+        & .photo {
+          width: calc($width * 0.5 - $space);
+          height: calc(($width * 0.5 - $space) * 1.1235);
+        }
       }
+    }
 
-      @media screen and (max-width: 480px) {
-        $width: calc(100vw - 25px - 25px - var(--scrollbar-width, 0px));
+    $width: calc(100vw - 25px - 25px - var(--scrollbar-width));
+    $space: calc(10px * 3 / 4);
 
-        width: calc($width * 0.5 - 10px);
-        height: calc(($width * 0.5 - 10px) * 0.75);
+    @media screen and (max-width: 768px) {
+      gap: 10px;
+
+      & .card {
+        max-width: calc($width * 0.333 - $space);
+        & .photo {
+          width: calc($width * 0.333 - $space);
+          height: calc(($width * 0.333 - $space) * 1.1235);
+        }
       }
+    }
 
-      @media screen and (max-width: 320px) {
-        $width: calc(100vw - 25px - 25px - var(--scrollbar-width, 0px));
+    @media screen and (max-width: 480px) {
+      & .card {
+        max-width: calc($width * 0.5 - $space);
+        & .photo {
+          width: calc($width * 0.5 - $space);
+          height: calc(($width * 0.5 - $space) * 1.1235);
+        }
+      }
+    }
 
-        width: calc($width);
-        height: calc(($width) * 0.75);
+    @media screen and (max-width: 320px) {
+      & .card {
+        max-width: calc($width);
+        & .photo {
+          width: calc($width);
+          height: calc(($width) * 1.1235);
+        }
       }
     }
   }
@@ -584,6 +613,7 @@
     }
 
     & > .pageBtn {
+      cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;

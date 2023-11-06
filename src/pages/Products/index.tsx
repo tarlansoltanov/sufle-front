@@ -166,8 +166,7 @@ const Products = () => {
           <div className={styles.openBtns}>
             <button
               className={cs(styles.filterBtn, styles.active)}
-              onClick={() => setFilterOpen(!filterOpen)}
-            >
+              onClick={() => setFilterOpen(!filterOpen)}>
               <p>Filtr</p>
 
               <img src={FilterIconWhite} alt="Filter" />
@@ -343,8 +342,7 @@ const Products = () => {
                     <li
                       key={index}
                       className={cs({ [styles.active]: filter.ordering === option.value })}
-                      onClick={() => handleSortClick(option.value)}
-                    >
+                      onClick={() => handleSortClick(option.value)}>
                       <a>{option.label}</a>
                     </li>
                   ))}
@@ -367,6 +365,7 @@ const Products = () => {
                           photos={product.images}
                           name={product.name}
                           price={product.price}
+                          className={styles.card}
                           photoClass={styles.photo}
                           onClick={() => {
                             navigate(`/products/${product.id}`);
