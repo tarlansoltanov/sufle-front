@@ -162,6 +162,7 @@
 .search {
   position: relative;
   width: auto;
+  z-index: 1;
 
   @media screen and (max-width: 1650px) {
     width: 24px;
@@ -205,7 +206,7 @@
     font-size: 16px;
     line-height: 20px;
 
-    color: #a9a9a9;
+    color: #3a3a3a;
 
     @media screen and (max-width: 1650px) {
       display: none;
@@ -269,6 +270,10 @@
         height: 24px;
 
         cursor: pointer;
+      }
+
+      @media screen and (max-width: 480px) {
+        left: calc(100% - 75px);
       }
     }
   }
