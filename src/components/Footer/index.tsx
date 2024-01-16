@@ -106,11 +106,11 @@ const Footer = () => {
             <div className={styles.content}>
               <ul>
                 <li>
-                  <a href="#">
+                  <a href="https://apps.apple.com/sn/app/sufle/id6450963022">
                     <img src={AppStoreIcon} alt="App Store" />
                   </a>
 
-                  <a href="#">
+                  <a href="https://play.google.com/store/apps/details?id=com.sufle.app">
                     <img src={PlayStoreIcon} alt="Play Store" />
                   </a>
                 </li>
@@ -128,11 +128,11 @@ const Footer = () => {
           </div>
 
           <div className={styles.social}>
-            <a href="#">
+            <a href="https://www.instagram.com/sufle.az/">
               <img src={FacebookIconGrey} alt="Facebook" />
             </a>
 
-            <a href="#">
+            <a href="https://www.facebook.com/profile.php?id=100083960533522">
               <img src={InstagramIconGrey} alt="Instagram" />
             </a>
           </div>
