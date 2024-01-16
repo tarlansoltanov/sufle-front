@@ -683,33 +683,30 @@
 
       & .photo {
         width: calc($width * 0.25 - $space);
-        height: calc(($width * 0.25 - $space) * 0.75);
+        height: calc(($width * 0.25 - $space) * 1.1235);
       }
     }
 
     @media screen and (max-width: 1280px) {
       & .card {
         max-width: calc($width * 0.333 - $space);
-
         & .photo {
           width: calc($width * 0.333 - $space);
-          height: calc(($width * 0.333 - $space) * 0.75);
+          height: calc(($width * 0.333 - $space) * 1.1235);
         }
       }
     }
 
-    $width: calc(100vw - 12vw - 12vw - var(--scrollbar-width));
-    $space: calc(30px * 3 / 4);
+    $space: calc(20px * 3 / 4);
 
     @media screen and (max-width: 1024px) {
-      gap: 30px;
+      gap: 20px;
 
       & .card {
         max-width: calc($width * 0.5 - $space);
-
         & .photo {
           width: calc($width * 0.5 - $space);
-          height: calc(($width * 0.5 - $space) * 0.75);
+          height: calc(($width * 0.5 - $space) * 1.1235);
         }
       }
     }
@@ -721,20 +718,20 @@
       gap: 10px;
 
       & .card {
-        max-width: calc($width * 0.333 - 10px);
+        max-width: calc($width * 0.333 - $space);
         & .photo {
-          width: calc($width * 0.333 - 10px);
-          height: calc(($width * 0.333 - 10px) * 0.75);
+          width: calc($width * 0.333 - $space);
+          height: calc(($width * 0.333 - $space) * 1.1235);
         }
       }
     }
 
     @media screen and (max-width: 480px) {
       & .card {
-        max-width: calc($width * 0.5 - 10px);
+        max-width: calc($width * 0.5 - $space);
         & .photo {
-          width: calc($width * 0.5 - 10px);
-          height: calc(($width * 0.5 - 10px) * 0.75);
+          width: calc($width * 0.5 - $space);
+          height: calc(($width * 0.5 - $space) * 1.1235);
         }
       }
     }
@@ -744,7 +741,7 @@
         max-width: calc($width);
         & .photo {
           width: calc($width);
-          height: calc(($width) * 0.75);
+          height: calc(($width) * 1.1235);
         }
       }
     }
