@@ -91,7 +91,6 @@ const Contact = () => {
 
             <p className={cs(styles.text, styles.phone)}>
               Telefon: {shop?.phone} <br />
-              Email: {shop?.email}
             </p>
           </div>
 
@@ -107,7 +106,12 @@ const Contact = () => {
         </div>
 
         <div className={styles.map}>
-          <iframe src={shop?.map_url} width="100%" height="100%"></iframe>
+          <iframe
+            src={
+              "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1518.9507053305274!2d49.8437047!3d40.4110348!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4030872a0c5008e9%3A0x2abb2698703442!2sSufle%20Cake%20House!5e0!3m2!1sen!2spl!4v1705397082687!5m2!1sen!2spl"
+            }
+            width="100%"
+            height="100%"></iframe>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -153,8 +157,7 @@ const Contact = () => {
             onChange={handleInputChange}
             className={styles.textarea}
             required
-            isTextArea
-          ></Input>
+            isTextArea></Input>
 
           <button type="submit">Təsdiqlə</button>
         </form>

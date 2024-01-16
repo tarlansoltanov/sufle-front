@@ -19,18 +19,17 @@ const About = () => {
         <div className={styles.infoBox}>
           <div className={styles.title}>
             <hr />
-            <h1>Komandamız</h1>
+            <h1>Biz kimik?</h1>
           </div>
 
           <div className={styles.content}>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque
-              quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet
-              amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas
-              donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec
-              scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id
-              ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed
-              auctor.
+              “Sufle Cake House” 2015-ci ildə şirniyyatçı bir ailənin öz zəhmətlərini, ənənələrini
+              və kustar təcrübələrini korporativ müstəviyə daşıması qərarı ilə bir şirniyyat evi
+              kimi qurulmuşdur. Fəaliyyətə başladığı ilk dönəmlərdən etibarən həm istehsal, həm də
+              xidmət keyfiyyəti ilə Sumqayıt şirniyyat istehlakçılarının plutonik sevgilərini
+              qazanan “Sufle Cake House” bu müddət ərzində Sumqayıt şəhərində 3 filial ilə, Bakı
+              şəhərində isə 1 filial ilə müştərilərə yaxınlaşmışdır.
             </p>
           </div>
 
@@ -39,8 +38,7 @@ const About = () => {
               className={cs(styles.photo, styles.photoBig)}
               style={{
                 backgroundImage: `url(${AboutImage1})`,
-              }}
-            >
+              }}>
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
             </div>
@@ -49,8 +47,7 @@ const About = () => {
               className={cs(styles.photo, styles.photoSmall)}
               style={{
                 backgroundImage: `url(${AboutImage2})`,
-              }}
-            >
+              }}>
               <div className={styles.square}></div>
               <h2>Niyə Biz?</h2>
             </div>
@@ -64,12 +61,12 @@ const About = () => {
           </div>
 
           <div className={styles.statBox}>
-            <div className={styles.title}>38+</div>
+            <div className={styles.title}>80+</div>
             <div className={styles.subtitle}>məhsul</div>
           </div>
 
           <div className={styles.statBox}>
-            <div className={styles.title}>10+</div>
+            <div className={styles.title}>4</div>
             <div className={styles.subtitle}>filial</div>
           </div>
 
@@ -87,13 +84,13 @@ const About = () => {
 
           <div className={styles.content}>
             <p>
-              Lorem ipsum dolor sit amet consectetur. Ipsum ac semper massa convallis amet neque
-              quam. Pretium vestibulum eget enim pharetra ut in congue arcu et. Ipsum pulvinar amet
-              amet amet. Ornare sit ullamcorper facilisi in eu enim iaculis etiam quam. Egestas
-              donec tincidunt risus platea volutpat posuere. Mi cursus quis sit feugiat donec
-              scelerisque tempor in. Facilisis commodo tristique lectus vel parturient nisi quis. Id
-              ultrices amet ac non enim bibendum commodo. Sit et ut elementum nisl scelerisque sed
-              auctor.
+              “Sufle Cake House”-da yüksək keyfiyyət, gigiyena-sanitariya, halal xammallardan
+              istifadə, incə zövqlü işləmələr, eləcə də ədalətli qiymət, müştərilərə fərdi yanaşma
+              və müştəri məmnuniyyətinin yüksək səviyyədə saxlanılması prinsipləri hökm sürməkdədir.
+              Alıcıların sakinlərinin əlamətdar və xoş günlərinin tərəf müqabilinə çevrilmiş “Sufle
+              Cake House” bundan sonra da hər zaman davamlı inkişaf siyasətini yürüdərək, yalnız
+              Sumqayıt və Bakı deyil, eləcə də respublikanın digər bölgələrində də istehlakçıların
+              şirniyyat tələbatlarını yüksək keyfiyyətlə təmin etməyi vəd verir.
             </p>
           </div>
 
@@ -102,8 +99,7 @@ const About = () => {
               className={styles.photo}
               style={{
                 backgroundImage: `url(${AboutImage3})`,
-              }}
-            >
+              }}>
               <div className={styles.square}></div>
               <h2>Məhsullarımız</h2>
             </div>
